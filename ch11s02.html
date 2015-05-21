@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>El paràmetre self</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch11.html" title="Chapter 11. Programació orientada a objectes" /><link rel="prev" href="ch11.html" title="Chapter 11. Programació orientada a objectes" /><link rel="next" href="ch11s03.html" title="Classes" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">El paràmetre self</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11.html">Prev</a> </td><th width="60%" align="center">Chapter 11. Programació orientada a objectes</th><td width="20%" align="right"> <a accesskey="n" href="ch11s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="self"></a>El paràmetre self</h2></div></div></div><p>
+		
+		Els mètodes tenen una única diferència respecte a les funcions: han de 
+		contenir un paràmetre extra. Ha d'aparèixer a la primera posició de la 
+		llista de paràmetres, però no se li ha de passar un valor en cridar el
+		procediment. Python
+		se n'encarrega de passar el valor d'aquest argument quan es crida al mètode.
+		
+		</p><p>
+		
+		Aquest paràmetre es refereix a la instància de l'objecte
+		pròpiament i, per convenció, té com a nom <code class="literal">self</code>. 
+		Malgrat podem donar-li qualsevol altre nom, es <span class="emphasis"><em>desaconsella</em></span>.
+		L'ús del nom <code class="literal">self</code> té molts avantatges - tothom que miri
+		el nostre programa ho reconeixerà immediatament, i alguns entorns de desenvolupament
+		integrats (<span class="abbrev">IDEs</span>) especialitzats en donen suport quan el fem
+		servir.
+		
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C++/Java/C#</h3><p>
+			
+			
+			L'ús de <code class="literal">self</code> a Python és equivalent a l'ús del punter
+			<code class="literal">self</code> a C++, i a la referència <code class="literal">this</code> 
+			de Java i C#.
+			
+			</p></div><p>
+		
+		Potser ens preguntarem com pot Python donar el valor per <code class="literal">self</code>
+		i perquè no ens cal fer-ho nosaltres. Un exemple ens ho aclarirà. Diguem que 
+		disposem d'una classe anomenada <code class="classname">MyClass</code> i una instància
+		de la classe anomenada <code class="varname">MyObject</code>. Quan cridem a un mètode
+		d'aquest objecte com <code class="literal">MyObject.method(arg1, arg2)</code>, aquesta
+		crida es converteix automàticament en <code class="literal">MyClass.method(MyObject, arg1, arg2</code>.
+		I això és tot el que té d'especial el paràmetre <code class="literal">self</code>.
+		
+		</p><p>
+		
+		Això implica també que si tenim un mètode sense paràmetres, sempre haurem
+		de definir el mètode amb el paràmetre <code class="literal">self</code>.
+		
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 11. Programació orientada a objectes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Classes</td></tr></table></div></body></html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Paràmetres amb valor per defecte</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch07.html" title="Chapter 7. Funcions" /><link rel="prev" href="ch07s03.html" title="Variables locals" /><link rel="next" href="ch07s05.html" title="Arguments per nom" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Paràmetres amb valor per defecte</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s03.html">Prev</a> </td><th width="60%" align="center">Chapter 7. Funcions</th><td width="20%" align="right"> <a accesskey="n" href="ch07s05.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="default-argument-values"></a>Paràmetres amb valor per defecte</h2></div></div></div><p>
+		
+		A algunes funcions pot ser útil definir alguns dels seus paràmetres com a <span class="emphasis"><em>opcionals</em></span>, i fer servir valors per defecte quan l'usuari no vulgui passar valors per a aquests paràmetres. Aquesta funcionalitat s'aconsegueix especificant el valor per defecte pels paràmetres en forma d'assignació a la seva definició.
+		
+		</p><p>
+		
+		Atenció: el valor per defecte ha de ser una constant. Més concretament, el valor de l'argument ha de ser immutable. Aquest punt s'explicarà amb detall en posteriors capítols.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id294600"></a>Ús de paràmetres amb valor per defecte</h3></div></div></div><div class="example"><a id="id294606"></a><p class="title"><b>Example 7.5. Ús de paràmetres amb valor per defecte</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: func_default.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">say</span>(message, times = <span class="py-number">1</span>):
+	<span class="py-statement">print</span> message * times
+
+say(<span class="py-string">'Hello'</span>)
+say(<span class="py-string">'World'</span>, <span class="py-number">5</span>)
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294622"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python func_default.py
+Hello
+WorldWorldWorldWorldWorld
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294636"></a>Com funciona</h4></div></div></div><p>
+				
+				La funció <code class="function">say</code> permet escriure un string tants cops com es vulgui. Si no es diu quants, per defecte escriurà la cadena una sol cop. Això s'aconsegueix especificant que el valor per defecte del paràmetre <code class="varname">times</code> és <code class="literal">1</code>.
+				
+				</p><p>
+				
+				El primer cop que es fa servir la funció <code class="function">say</code>, se li passa només la cadena, i per tant, només l'escriu un cop. A la segona crida, se li passa també l'argument <code class="literal">5</code>. Amb això se li està demanat a la funció que mostri el missatge 5 cops.
+				
+				</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+					
+					Només es poden definir com a paràmetres per defecte, els que apareixen al final de la llista de paràmetres. Dit d'una altra manera, no es pot definir un paràmetre amb valor per defecte davant d'un altre sense valor per defecte (segons l'ordre definit per la llista de paràmetres de la funció). Aquesta restricció apareix pel fet que els valors són assignats als paràmetres segons la seva posició. Per exemple, <code class="literal">def func(a, b=5)</code> és correcte, però <code class="literal">def func(a=5, b)</code> <span class="emphasis"><em>no ho és</em></span>.
+					
+					</p></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Variables locals </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Arguments per nom</td></tr></table></div></body></html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 10. Resolució de problemes - Escrivint un script en Python</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="prev" href="ch09s08.html" title="Resum" /><link rel="next" href="ch10s02.html" title="La solució" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 10. Resolució de problemes - Escrivint un script en Python</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09s08.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch10s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="problem-solving"></a>Chapter 10. Resolució de problemes - Escrivint un script en Python</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch10.html#the-problem">El problema</a></span></dt><dt><span class="section"><a href="ch10s02.html">La solució</a></span></dt><dd><dl><dt><span class="section"><a href="ch10s02.html#first-version">Primera versió</a></span></dt><dt><span class="section"><a href="ch10s02.html#second-version">Segona versió</a></span></dt><dt><span class="section"><a href="ch10s02.html#third-version">Tercera versió</a></span></dt><dt><span class="section"><a href="ch10s02.html#fourth-version">Quarta versió</a></span></dt><dt><span class="section"><a href="ch10s02.html#more-refinements">Més millores</a></span></dt></dl></dd><dt><span class="section"><a href="ch10s03.html">El procés de desenvolupament de programari</a></span></dt><dt><span class="section"><a href="ch10s04.html">Resum</a></span></dt></dl></div><p>
+	
+	Portem estudiades varies parts del llenguatge Python i ja va tocant veure
+	com podem ajuntar-ho tot per a dissenyar i escriure un programa que faci
+	alguna cosa útil.
+	
+	</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="the-problem"></a>El problema</h2></div></div></div><p>
+		
+		El problema és <span class="emphasis"><em>'Vull un programa que realitzi una còpia de 
+		seguretat dels meus fitxers importants'</em></span>.
+		
+		</p><p>
+		
+		Malgrat es tracta d'un problema senzill, encara no disposem de suficient
+		informació per a poder oferir una solució.
+		Ens cal una mica més d'<span class="bold"><strong>anàlisi</strong></span>. Per exemple,
+		com especifiquem els fitxers que hem de copiar? On hem de guardar la còpia?
+		Com s'emmagatzemen els fitxers a la còpia?
+		
+		</p><p>
+		
+		Un cop analitzat correctament el problema, hem de 
+		<span class="bold"><strong>dissenyar</strong></span> el nostre programa. Farem una 
+		llista de característiques respecte a com hauria de funcionar el nostre 
+		programa.
+		Per al nostre problema aquesta llista podria ser la següent. És clar què si
+		un altre fa el disseny, podria arribar a una llista diferent pel mateix 
+		problema. Cadascú tenim la nostra manera de fer les coses i és quelcom correcte.
+		
+		</p><div class="orderedlist"><ol type="1"><li><p>
+				
+				Els fitxers i els directoris que han de ser guardats, s'especificaran
+				a una llista.
+				
+				</p></li><li><p>
+				
+				La còpia de seguretat ha de ser guardada en un directori principal
+				de còpies de seguretat.
+
+				</p></li><li><p>
+				
+				Els fitxers es guarden en un fitxer zip.
+				
+				</p></li><li><p>
+				
+				El nom de l'arxiu zip és la data i hora actual.
+				
+				</p></li><li><p>
+				
+				Farem servir la comanda estàndard <span><strong class="command">zip</strong></span> disponible per 
+				defecte a qualsevol instal·lació Linux/Unix estàndard. Els usuaris de
+				Windows poden fer servir el programa <span class="application">Info-Zip</span>.
+				Atenció: podríem fer servir qualsevol comanda d'arxivament que vulguem,
+				sempre i quan disposi d'interfície amb línia de comandes que puguem
+				passar-li com a argument al nostre script.
+				
+				</p></li></ol></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09s08.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch10s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Resum </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> La solució</td></tr></table></div></body></html>

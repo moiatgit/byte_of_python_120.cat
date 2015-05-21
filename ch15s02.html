@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Blocs d'una única sentència</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch15.html" title="Chapter 15. Més de Python" /><link rel="prev" href="ch15.html" title="Chapter 15. Més de Python" /><link rel="next" href="ch15s03.html" title="Més sobre llistes" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Blocs d'una única sentència</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15.html">Prev</a> </td><th width="60%" align="center">Chapter 15. Més de Python</th><td width="20%" align="right"> <a accesskey="n" href="ch15s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="single-statement-blocks"></a>Blocs d'una única sentència</h2></div></div></div><p>
+		
+		Quan un bloc de sentències conté una única sentència, podem especificar-la a la mateixa 
+		línia. Per exemple a la sentència condicional o iterativa. Considerem
+		el següent exemple:
+		
+		</p><pre class="screen">
+		
+&gt;&gt;&gt; flag = True
+&gt;&gt;&gt; if flag: print 'Yes'
+...
+Yes
+		
+		</pre><p>
+		
+		Com veiem, la sentència única apareix a la mateixa línia i no a un bloc
+		per separat.
+		Tot i que aquesta pràctica pot reduir el codi dels programes, no la
+		recomano, excepte per a temes com ara el control d'errors. Una de les
+		raons principals és que dificulta més afegir una nova sentència que si
+		féssim servir la indentació habitual.
+		
+		</p><p>
+		
+		Notem també que quan fem servir l'intèrpret de Python en mode interactiu,
+		aquest ens ajuda canviant el punt d'entrada apropiadament. A l'exemple
+		anterior, un cop introduir la paraula clau <code class="literal">if</code>, Python
+		canvia el punt d'entrada a <code class="literal">...</code> per indicar que la 
+		sentència no està encara completa.
+		Quan completem la sentència d'aquesta manera, premem <span><strong class="keycap">enter</strong></span> 
+		per a confirmar que hem completat la sentència. En aquest moment Python
+		finalitza l'execució de tota la sentència i torna al punt d'entrada
+		anterior esperant per la següent entrada.
+
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch15.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch15s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 15. Més de Python </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Més sobre llistes</td></tr></table></div></body></html>

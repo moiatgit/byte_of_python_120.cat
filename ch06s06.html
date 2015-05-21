@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La sentència continue</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch06.html" title="Chapter 6. Control Flow" /><link rel="prev" href="ch06s05.html" title="La sentència break" /><link rel="next" href="ch06s07.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La sentència continue</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s05.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Control Flow</th><td width="20%" align="right"> <a accesskey="n" href="ch06s07.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="continue-statement"></a>La sentència continue</h2></div></div></div><p>
+		
+		Fem servir la sentència <code class="literal">continue</code> per a indicar a
+		Python que ignori la resta de les sentències al bloc del bucle actual,
+		i continuï amb la següent iteració del bucle.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id292690"></a>Ús de la sentència continue</h3></div></div></div><div class="example"><a id="using-continue-statement"></a><p class="title"><b>Example 6.5. Ús de la sentència continue</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: continue.py</span>
+
+<span class="py-statement">while</span> <span class="py-builtin">True</span>:
+	s = <span class="py-builtin">raw_input</span>(<span class="py-string">'Enter something : '</span>)
+	<span class="py-statement">if</span> s == <span class="py-string">'quit'</span>:
+		<span class="py-statement">break</span>
+	<span class="py-statement">if</span> <span class="py-builtin">len</span>(s) &lt; <span class="py-number">3</span>:
+		<span class="py-statement">continue</span>
+	<span class="py-statement">print</span> <span class="py-string">'Input is of sufficient length'</span>
+	<span class="py-comment"># Aquí es poden fer altres coses...</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292711"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python continue.py
+Enter something : a
+Enter something : 12
+Enter something : abc
+Input is of sufficient length
+Enter something : quit
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292731"></a>Com funciona</h4></div></div></div><p>
+				
+				El programa accepta l'entrada de l'usuari, però només la processa quan l'entrada té un mínim de 3 caràcters de llargària. Obté la llargària amb la funció integrada 
+				<code class="function">len</code> i, si aquesta és menor que 3, salta la resta de les sentències del bucle fent servir la sentència 	<code class="literal">continue</code>.En cas contrari, s'executa la resta de les sentències del bucle.
+				</p><p>
+				
+				Recordem que també podem fer servir la sentència 
+				<code class="literal">continue</code> amb el bucle <code class="literal">for</code>.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">La sentència break </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

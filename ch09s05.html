@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Seqüències</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch09.html" title="Chapter 9. Estructures de dades" /><link rel="prev" href="ch09s04.html" title="Diccionari" /><link rel="next" href="ch09s06.html" title="Referències" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Seqüències</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09s04.html">Prev</a> </td><th width="60%" align="center">Chapter 9. Estructures de dades</th><td width="20%" align="right"> <a accesskey="n" href="ch09s06.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sequences"></a>Seqüències</h2></div></div></div><p>
+		
+		Com a exemples de seqüències, coneixem ja les llistes, les tuples i els strings.
+		Però, què són les seqüències i que tenen d'especial? Dues de les característiques
+		principals de les seqüències és l'operació d'<span class="bold"><strong>indexació</strong></span>,
+    que ens permet accedir directament a un element determinat dins la seqüència,
+    i l'operació de <span class="bold"><strong>segmentació</strong></span> (o 
+    <span class="bold"><strong>slicing</strong></span>), que ens permet
+    recuperar un segment o part de la seqüència.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-sequences"></a>Ús de les seqüències</h3></div></div></div><div class="example"><a id="id299283"></a><p class="title"><b>Example 9.5. Ús de les seqüències</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: seq.py</span>
+
+shoplist = [<span class="py-string">'apple'</span>, <span class="py-string">'mango'</span>, <span class="py-string">'carrot'</span>, <span class="py-string">'banana'</span>]
+
+<span class="py-comment"># Operació d'indexació</span>
+<span class="py-statement">print</span> <span class="py-string">'Item 0 is'</span>, shoplist[<span class="py-number">0</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item 1 is'</span>, shoplist[<span class="py-number">1</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item 2 is'</span>, shoplist[<span class="py-number">2</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item 3 is'</span>, shoplist[<span class="py-number">3</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item -1 is'</span>, shoplist[-<span class="py-number">1</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item -2 is'</span>, shoplist[-<span class="py-number">2</span>]
+
+<span class="py-comment"># Segmentant una llista</span>
+<span class="py-statement">print</span> <span class="py-string">'Item 1 to 3 is'</span>, shoplist[<span class="py-number">1</span>:<span class="py-number">3</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item 2 to end is'</span>, shoplist[<span class="py-number">2</span>:]
+<span class="py-statement">print</span> <span class="py-string">'Item 1 to -1 is'</span>, shoplist[<span class="py-number">1</span>:-<span class="py-number">1</span>]
+<span class="py-statement">print</span> <span class="py-string">'Item start to end is'</span>, shoplist[:]
+
+<span class="py-comment"># Segmentant un string</span>
+name = <span class="py-string">'swaroop'</span>
+<span class="py-statement">print</span> <span class="py-string">'characters 1 to 3 is'</span>, name[<span class="py-number">1</span>:<span class="py-number">3</span>]
+<span class="py-statement">print</span> <span class="py-string">'characters 2 to end is'</span>, name[<span class="py-number">2</span>:]
+<span class="py-statement">print</span> <span class="py-string">'characters 1 to -1 is'</span>, name[<span class="py-number">1</span>:-<span class="py-number">1</span>]
+<span class="py-statement">print</span> <span class="py-string">'characters start to end is'</span>, name[:]
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id299296"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python seq.py
+Item 0 is apple
+Item 1 is mango
+Item 2 is carrot
+Item 3 is banana
+Item -1 is banana
+Item -2 is carrot
+Item 1 to 3 is ['mango', 'carrot']
+Item 2 to end is ['carrot', 'banana']
+Item 1 to -1 is ['mango', 'carrot']
+Item start to end is ['apple', 'mango', 'carrot', 'banana']
+characters 1 to 3 is wa
+characters 2 to end is aroop
+characters 1 to -1 is waroo
+characters start to end is swaroop
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id299320"></a>Com funciona</h4></div></div></div><p>
+				
+				Primer veiem com es fan servir els índexs per a obtenir elements
+				individuals de la seqüència. 
+				Cada cop que especifiquem un número entre claudàtors respecte a una 
+				seqüència - com mostra l'exemple - Python localitza l'element que es
+				troba a la posició indicada pel número dins la seqüència. Recordem que
+				Python comença a comptar des del 0. Així:
+				<code class="literal">shoplist[0]</code> es refereix al primer element, mentre que
+				<code class="literal">shoplist[3]</code> és refereix al quart element de la 
+				seqüència <code class="varname">shoplist</code>.
+
+				</p><p>
+		
+				L'índex també pot ser un número negatiu. En aquest cas, la posició és 
+				calculada des del final de la seqüència. Així,
+				<code class="literal">shoplist[-1]</code> es refereix al darrer element de la 
+				seqüència i
+				<code class="literal">shoplist[-2]</code> indica el penúltim.
+				
+				</p><p>
+				
+				Per a fer servir l'operació de segmentació cal especificar el nom de la 
+				seqüència, seguit opcionalment per un parell de nombres separats per dos punts 
+				<code class="literal">:</code>. Es tracta d'una notació molt similar a la de l'operació
+				d'indexació que hem fet servir fins ara. Hem de tenir present que els 
+				nombres són opcionals, però els dos punts és requerit.
+		
+				</p><p>
+				
+				El primer número (abans dels dos punts) a l'operació de segmentació
+				es refereix a la posició des de la que el segment comença, mentre que el
+				segon número (després dels dos punts) indica on finalitza el segment. Si 
+				el primer número no s'especifica, el segment començarà a l'inici de la 
+				seqüència. Si el segon número no s'especifica, el segment acabarà al final
+				del string.
+				Notem que el segment retornat <span class="emphasis"><em>comença</em></span> a la posició 
+				d'inici, i acaba justament abans de la posició <span class="emphasis"><em>final</em></span>.
+				És a dir, la posició d'inici s'inclou al segment, mentre que la final no.
+				
+				</p><p>
+
+				D'aquesta manera, <code class="literal">shoplist[1:3]</code> retorna un segment
+				de la seqüència que comença a la posició 1, inclou la posició 2 però 
+				finalitza a la posició 3, i es retorna un <span class="emphasis"><em>segment</em></span>.
+				<code class="literal">shoplist[:]</code> per la seva banda, retorna una còpia de
+				tota la seqüència.
+				
+				</p><p>
+				
+				També es poden segmentar amb posicions negatives. Els números negatius
+				permeten especificar posicions des del final de la seqüència. Per exemple,
+				<code class="literal">shoplist[:-1]</code> nos retorna un segment de la seqüència
+				que inclou tots els elements d'aquesta menys el darrer element.
+				
+				</p><p>
+
+				Practiquem amb diferents combinacions de les especificacions de segments
+				des de l'intèrpret de Python. El millor de tot sobre les seqüències de 
+				Python és que es pot accedir de la mateixa manera a tuples, strings i
+				llistes.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch09.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Diccionari </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Referències</td></tr></table></div></body></html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>El mòdul os</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch14.html" title="Chapter 14. La biblioteca estàndard de Python" /><link rel="prev" href="ch14s02.html" title="El mòdul sys" /><link rel="next" href="ch14s04.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">El mòdul os</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch14s02.html">Prev</a> </td><th width="60%" align="center">Chapter 14. La biblioteca estàndard de Python</th><td width="20%" align="right"> <a accesskey="n" href="ch14s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="os-module"></a>El mòdul os</h2></div></div></div><p>
+		
+		Aquest mòdul representa la funcionalitat d'un sistema operatiu genèric.
+		És especialment important si volem fer els nostres programes independents
+		de la plataforma. És a dir, ens permet escriure programes de manera que 
+		puguin ser executats tant sobre Linux com sobre Windows sense cap 
+		problema i sense requerir cap canvi. 
+		Un exemple és l'ús de la variable <code class="varname">os.sep</code> 
+		en comptes del separador de camins (paths) específics de cada sistema.
+		
+		</p><p>
+		
+		A continuació es llisten algunes de les parts més útils del mòdul 
+		<code class="literal">os</code>. La major part són autoexplicatives.
+		
+		</p><div class="itemizedlist"><ul type="disc"><li><p>
+				
+				La cadena <code class="varname">os.name</code> especifica quina plataforma
+				estem fent servir. Per exemple serà <code class="literal">'nt'</code> per
+				Windows i <code class="literal">'posix'</code> per Linux/Unix.
+				
+				</p></li><li><p>
+				
+				La funció <code class="function">os.getcwd()</code> obté el directori
+				actual, és a dir, el camí del directori des del que s'està 
+				executant el programa Python.
+				
+				</p></li><li><p>
+			
+				Les funcions <code class="function">os.getenv()</code> i 
+				<code class="function">os.putenv()</code> es fan servir respectivament 
+				per a obtenir i assignar variables d'entorn.
+				
+				</p></li><li><p>
+				
+				La funció <code class="function">os.listdir()</code> retorna el nom de
+				tots els fitxers i directoris del directori especificat.
+				
+				</p></li><li><p>
+				
+				La funció <code class="function">os.remove()</code> ens permet eliminar
+				un fitxer.
+				
+				</p></li><li><p>
+				
+				La funció <code class="function">os.system()</code> es fa servir per a 
+				executar una comanda a la línia de comandes.
+				
+				</p></li><li><p>
+				
+				La cadena <code class="varname">os.linesep</code> conté el terminador
+				de línia de la plataforma actual. Per exemple, Windows fa servir
+				<code class="literal">'\r\n'</code>, mentre que Linux fa servir 
+				<code class="literal">'\n'</code> i Mac <code class="literal">'\r'</code>.
+				
+				</p></li><li><p>
+				
+				La funció <code class="function">os.path.split()</code> retorna el nom
+				del directori i del fitxer d'un camí.
+				
+				</p><pre class="screen">
+				
+&gt;&gt;&gt; os.path.split('/home/swaroop/byte/code/poem.txt')
+('/home/swaroop/byte/code', 'poem.txt')
+				
+				</pre></li><li><p>
+				
+				Les funcions <code class="function">os.path.isfile()</code> i 
+				<code class="function">os.path.isdir()</code> comproven si el camí
+				actual es refereix a un fitxer o a un directori respectivament.
+				Similarment, <code class="function">os.path.exists()</code> ens diu
+				si un determinat camí existeix.
+				
+				</p></li></ul></div><p>
+		
+		Podem explorar la documentació estàndard de Python per a obtenir més
+		detalls en totes aquestes funcions i variables. També podem trobar
+		més informació amb <code class="literal">help(sys)</code>.
+		
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch14s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch14.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch14s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">El mòdul sys </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

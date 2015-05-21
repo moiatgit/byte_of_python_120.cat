@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La sentència while</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch06.html" title="Chapter 6. Control Flow" /><link rel="prev" href="ch06s02.html" title="La sentència if" /><link rel="next" href="ch06s04.html" title="El bucle for" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La sentència while</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s02.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Control Flow</th><td width="20%" align="right"> <a accesskey="n" href="ch06s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="while-statement"></a>La sentència while</h2></div></div></div><p>
+		
+		La sentència <code class="literal">while</code> ens permet executar més d'un cop un mateix bloc
+		de sentències. L'execució es realitzarà mentre una certa condició sigui certa.
+		Les sentències <code class="literal">while</code> són un exemple del que s'anomena sentències
+		repetitives o <span class="emphasis"><em>bucles</em></span>.
+		La sentència <code class="literal">while</code> permet, opcionalment, afegir una clàusula <code class="literal">else</code>.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id291988"></a>Ús de la sentència while</h3></div></div></div><div class="example"><a id="using-while-statement"></a><p class="title"><b>Example 6.2. Ús de la sentència while</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: while.py</span>
+
+number = <span class="py-number">23</span>
+running = <span class="py-builtin">True</span>
+
+<span class="py-statement">while</span> running:
+	guess = <span class="py-builtin">int</span>(<span class="py-builtin">raw_input</span>(<span class="py-string">'Enter an integer : '</span>))
+
+	<span class="py-statement">if</span> guess == number:
+		<span class="py-statement">print</span> <span class="py-string">'Congratulations, you guessed it.'</span>
+		running = <span class="py-builtin">False</span> <span class="py-comment"># això farà que el bucle finalitzi a la propera volta</span>
+	<span class="py-statement">elif</span> guess &lt; number:
+		<span class="py-statement">print</span> <span class="py-string">'No, it is a little higher than that.'</span>
+	<span class="py-statement">else</span>:
+		<span class="py-statement">print</span> <span class="py-string">'No, it is a little lower than that.'</span>
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'The while loop is over.'</span>
+	<span class="py-comment"># aqui hi podem afegir el que vulguem</span>
+
+<span class="py-statement">print</span> <span class="py-string">'Done'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292010"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python while.py
+Enter an integer : 50
+No, it is a little lower than that.
+Enter an integer : 22
+No, it is a little higher than that.
+Enter an integer : 23
+Congratulations, you guessed it.
+The while loop is over.
+Done
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292031"></a>Com funciona</h4></div></div></div><p>
+				
+				A aquest programa hem continuat el joc d'endevinar de l'exemple de l'estructura if. Com a millora tenim que l'usuari pot fer tants intents com li calguin fins que aconsegueixi encertar el número, sense necessitat d'haver de tornar a executar el programa. Aquest és un ús típic del <code class="literal">while</code>.
+				
+				</p><p>
+				
+				En aquest cas, realitzem la lectura i la comprovació dins el bloc 
+				del <code class="literal">while</code>. Assignem a cert la variable booleana 
+				<code class="varname">running</code> abans de començar el bucle.
+				Primer es comprova si <code class="varname">running</code> és cert i a continuació
+				es passa a processar el <span class="emphasis"><em>bloc while</em></span>.
+				Un cop executat el bloc, tornem a comprovar la condició. Si un altre cop
+				<code class="varname">running</code> resulta ser cert, es torna a executar el bloc
+				del mentre. Altrament continuem executant el bloc del <code class="literal">else</code>
+				i finalment continuem a la següent sentència.
+
+								</p><p>
+				
+				El bloc <code class="literal">else</code> s'executa quan la condició del bucle 
+				<code class="literal">while</code> passa a ser falsa, cosa que pot passar fins i tot el
+				primer cop que es comprova la condició.
+				Així, el bloc del <code class="literal">else</code> sempre s'executa, excepte quan
+				hem construït un <code class="literal">while</code> que no acaba mai!
+				
+				</p><p>
+				
+				Les paraules reservades <code class="literal">True</code> i <code class="literal">False</code> 
+				són els valors del tipus de dades booleà, i els podem considerar equivalents
+				als valors <code class="literal">1</code> i <code class="literal">0</code> respectivament.
+				Per llegibilitat, però, és important que els fem servir en comptes dels 
+				valors numèrics.
+				
+				</p><p>
+				
+
+				El bloc <code class="literal">else</code> és redundant, ja que podem posar aquestes sentències
+				al mateix bloc del <code class="literal">while</code> i a continuació d'aquest, obtenint el mateix
+				efecte.
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C/C++</h3><p>
+					
+					Recordem que disposem de la clàusula <code class="literal">else</code> 
+					pel bucle <code class="literal">while</code>.
+					
+					</p></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">La sentència if </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> El bucle for</td></tr></table></div></body></html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Precedència dels operadors</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch05.html" title="Chapter 5. Operadors i expressions" /><link rel="prev" href="ch05s02.html" title="Operadors" /><link rel="next" href="ch05s04.html" title="Expressions" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Precedència dels operadors</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s02.html">Prev</a> </td><th width="60%" align="center">Chapter 5. Operadors i expressions</th><td width="20%" align="right"> <a accesskey="n" href="ch05s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="operator-precedence"></a>Precedència dels operadors</h2></div></div></div><p>
+		
+		Considerem l'expressió <code class="literal">2 + 3 * 4</code>. Es farà abans la 
+		suma o la multiplicació? Per la nostra formació matemàtica esperarem 
+		que la multiplicació es realitzi primer – és a dir, l'operador de 
+		multiplicació te preferència davant el de la suma.
+		
+		</p><p>
+		
+		La següent taula mostra la precedència en ordre creixent dels operadors 
+		de Python. Això implica que, donada una expressió, Python avaluarà 
+		primer un operador que aparegui més a baix a la taula que un que estigui 
+		a sobre seu.
+		
+		</p><p>
+
+		Es tracta de la mateixa taula que apareix al manual de referència de 
+		Python i només l'he afegit per qüestions de completesa. Amb tot, és 
+		recomanable fer servir els parèntesis per a agrupar operadors i 
+		operands, deixant explícita la precedència que s'espera. Això farà 
+		els programes més llegibles. Per exemple, <code class="literal">2 + (3 * 4)</code>
+		resulta molt més clar que <code class="literal">2 + 3 * 4</code>. Com amb tot, 
+		l'ús dels parèntesis ha de ser racional i s'ha d'intentar no posar-ne 
+		de més. Per exemple a <code class="literal">2 + (3 + 4)</code>.
+
+		</p><div class="table"><a id="id289418"></a><p class="title"><b>Table 5.2. Precedència dels operadors</b></p><table summary="Precedència dels operadors" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Operador</th><th>Descripció</th></tr></thead><tbody><tr><td>lambda</td><td>Expressió Lambda</td></tr><tr><td>or</td><td>disjunció lògica</td></tr><tr><td>and</td><td>conjunció lògica</td></tr><tr><td>not x</td><td>negació lògica</td></tr><tr><td>in, not in</td><td>Comprovació de pertinença</td></tr><tr><td>is, is not</td><td>Test d'identitat</td></tr><tr><td>&lt;, &lt;=, &gt;, &gt;=, !=, ==</td><td>Comparacions</td></tr><tr><td>|</td><td>Disjunció binària</td></tr><tr><td>^</td><td>Disjunció exclusiva binària</td></tr><tr><td>&amp;</td><td>Conjunció binària</td></tr><tr><td>&lt;&lt;, &gt;&gt;</td><td>Desplaçaments</td></tr><tr><td>+, -</td><td>Suma i resta</td></tr><tr><td>*, /, %</td><td>Multiplicació, divisió i resta</td></tr><tr><td>+x, -x</td><td>Positiu i negatiu</td></tr><tr><td>~x</td><td>Negació binària</td></tr><tr><td>**</td><td>Potència</td></tr><tr><td>x.attribute</td><td>Referència a atribut</td></tr><tr><td>x[i]</td><td>Indexació</td></tr><tr><td>x[i:j]</td><td>Tall</td></tr><tr><td>f(arguments ...)</td><td>Crida a funció</td></tr><tr><td>(expressions, ...)</td><td>Agrupació o tupla</td></tr><tr><td>[expressions, ...]</td><td>Llista</td></tr><tr><td>{clau:valor, ...}</td><td>Diccionari</td></tr><tr><td>`expressions, ...`</td><td>Conversió de strings</td></tr></tbody></table></div><p>
+		
+		Estudiarem més endavant els operadors que encara no coneixem.
+		
+		</p><p>
+		
+		Els operadors amb la <span class="emphasis"><em>mateixa precedència</em></span> apareixen 
+		a la mateixa fila. 
+		Per exemple, <code class="literal">+</code> i <code class="literal">-</code> tenen la
+		mateixa precedència.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="order-of-evaluation"></a>Ordre d'avaluació</h3></div></div></div><p>
+			
+			Per defecte, la precedència dels operadors decideix quins operadors 
+			s'avaluen abans que els altres. Aquest ordre d'avaluació pot ser 
+			canviat fent servir parèntesis. Per exemple, si volem que la suma es
+			realitzi abans de la multiplicació a una expressió, llavors podem 
+			escriure quelcom semblant a <code class="literal">(2 + 3) * 4</code>.
+			
+			</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="associativity"></a>Associativitat</h3></div></div></div><p>
+
+			Els operadors s'associen generalment d'esquerra a dreta. És a dir, 
+			els operadors amb la mateixa precedència s'avaluen en ordre 
+			d'esquerra a dreta. Per exemple, <code class="literal">2 + 3 + 4</code> 
+			s'avalua com <code class="literal">(2 + 3) + 4</code>. Hi ha però, alguns 
+			operadors, com ara l'assignació, que tenen associació de dreta a
+			esquerra. Per exemple, <code class="literal">a = b = c</code> és tractat 
+			com <code class="literal">a = (b = c)</code>.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Operadors </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Expressions</td></tr></table></div></body></html>

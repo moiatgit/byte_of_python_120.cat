@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 11. Programació orientada a objectes</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="prev" href="ch10s04.html" title="Resum" /><link rel="next" href="ch11s02.html" title="El paràmetre self" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 11. Programació orientada a objectes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch10s04.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch11s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="oops"></a>Chapter 11. Programació orientada a objectes</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch11.html#oops-intro">Introducció</a></span></dt><dt><span class="section"><a href="ch11s02.html">El paràmetre self</a></span></dt><dt><span class="section"><a href="ch11s03.html">Classes</a></span></dt><dd><dl><dt><span class="section"><a href="ch11s03.html#creating-class">Creació d'una classe</a></span></dt></dl></dd><dt><span class="section"><a href="ch11s04.html">Mètodes dels objectes</a></span></dt><dd><dl><dt><span class="section"><a href="ch11s04.html#using-object-methods">Ús de mètodes</a></span></dt></dl></dd><dt><span class="section"><a href="ch11s05.html">El mètode __init__</a></span></dt><dd><dl><dt><span class="section"><a href="ch11s05.html#using-class-init">Ús del mètode __init__</a></span></dt></dl></dd><dt><span class="section"><a href="ch11s06.html">Classes i variables d'objecte</a></span></dt><dd><dl><dt><span class="section"><a href="ch11s06.html#using-class-and-obj-vars">Ús de variables de classe i objecte</a></span></dt></dl></dd><dt><span class="section"><a href="ch11s07.html">Herència</a></span></dt><dd><dl><dt><span class="section"><a href="ch11s07.html#using-inheritance">Ús de l'herència</a></span></dt></dl></dd><dt><span class="section"><a href="ch11s08.html">Resum</a></span></dt></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="oops-intro"></a>Introducció</h2></div></div></div><p>
+		
+		Fins ara hem dissenyat els nostres programes a partir de funcions o blocs 
+		d'instruccions que manipulen dades. D'això se'n diu programació 
+		<span class="emphasis"><em>orientada a procediments</em></span>.
+		Hi ha una altra manera d'organitzar els programes que combina dades i 
+		funcionalitat agrupades en <span class="emphasis"><em>objectes</em></span>, i que es coneix
+		com a paradigma de programació <span class="emphasis"><em>orientada a objecte</em></span>.
+		Normalment es pot fer servir programació procedural, però, quan es tracta
+		de desenvolupar programes grans o la solució es més adequada, es poden fer
+		servir les tècniques de programació orientada a objecte.
+		
+		</p><p>
+		
+		Les classes i els objectes són dos dels principals aspectes de la
+		programació orientada a objecte.
+		Una <span class="bold"><strong>classe</strong></span> crea un nou 
+		<span class="emphasis"><em>tipus</em></span>, mentre que un 
+		<span class="bold"><strong>objecte</strong></span> és una <span class="emphasis"><em>instància</em></span>
+		de la classe.
+		Per exemple, les variables de tipus <code class="classname">int</code> són 
+		instàncies (objectes) de la classe <code class="classname">int</code>.
+		
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C/C++/Java/C#</h3><p>
+			
+			Notem que fins i tot els enters són tractats com a objectes (de la classe
+			<code class="classname">int</code>), a diferència de C++ i Java (abans de la versió
+			1.5) on els enters són tipus primitius. Podem trobar més detalls de la classe
+			amb <code class="literal">help(int)</code>.
+			
+			</p><p>
+			
+			Els programadors de C# i Java 1.5 estaran familiaritzats amb aquest concepte
+			ja que és similar al concepte d'empaquetat i desempaquetat (<span class="emphasis"><em>boxing i unboxing</em></span>).
+			
+			</p></div><p>
+		
+		Els objectes emmagatzemen dades fent servir variables que <span class="emphasis"><em>pertanyen</em></span>
+		a l'objecte.
+		Anomenem <span class="bold"><strong>camps</strong></span> a les variables que 
+		pertanyen a un objecte o classe. Els objectes també tenen funcionalitat a 
+		partir de funcions que pertanyen a la classe. Aquestes funcions s'anomenen
+		<span class="bold"><strong>mètodes</strong></span> de la classe. Aquesta terminologia
+		és important, ja que ens ajuda a distingir entre classes i objectes. 
+		Col·lectivament, els camps i els mètodes es coneixen com a 
+		<span class="bold"><strong>atributs</strong></span> de la classe.
+		
+		</p><p>
+		
+		Els camps poden ser de dos tipus: aquells que pertanyen a cada instància o 
+		objecte de la classe, i aquells que pertanyen a la pròpia classe.
+		Els primers es coneixen com a <span class="bold"><strong>variables d'instància</strong></span>
+		i els segons com <span class="bold"><strong>variables de classe</strong></span>.
+		
+		</p><p>
+		
+		Les classes es creen amb la paraula reservada <code class="literal">class</code>. 
+		Els camps i mètodes de la classe es llisten a un bloc indentat.
+		
+		</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch10s04.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch11s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Resum </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> El paràmetre self</td></tr></table></div></body></html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Variables locals</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch07.html" title="Chapter 7. Funcions" /><link rel="prev" href="ch07s02.html" title="Paràmetres de les funcions" /><link rel="next" href="ch07s04.html" title="Paràmetres amb valor per defecte" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Variables locals</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><th width="60%" align="center">Chapter 7. Funcions</th><td width="20%" align="right"> <a accesskey="n" href="ch07s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="local-variables"></a>Variables locals</h2></div></div></div><p>
+		
+		Quan declarem variables dins de la definició d'una funció, aquestes no tenen cap relació amb altres variables amb mateix nom usades fora de la funció. És a dir, els noms de les variables definides dins una funció són <span class="emphasis"><em>locals</em></span> a la funció. Això és coneix com l'<span class="emphasis"><em>àmbit</em></span> de la variable. Totes les variables tenen com a àmbit, el bloc on són declarades i a partir del punt en que apareixen per primer cop.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id294351"></a>Ús de variables locals</h3></div></div></div><div class="example"><a id="id294357"></a><p class="title"><b>Example 7.3. Ús de variables locals</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: func_local.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">func</span>(x):
+	<span class="py-statement">print</span> <span class="py-string">'x is'</span>, x
+	x = <span class="py-number">2</span>
+	<span class="py-statement">print</span> <span class="py-string">'Changed local x to'</span>, x
+
+x = <span class="py-number">50</span>
+func(x)
+<span class="py-statement">print</span> <span class="py-string">'x is still'</span>, x
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294373"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python func_local.py
+x is 50
+Changed local x to 2
+x is still 50
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294388"></a>Com funciona</h4></div></div></div><p>
+				
+				A la funció, el primer cop que fem servir el <span class="emphasis"><em>value</em></span> del nom <code class="varname">x</code>, Python  fa servir el valor del paràmetre declarat a la funció.
+				
+				</p><p>
+				
+				A continuació, assigna el valor <code class="literal">2</code> a <code class="varname">x</code>. El nom <code class="varname">x</code> és local a la funció, de manera que quan canvia el seu valor dins la funció, no afecta el valor de la variable <code class="varname">x</code> definida en el bloc principal.
+				
+				</p><p>
+				
+				La darrera instrucció <code class="literal">print</code> confirma que no ha canviat el valor inicial de <code class="varname">x</code> al bloc principal.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="global"></a>Ús de la sentència global</h3></div></div></div><p>
+			
+			Per fer servir el valor d'un nom definit fora de la funció, cal indicar a Python que aquest no és local sinó <span class="emphasis"><em>global</em></span>. Aquest fet s'indica amb la paraula clau <code class="literal">global</code>. No és possible assignar un valor a una variable definida fora d'una funció sense la marca de <code class="literal">global</code>.
+			
+			</p><p>
+			
+			Es poden fer servir els valors de les variables definides fora de la funció sempre i quan no hi hagi variables locals amb el mateix nom. En tot cas, és una pràctica no recomanada i és preferible evitar-la, ja que complica la lectura del programa en no quedar clar on ha estat definida la variable. La marca <code class="literal">global</code> indica clarament que la variable ha estat definida en un bloc extern.
+			
+			</p><div class="example"><a id="id294492"></a><p class="title"><b>Example 7.4. Ús de la sentència global</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: func_global.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">func</span>():
+	<span class="py-statement">global</span> x
+
+	<span class="py-statement">print</span> <span class="py-string">'x is'</span>, x
+	x = <span class="py-number">2</span>
+	<span class="py-statement">print</span> <span class="py-string">'Changed global x to'</span>, x
+
+x = <span class="py-number">50</span>
+func()
+<span class="py-statement">print</span> <span class="py-string">'Value of x is'</span>, x
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294508"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python func_global.py
+x is 50
+Changed global x to 2
+Value of x is 2
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294523"></a>Com funciona</h4></div></div></div><p>
+				
+				La marca <code class="literal">global</code> indica que <code class="varname">x</code> és una variable global. Per tant, quan assignem un valor a <code class="varname">x</code> dins de la funció, el canvi es reflecteix en la variable <code class="varname">x</code> del bloc principal.
+				
+				</p><p>
+				
+				Es poden identificar més d'una variable global a partir d'una mateixa <code class="literal">global</code>. Per exemple, <code class="literal">global x, y, z</code>.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Paràmetres de les funcions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Paràmetres amb valor per defecte</td></tr></table></div></body></html>

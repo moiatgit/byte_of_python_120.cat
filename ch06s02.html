@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La sentència if</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch06.html" title="Chapter 6. Control Flow" /><link rel="prev" href="ch06.html" title="Chapter 6. Control Flow" /><link rel="next" href="ch06s03.html" title="La sentència while" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La sentència if</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Control Flow</th><td width="20%" align="right"> <a accesskey="n" href="ch06s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="if-statement"></a>La sentència if</h2></div></div></div><p>
+		
+		La sentència <code class="literal">if</code> ens permet comprovar una condició. Quan la condició
+		resulta ser certa, s'executa un bloc de sentències que anomenarem 
+		<span class="emphasis"><em>bloc if</em></span>). Quan la condició resulta ser falsa,
+		es processa un altre bloc de sentències que coneixerem com <span class="emphasis"><em>bloc else</em></span>). 
+		La clàusula <span class="emphasis"><em>else</em></span> és opcional.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id291614"></a>Ús de la sentència if</h3></div></div></div><div class="example"><a id="using-if-statement"></a><p class="title"><b>Example 6.1. Ús de la sentència if</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: if.py</span>
+
+number = <span class="py-number">23</span>
+guess = <span class="py-builtin">int</span>(<span class="py-builtin">raw_input</span>(<span class="py-string">'Enter an integer : '</span>))
+
+<span class="py-statement">if</span> guess == number:
+	<span class="py-statement">print</span> <span class="py-string">'Congratulations, you guessed it.'</span> <span class="py-comment"># el nou bloc comença aquí</span>
+	<span class="py-statement">print</span> <span class="py-string">"(but you do not win any prizes!)"</span> <span class="py-comment"># el nou bloc finalitza aquí</span>
+<span class="py-statement">elif</span> guess &lt; number:
+	<span class="py-statement">print</span> <span class="py-string">'No, it is a little higher than that'</span> <span class="py-comment"># un altre bloc</span>
+	<span class="py-comment"># podem posar qualsevol sentència dins d'un bloc</span>
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'No, it is a little lower than that'</span>
+	<span class="py-comment"># per a arribar aquí cal que guess &gt; number</span>
+
+<span class="py-statement">print</span> <span class="py-string">'Done'</span>
+<span class="py-comment"># Aquesta darrera sentència s'executa sempre, un cop executada la sentència if.</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id291635"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python if.py
+Enter an integer : 50
+No, it is a little lower than that
+Done
+$ python if.py
+Enter an integer : 22
+No, it is a little higher than that
+Done
+$ python if.py
+Enter an integer : 23
+Congratulations, you guessed it.
+(but you do not win any prizes!)
+Done
+				
+				</pre></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id291664"></a>Com funciona</h3></div></div></div><p>
+			
+			El programa demana un número a l'usuari i comprova si coincideix amb un cert número. 
+			Assignem un número qualsevol a la variable <code class="varname">number</code>, per exemple
+			el <code class="literal">23</code>. A continuació obtenim el número de l'usuari amb la
+			funció <code class="literal">raw_input()</code>. 
+			Podem entendre una funció com una peça de codi que podem reusar. N'aprendrem més sobre
+			funcions al <a href="ch07.html" title="Chapter 7. Funcions">següent capítol</a>.
+			
+			</p><p>
+
+			Passem una cadena a la funció <code class="function">raw_input</code> que mostra a l'usuari abans
+			d'esperar que l'introdueixin la resposta.
+			Un cop l'usuari escriu alguna cosa i prem la tecla <span><strong class="keycap">Enter</strong></span>, 
+			la funció ens retorna l'entrada en forma de cadena de text.
+			En aquest moment, el programa converteix la cadena a un enter fent servir 
+			<code class="literal">int</code> i guarda el resultat a la variable <code class="varname">guess</code>. 
+			En realitat, <code class="literal">int</code> és una classe però tot el que necessitem
+			saber de moment és que ho podem fer servir per a convertir un string en un enter 
+			(sempre i quant, la cadena contingui un enter vàlid, és clar).
+			
+			</p><p>
+			
+			A continuació compara el número introduït per l'usuari amb el que hem escollit.
+			Si són iguals, escriu un missatge d'èxit. Fixem-nos en l'ús del sagnat o indentació
+			per a indicar-li a Python a quin bloc pertanyen les sentències. Aquesta és la raó per 
+			la qual és tan important la indentació a Python.
+			Confio en que a hores d'ara ja ens hàgim acostumat a la regla d'un tabulador per nivell d'indentació.
+			
+			</p><p>
+
+			Fixem-nos també en que l'estructura <code class="literal">if</code> finalitza amb el caràcter 
+			dos punts '<code class="literal">:</code>'. 
+			Aquesta és la manera amb la que indiquem a Python que a continuació comença un nou 
+			bloc d'instruccions.			
+			
+			</p><p>
+
+			A continuació comprova si el número introduït és menor que el nostre. En aquest cas
+			informa la usuaria què ha fet curt.
+			Aquí hem fet servir la clàusula 
+			<code class="literal">elif</code> que, en realitat, combina dos sentències 			
+			<code class="literal">if else-if else</code> relacionades en una 
+			<code class="literal">if-elif-else</code>, fent el programa més fàcil de llegir i reduint els
+			nivells d'indentació requerits.
+			
+			</p><p>
+			
+			Les clàusules <code class="literal">elif</code> i <code class="literal">else</code> també han de finalitzar
+			amb dos punts al final de la línia, seguits dels blocs corresponents adequadament
+			indentats.
+			
+			</p><p>
+						
+			Podem disposar d'un nou <code class="literal">if</code> dins del bloc if d'una sentència
+			<code class="literal">if</code> - d'això en diem <span class="emphasis"><em>niuament</em></span> de sentències
+			<code class="literal">if</code>.
+			
+			</p><p>
+			
+			Recordem que les parts <code class="literal">elif</code> i <code class="literal">else</code> són
+			opcionals.
+			La sentència mínima vàlida és
+			
+			</p><pre class="programlisting">
+			
+<span class="py-statement">if</span> <span class="py-builtin">True</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Yes, it is true'</span>
+			
+			</pre><p>
+			
+			Un cop s'ha finalitzat l'execució de la sentència <code class="literal">if</code> 
+			juntament amb els corresponents <code class="literal">elif</code> i <code class="literal">else</code>,
+			es passa a la següent sentència al bloc que conté la sentència 
+			<code class="literal">if</code>. En aquest cas, es tracta del bloc principal on va començar
+			l'execució del programa i la següent sentència és 
+			<code class="literal">print 'Done'</code>. 
+			Un cop executada, Python es troba el final del programa i simplement acaba.
+			
+			</p><p>
+			
+			Hem vist que, fins i tot a un programa tan senzill com el de l'exemple, hi ha un bon nombre d'elements importants que, com a programadors, hem de tenir presents. Tots ells resulten força trivials (fins i tot sorprenentment senzills per a aquells amb experiència en C/C++) Al començament requereixen que estiguem atents, però, un cop ens comencem a trobar còmodes amb Python, ens semblaran "naturals".
+			
+			</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C/C++</h3><p>
+			
+			Python no disposa d'una sentència equivalent a un <code class="literal">switch</code>.
+			Podem fer servir sentències <code class="literal">if..elif..else</code> per fer el mateix i,
+			de vegades, usar un <a href="ch09s04.html" title="Diccionari">diccionari</a> per fer-ho més ràpid.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 6. Control Flow </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> La sentència while</td></tr></table></div></body></html>

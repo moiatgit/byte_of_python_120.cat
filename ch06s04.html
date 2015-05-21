@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>El bucle for</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch06.html" title="Chapter 6. Control Flow" /><link rel="prev" href="ch06s03.html" title="La sentència while" /><link rel="next" href="ch06s05.html" title="La sentència break" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">El bucle for</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s03.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Control Flow</th><td width="20%" align="right"> <a accesskey="n" href="ch06s05.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="for-loop"></a>El bucle for</h2></div></div></div><p>
+		
+		La sentència <code class="literal">for..in</code> és una altra de les sentències de bucle.
+		En aquest cas <span class="emphasis"><em>itera</em></span> sobre una seqüència d'objectes, és a dir,
+		tracta cada element d'una seqüència.
+		Més endavant veurem les <a href="ch09s05.html" title="Seqüències">seqüències</a> en detall.
+		De moment, tenim prou amb saber que una seqüència és simplement un conjunt
+		ordenat d'elements.		
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id292231"></a>Ús de la sentència for</h3></div></div></div><div class="example"><a id="using-for-statement"></a><p class="title"><b>Example 6.3. Ús de la sentència for</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: for.py</span>
+
+<span class="py-statement">for</span> i <span class="py-statement">in</span> <span class="py-builtin">range</span>(<span class="py-number">1</span>, <span class="py-number">5</span>):
+	<span class="py-statement">print</span> i
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'The for loop is over'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292256"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python for.py
+1
+2
+3
+4
+The for loop is over
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292269"></a>Com funciona</h4></div></div></div><p>
+				
+				Aquest programa escriu una <span class="emphasis"><em>seqüència</em></span> de números
+				que generem fent servir la funció integrada <code class="function">range</code>.
+				
+				</p><p>
+				
+				Bàsicament, passem dos números a la funció <code class="function">range</code> i
+				aquesta ens retorna una seqüència de números que comença amb el primer
+				número que li passem i finalitza al darrer número.
+				Per exemple, <code class="literal">range(1,5)</code> ens construeix la seqüència
+				<code class="literal">[1, 2, 3, 4]</code>.
+				Per defecte, <code class="function">range</code> incrementa de un en un. Podem, però,
+				passar-li un tercer número indicant-li el valor de salt entre elements.
+				Per exemple, <code class="literal">range(1,5,2)</code> ens retorna <code class="literal">[1,3]</code>.
+				Recordem que el rang arriba fins al segon número <span class="bold"><strong>sense</strong></span>
+				incloure'l.				
+				
+				</p><p>
+				
+				A continuació, el bucle <code class="literal">for</code> itera sobre el rang 
+				<code class="literal">for i in range(1,5)</code> o, el que és equivalent, 
+				<code class="literal">for i in [1, 2, 3, 4]</code>.
+				Ho podem veure com si assignéssim, un per un, cada número (o objecte) de la 
+				seqüència a <code class="varname">i</code>, i a continuació executéssim el bloc de sentències
+				per cada valor que pren <code class="varname">i</code>.
+				En aquest cas, el bloc del bucle simplement escriu el valor de la variable.
+				
+				</p><p>
+				
+				Recordem que la part <code class="literal">else</code> és opcional. Quan s'inclou, és executada
+				un cop finalitzada completament l'execució del bucle <code class="literal">for</code>, excepte 
+				si s'executa la sentència <a href="ch06s05.html" title="La sentència break">break</a>.
+				
+				</p><p>
+				
+				Recordem que el bucle <code class="literal">for..in</code> funciona per qualsevol seqüència.
+				A l'exemple, la seqüència és un rang de números construït amb la funció 
+				<code class="function">range</code>, però es pot iterar amb seqüències de qualsevol tipus
+				d'objecte!
+				Més endavant estudiarem aquesta idea.
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C/C++/Java/C#</h3><p>
+					
+					El bucle <code class="literal">for</code> de Python és radicalment diferent al
+					de C/C++. Els programadors de C# notaran que el <code class="literal">for</code> 
+					de Python és similar al <code class="literal">foreach</code>. Els programadors de 
+					Java el trobaran similar al <code class="literal">for (int i : IntArray)</code>
+					del Java 1.5 .
+					
+					</p><p>
+					
+					Podem traduir <code class="literal">for (int i = 0; i &lt; 5; i++)</code> de
+					C/C++ com <code class="literal">for i in range(0,5)</code>. El bucle queda d'aquesta
+					manera més simple, més expressiu i amb menys possibilitats d'error.
+					
+					</p></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">La sentència while </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> La sentència break</td></tr></table></div></body></html>

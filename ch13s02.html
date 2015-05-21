@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Try..Except</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch13.html" title="Chapter 13. Excepcions" /><link rel="prev" href="ch13.html" title="Chapter 13. Excepcions" /><link rel="next" href="ch13s03.html" title="Aixecant excepcions" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Try..Except</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch13.html">Prev</a> </td><th width="60%" align="center">Chapter 13. Excepcions</th><td width="20%" align="right"> <a accesskey="n" href="ch13s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="try-except"></a>Try..Except</h2></div></div></div><p>
+		
+		Intentarem (<span class="bold"><strong>try</strong></span> en anglès) llegir una entrada de l'usuari.
+		<span><strong class="keycap">Ctrl</strong></span>-<span><strong class="keycap">d</strong></span> i mirem que passa.
+		
+		</p><pre class="screen">
+		
+&gt;&gt;&gt; s = raw_input('Enter something --&gt; ')
+Enter something --&gt; Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+EOFError
+		
+		</pre><p>
+		
+		Python aixeca un error anomenat <code class="classname">EOFError</code> que bàsicament indica que
+		s'ha trobat un <span class="emphasis"><em>fi de fitxer</em></span> on no s'esperava. Això es representa per 
+		<span><strong class="keycap">Ctrl</strong></span>-<span><strong class="keycap">d</strong></span>).
+		
+		</p><p>
+		
+		A continuació veurem com gestionar aquests errors.		
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="handling-exceptions"></a>Gestió d'excepcions</h3></div></div></div><p>
+			
+			Podem gestionar les excepcions fent servir la sentència <code class="literal">try..except</code>.
+			Bàsicament posem el nostre codi habitual entre un bloc try i tots els nostres
+			controladors d'excepcions al bloc except.
+			
+			</p><div class="example"><a id="id307175"></a><p class="title"><b>Example 13.1. Gestió d'excepcions</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: try_except.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">sys</span>
+
+<span class="py-statement">try</span>:
+	s = <span class="py-builtin">raw_input</span>(<span class="py-string">'Enter something --&gt; '</span>)
+<span class="py-statement">except</span> EOFError:
+	<span class="py-statement">print</span> <span class="py-string">'\nWhy did you do an EOF on me?'</span>
+	<span class="py-builtin">sys</span>.exit() <span class="py-comment"># sortim del programa</span>
+<span class="py-statement">except</span>:
+	<span class="py-statement">print</span> <span class="py-string">'\nSome error/exception occurred.'</span>
+	<span class="py-comment"># aquí no sortim del programa</span>
+
+<span class="py-statement">print</span> <span class="py-string">'Done'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id307188"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python try_except.py
+Enter something --&gt;
+Why did you do an EOF on me?
+
+$ python try_except.py
+Enter something --&gt; Python is exceptional!
+Done
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id307208"></a>Com funciona</h4></div></div></div><p>
+				
+				Posem totes les sentències que puguin aixecar un error al 
+				bloc <code class="literal">try</code> i tractem els errors i les 
+				excepcions que es produeixin al bloc <code class="literal">except</code>.
+				La clàusula <code class="literal">except</code> permet gestionar un
+				error o excepció especificat, però també una llista d'aquests 
+				entre parèntesis.
+				Si no s'especifica el nom de cap error o excepció, Python 
+				considera que ha de tractar-los <span class="emphasis"><em>tots</em></span>.
+				Ha d'haver-hi com a mínim una clàusula <code class="literal">except</code>
+				associada amb cada clàusula <code class="literal">try</code>.
+				
+				</p><p>
+				
+				Si no tractem algun error o excepció, es realitza el tractament
+				per defecte: aturar l'execució del programa i escriure un missatge.
+				Ja ens ho em trobat.
+				
+				</p><p>
+				
+				També podem afegir una clàusula <code class="literal">else</code> associada
+				amb un bloc <code class="literal">try..catch</code>, que s'executarà
+				quan no hi hagi cap excepció.
+				
+				</p><p>
+				
+				Podem també obtenir la instància de l'excepció, per a disposar 
+				d'informació addicional sobre aquesta. Ho podem veure al següent
+				exemple.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch13.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch13.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch13s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 13. Excepcions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Aixecant excepcions</td></tr></table></div></body></html>

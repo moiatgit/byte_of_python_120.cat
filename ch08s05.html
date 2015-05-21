@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Desenvolupant els nostres propis mòduls</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch08.html" title="Chapter 8. Mòduls" /><link rel="prev" href="ch08s04.html" title="El nom d'un mòdul" /><link rel="next" href="ch08s06.html" title="La funció dir()" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Desenvolupant els nostres propis mòduls</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s04.html">Prev</a> </td><th width="60%" align="center">Chapter 8. Mòduls</th><td width="20%" align="right"> <a accesskey="n" href="ch08s06.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="making-modules"></a>Desenvolupant els nostres propis mòduls</h2></div></div></div><p>
+		
+		Resulta molt fàcil crear els nostres propis mòduls. De fet, ho hem estat fent contínuament fins ara! Cada programa Python és també un mòdul. Únicament ens hem d’assegurar que tenen l’extensió <code class="filename">.py</code>. El següent exemple ho hauria de deixar clar.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="creating-modules"></a>Desenvolupant els nostres propis mòduls</h3></div></div></div><div class="example"><a id="id297068"></a><p class="title"><b>Example 8.3. Com crear un mòdul</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: mymodule.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">sayhi</span>():
+	<span class="py-statement">print</span> <span class="py-string">'Hi, this is mymodule speaking.'</span>
+
+version = <span class="py-string">'0.1'</span>
+
+<span class="py-comment"># End of mymodule.py</span>
+				
+				</pre></div><p>
+			
+			A l'exemple de <span class="emphasis"><em>mòdul</em></span> anterior no hi trobem res especial si ho comparem amb qualsevol dels nostres programes de Python. A continuació veurem com podem fer servir aquest mòdul des d'altres programes Python.
+			
+			</p><p>
+			
+			Recordem que el mòdul ha de ser guardat en el mateix directori del programa que el fa servir, o en algun dels directoris que apareixen a <code class="varname">sys.path</code> .
+			
+			</p><pre class="programlisting">
+			
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: mymodule_demo.py</span>
+
+<span class="py-statement">import</span> mymodule
+
+mymodule.sayhi()
+<span class="py-statement">print</span> <span class="py-string">'Version'</span>, mymodule.version
+			
+			</pre><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id297111"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python mymodule_demo.py
+Hi, this is mymodule speaking.
+Version 0.1
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id297125"></a>Com funciona</h4></div></div></div><p>
+				
+				Notem l'ús del punt per a accedir als membres del mòdul. La reutilització de la notació fa que els programes en Python tinguin un aspecte homogeni i ens estalvia d'haver d'aprendre diferents maneres de fer coses similars.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-from-import"></a>from..import</h3></div></div></div><p>
+			
+			Considerem l'exemple següent que fa servir la sintaxi <code class="literal">from..import</code> .
+			
+			</p><pre class="programlisting">
+			
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: mymodule_demo2.py</span>
+
+<span class="py-statement">from</span> mymodule <span class="py-statement">import</span> sayhi, version
+<span class="py-comment"># Alternative:</span>
+<span class="py-comment"># from mymodule import *</span>
+
+sayhi()
+<span class="py-statement">print</span> <span class="py-string">'Version'</span>, version
+			
+			</pre><p>
+			
+			La sortida de <code class="filename">mymodule_demo2.py</code> és la mateixa que la de 
+			<code class="filename">mymodule_demo.py</code>.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">El nom d'un mòdul </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> La funció dir()</td></tr></table></div></body></html>

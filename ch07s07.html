@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>DocStrings</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch07.html" title="Chapter 7. Funcions" /><link rel="prev" href="ch07s06.html" title="La sentència return" /><link rel="next" href="ch07s08.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">DocStrings</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s06.html">Prev</a> </td><th width="60%" align="center">Chapter 7. Funcions</th><td width="20%" align="right"> <a accesskey="n" href="ch07s08.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="docstrings"></a>DocStrings</h2></div></div></div><p>
+		
+		Python disposa d'una característica genial anomenada <span class="emphasis"><em>string de documentació</em></span> que, habitualment retallem a   <span class="emphasis"><em>docstrings</em></span>. Els docStrings són una eina important que hem de fer servir, ja que ajuda a millorar la documentació dels programes fent-los més fàcils d'entendre. Podem, fins i tot, obtenir el docstring d'una funció mentre el programa està en execució!
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id295111"></a>Ús de DocStrings</h3></div></div></div><div class="example"><a id="id295117"></a><p class="title"><b>Example 7.8. Ús de DocStrings</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: func_doc.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">printMax</span>(x, y):
+	<span class="py-string">'''Escriu el màxim de dos números.
+
+	Els dos valors han de ser enters.'''</span>
+	x = <span class="py-builtin">int</span>(x) <span class="py-comment"># converteix a enter, si és possible</span>
+	y = <span class="py-builtin">int</span>(y)
+
+	<span class="py-statement">if</span> x &gt; y:
+		<span class="py-statement">print</span> x, <span class="py-string">'és el major'</span>
+	<span class="py-statement">else</span>:
+		<span class="py-statement">print</span> y, <span class="py-string">'és el major'</span>
+
+printMax(<span class="py-number">3</span>, <span class="py-number">5</span>)
+<span class="py-statement">print</span> printMax.__doc__
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id295129"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python func_doc.py
+5 és el major
+Escriu el màxim de dos números.
+        Els dos valors han de ser enters.
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id295150"></a>Com funciona</h4></div></div></div><p>
+				
+				El <span class="emphasis"><em>docstring</em></span> apareix en forma de cadena a la primera línia lògica de la funció. Atenció: els docStrings també apareixeran als capítols dedicats als <a href="ch08.html" title="Chapter 8. Mòduls">mòduls</a> i a les <a href="ch11s03.html" title="Classes">classes</a>.
+				
+				</p><p>
+				
+				La convenció que es segueix per escriure un docstring és un string multi-línia en el que la primera línia comença per majúscula i finalitza amb punt. A continuació, la següent línia queda en blanc i és seguida per una descripció detallada a partir de la tercera línia. És <span class="emphasis"><em>altament recomanable</em></span> seguir aquesta convenció a tots els docstrings, de totes  les funcions no trivials.
+				
+				</p><p>
+				
+				Podem accedir al docstring de la funció <code class="function">printMax</code> fent servir l'atribut <code class="literal">__doc__</code> (Atenció al doble subratllat '<code class="literal">_</code>') de la funció. Cal recordar que Python ho tracta <span class="emphasis"><em>tot</em></span> com a objecte incloent les funcions. Veurem més respecte als objectes al capítol de <a href="ch11.html" title="Chapter 11. Programació orientada a objectes">classes</a>.
+				
+				</p><p>
+				
+				Qui ha fet servir <code class="literal">help()</code> a Python, ja ha vist l'ús dels docstrings! El que fa aquesta instrucció és obtenir l'atribut <code class="varname">__doc__</code> de la funció i mostraró d'una manera clara. Ho podem provar sobre la funció anterior  simplement cal incloure <code class="literal">help(printMax)</code> al programa. Recordem que per a sortir de l'ajut, cal prémer <span><strong class="keycap">q</strong></span>.
+				
+				</p><p>
+				
+				D'aquesta manera, la documentació dels programes poden ser obtingudes mitjançant eines automàtiques. Per tant, et <span class="emphasis"><em>recomano molt</em></span> que facis servir docstrings per a tota funció no trivial que escriguis. La comanda <span><strong class="command">pydoc</strong></span>, inclosa a la distribució de Python funciona similarment a <code class="literal">help()</code> fent servir els docstrings.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">La sentència return </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

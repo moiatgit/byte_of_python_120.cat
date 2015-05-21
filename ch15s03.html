@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Més sobre llistes</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch15.html" title="Chapter 15. Més de Python" /><link rel="prev" href="ch15s02.html" title="Blocs d'una única sentència" /><link rel="next" href="ch15s04.html" title="Paràmetres de tipus tupla i diccionari" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Més sobre llistes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15s02.html">Prev</a> </td><th width="60%" align="center">Chapter 15. Més de Python</th><td width="20%" align="right"> <a accesskey="n" href="ch15s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="list-comprehension"></a>Més sobre llistes</h2></div></div></div><p>
+		
+		De vegades volem generar una nova llista a partir d'una llista existent. 
+		Per exemple, si disposem d'una llista de números i volem obtenir una 
+		llista amb els números de la primera multiplicats per dos, però incloent
+		només aquells números de la primera que siguin més grans que dos. 
+		En aquestes situacions funciona molt bé la següent funcionalitat de
+		selecció dins les llistes.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-list-comprehension"></a>Ús de la selecció dins les llistes</h3></div></div></div><div class="example"><a id="id309527"></a><p class="title"><b>Example 15.1. Ús de la selecció dins les llistes</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: list_comprehension.py</span>
+
+listone = [<span class="py-number">2</span>, <span class="py-number">3</span>, <span class="py-number">4</span>]
+listtwo = [<span class="py-number">2</span>*i <span class="py-statement">for</span> i <span class="py-statement">in</span> listone <span class="py-statement">if</span> i &gt; <span class="py-number">2</span>]
+<span class="py-statement">print</span> listtwo
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id309543"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python list_comprehension.py
+[6, 8]
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id309557"></a>Com funciona</h4></div></div></div><p>
+				
+				El programa genera una nova llista a partir de l'especificació
+				del càlcul a realitzar (<code class="literal">2*i</code>) sobre els 
+				elements de la primera llista que satisfan una certa condició
+				(<code class="literal">if i &gt; 2</code>).
+				La llista original no és modificada.
+				Sovint aquesta funcionalitat la realitzem amb bucles, però 
+				aquest mecanisme ens ofereix una forma més compacta, precisa 
+				i explícita de realitzar-ho.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch15.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch15s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Blocs d'una única sentència </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Paràmetres de tipus tupla i diccionari</td></tr></table></div></body></html>

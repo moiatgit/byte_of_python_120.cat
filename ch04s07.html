@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Objectes</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch04.html" title="Chapter 4. Conceptes bàsics" /><link rel="prev" href="ch04s06.html" title="Tipus de dades" /><link rel="next" href="ch04s08.html" title="Línies lògiques i línies físiques" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Objectes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s06.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Conceptes bàsics</th><td width="20%" align="right"> <a accesskey="n" href="ch04s08.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="data-type-object"></a>Objectes</h2></div></div></div><p>
+		
+		Recordem que Python es refereix a qualsevol cosa que es fa servir dins 
+		un programa com a <span class="emphasis"><em>objecte</em></span>. En comptes de parlar de
+		<span class="emphasis"><em>coses</em></span> parlem d'<span class="emphasis"><em>objectes</em></span>.
+		
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors amb orientació a objectes</h3><p>
+			
+			Python està fortament orientat a objectes en el sentit que tot és un
+			objecte, incloent els nombres, els strings i fins i tot les funcions.
+			
+			</p></div><p>
+		
+		Ara veurem com fer servir variables juntament amb constants literals. 
+		Guardeu el següent exemple i executeu-lo.
+		
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Com escriure programes en Python</h3><p>
+			
+			El procediment estàndard per guardar i executar
+			un programa Python és:
+			
+			</p><div class="procedure"><ol type="1"><li><p>
+					
+					Obre el teu editor favorit.
+					
+					</p></li><li><p>
+					
+					Introdueix el codi del programa donat a l'exemple.
+					
+					</p></li><li><p>
+					
+					Guardeu-lo amb el nom del fitxer indicat en el comentari. 
+					Hi ha la convenció de guardar els programes Python amb 
+					l'extensió <code class="literal">.py</code>.
+					
+					</p></li><li><p>
+					
+					Executeu l'interpret amb la comanda 
+					<span><strong class="command">python <em class="replaceable"><code>program.py</code></em></strong></span>
+					o feu servir IDLE per a executar el programa. També es pot 
+					fer servir el mètode de realitzar un executable explicat 
+					<a href="ch03s05.html" title="Programes executables">abans</a>.
+					
+					</p></li></ol></div></div><div class="example"><a id="id286577"></a><p class="title"><b>Example 4.1. Ús de variables i constants literals</b></p><pre class="programlisting">
+			
+<span class="py-comment"># Filename : var.py</span>
+
+i = <span class="py-number">5</span>
+<span class="py-statement">print</span> i
+i = i + <span class="py-number">1</span>
+<span class="py-statement">print</span> i
+
+s = <span class="py-string">'''Aquesta és una cadena multilínia.
+Aquesta és la segona línia.'''</span>
+
+<span class="py-statement">print</span> s
+			
+			</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id286592"></a>Sortida</h3></div></div></div><pre class="screen">
+			
+$ python var.py
+5
+6
+Aquesta és una cadena multilínia.
+Aquesta és la segona línia.
+			
+			</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id286606"></a>Com funciona</h3></div></div></div><p>
+
+			El programa funciona de la següent manera: primer, assignem el valor
+			de la constant literal <code class="literal">5</code> a la variable 
+			<code class="varname">i</code> fent servir l'operador d'assignació 
+			(<code class="literal">=</code>). Diem que aquesta línia és una sentència 
+			perquè indica que alguna cosa s'ha de fer. En aquest cas, l'acció a 
+			realitzar és “connectar” el nom de la variable <code class="literal">i</code>
+			al valor <code class="literal">5</code>. A continuació escrivim el valor de 
+			<code class="literal">i</code> fent servir la sentència <code class="literal">print</code> 
+			que escriu el valor de la variable a pantalla.
+						
+			</p><p>
+			
+			A continuació sumem <code class="literal">1</code> al valor guardat a 
+			<code class="varname">i</code>, i el tornem a guardar. Tot seguit imprimim el 
+			valor de <code class="varname">i</code>, i com s'esperava, obtenim el valor 
+			<code class="literal">6</code>.
+			
+			</p><p>
+			
+			De manera similar, assignem la cadena a la variable <code class="varname">s</code>
+			i mostrem el seu valor.
+			
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C/C++</h3><p>
+				
+				Les variables són usades simplement assignant-li un valor. No 
+				cal cap declaració ni definició de tipus de dades.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Tipus de dades </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Línies lògiques i línies físiques</td></tr></table></div></body></html>

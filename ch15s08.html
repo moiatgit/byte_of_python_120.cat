@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La funció repr</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch15.html" title="Chapter 15. Més de Python" /><link rel="prev" href="ch15s07.html" title="La sentència assert" /><link rel="next" href="ch15s09.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La funció repr</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15s07.html">Prev</a> </td><th width="60%" align="center">Chapter 15. Més de Python</th><td width="20%" align="right"> <a accesskey="n" href="ch15s09.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="repr-function"></a>La funció repr</h2></div></div></div><p>
+		
+		La funció <code class="function">repr</code> es fa servir per a obtenir la representació canònica 
+		d'un objecte a un string.
+		Les cometes reverses (<code class="literal">`</code>) també fan aquesta funció.
+		Habitualment ens trobarem la forma <code class="literal">eval(repr(object)) == object</code>.
+		
+		</p><pre class="screen">
+		
+&gt;&gt;&gt; i = []
+&gt;&gt;&gt; i.append('item')
+&gt;&gt;&gt; `i`
+"['item']"
+&gt;&gt;&gt; repr(i)
+"['item']"
+		
+		</pre><p>
+		
+		Bàsicament la funció <code class="function">repr</code> es fa servir per a poder mostrar
+		una representació d'un objecte.
+		Podem controlar el que els nostres objectes retornen per la funció <code class="function">repr</code> 
+		definint el mètode <code class="methodname">__repr__</code> a la seva classe.
+		
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15s07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch15.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch15s09.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">La sentència assert </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

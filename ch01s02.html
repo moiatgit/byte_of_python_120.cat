@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Característiques de Python</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch01.html" title="Chapter 1. Introducció" /><link rel="prev" href="ch01.html" title="Chapter 1. Introducció" /><link rel="next" href="ch01s03.html" title="Perquè no Perl?" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Característiques de Python</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch01.html">Prev</a> </td><th width="60%" align="center">Chapter 1. Introducció</th><td width="20%" align="right"> <a accesskey="n" href="ch01s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="features-of-python"></a>Característiques de Python</h2></div></div></div><div class="variablelist"><dl><dt><span class="term">Simple</span></dt><dd><p>
+					
+Python és un llenguatge simple i minimalista. Llegir un bon programa en Python és similar a llegir un text en anglès (un anglès molt estricte, però!) Aquest aspecte de pseudocodi del Python és una de les seves grans avantatges. Permet concentrar-nos en la solució del problema en comptes de la sintaxi, és a dir, el llenguatge en si.					
+					
+					</p></dd><dt><span class="term">Fàcil d'aprendre</span></dt><dd><p>
+Com veurem, és extremadament fàcil començar a treballar amb Python per la seva
+sintaxi extraordinàriament simple.										
+					</p></dd><dt><span class="term">Lliure i obert</span></dt><dd><p>
+Python és un exemple de FLOSS (Free/Libre and Open Source Software1) Bàsicament, es pot distribuir lliurement còpies d'aquest programari, llegir el seu codi font, fer-ne modificacions, fer servir parts d'ell en nous programes lliures.
+FLOSS està basat en el concepte d'una comunitat que comparteix coneixement. Aquesta és una de les raons per les quals Python és tan bo – ha estat creat i millorat per una comunitat que persegueix veure un Python millor.										
+					</p></dd><dt><span class="term">Llenguatge d'alt nivell</span></dt><dd><p>
+					
+Quan escrius un programa en Python, mai t'has de preocupar sobre detalls de baix nivell com ara gestionar la memòria usada pel programa.
+					
+					</p></dd><dt><span class="term">Portable</span></dt><dd><p>
+					
+Gràcies a la seva naturalesa de font lliure, Python ha estat portat a (és a dir, modificat per que funcioni sobre) moltes plataformes. Tots els nostres programes en Python funcionaran sobre qualsevol d'aquestes plataformes sense que ens calgui cap canvi, sempre i quan anem amb compte d'evitar característiques dependents del sistema.
+					
+					</p><p>
+Podem fer servir Python sobre Linux, Windows, Macintosh, Solaris, OS/2, 
+Amiga, AROS, AS/400, BeOS, OS/390, z/OS, Palm OS, QNX, VMS, Psion, Acorn RISC OS, VxWorks, PlayStation, Sharp Zaurus, Windows CE i PocketPC!
+					</p></dd><dt><span class="term">Interpretat</span></dt><dd><p>
+Aquest punt requereix una mica d'explicació.
+					
+					</p><p>
+					
+Un programa escrit en un llenguatge de compilació com ara el C o el C++ es traduït del codi font (és a dir, C/C++) a un llenguatge parlat per l'ordinador (codi binari – 0s i 1s) fent servir un programa compilador amb varies opcions.  Quan aquest programa és executat, el programari d'enllaçament/carregador simplement carrega el codi binari a la memòria de l'ordinador i comença a executar-lo des de la primera instrucció del programa.
+					</p><p><a id="python-vm"></a>
+
+Quan es fa servir un llenguatge interpretat, com ara Python, no hi ha cap separació entre la compilació i l'execució. Simplement el programa es executat des del codi font. Internament, Python converteix el codi font en un format intermedi anomenat <span class="emphasis"><em>bytecodes</em></span> i tot seguit l'executa fent servir una màquina virtual. Tot plegat fa que usar Python sigui tan fàcil. Simplement s'ha d'executar els programes sense preocupar-se de coses com ara enllaçar i carregar llibreries. També fa que els programes siguin més portables d'aquesta manera, ja que es pot portar una còpia d'un programa Python a un altre sistema de qualsevol classe i simplement funcionarà!
+					</p></dd><dt><span class="term">Orientat a objectes</span></dt><dd><p>
+Python permet la programació orientada a procediments, així com la programació orientada  a objectes. Als llenguatges orientats a procediments, el programa es construeix al voltant de procediments o funcions (trossos reusables de codi) Als llenguatges orientats a objectes, el programa s'escriu al voltant d'objectes que combinen a l'hora dades i funcionalitat. Python disposa d'una manera molt potent i a l'hora simple de fer programació orientada a objectes, especialment si el comparem amb altres llenguatges com ara C++ i java.					
+					
+					</p></dd><dt><span class="term">Extensible</span></dt><dd><p>
+Quan necessitem que una peça de codi s'executi molt ràpidament, podem escriure-la en C, i després combinar-la amb el nostre programa en Python.
+					</p></dd><dt><span class="term">Incrustable</span></dt><dd><p>
+Python pot ser incrustat en els nostres programes C/C++ per a oferir la possibilitat de realitzar scripts als nostres usuaris.
+					</p></dd><dt><span class="term">Ampla biblioteca</span></dt><dd><p>
+La biblioteca estàndard de Python és immensa. Ens ofereix ajuda amb diferents aspectes, com ara: expressions regulars, generació de documentació, depuració d'unitats, gestió de fils d'execució (threading), bases de dades, navegadors d'Internet, CGI, ftp, email, XML, XML-RPC, HTML, fitxers WAV, criptografia, interfícies gràfiques (GUI) amb Tk, i també amb elements dependents del sistema. Tot això es coneix com la filosofia "piles incloses" de Python.
+					
+					</p><p>
+A més de la biblioteca estàndard, hi ha d'altres biblioteques d'alta qualitat com ara 
+<a href="http://www.wxpython.org" target="_top">wxPython</a>,
+					<a href="http://www.twistedmatrix.com/products/twisted" target="_top">Twisted</a>,
+					<a href="http://www.pythonware.com/products/pil/index.htm" target="_top">Python Imaging
+					Library</a> i moltes altres.
+					</p></dd></dl></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="introduction-summary"></a>Resum</h3></div></div></div><p>
+			
+Python és un llenguatge molt atractiu i potent. Disposa de la combinació correcta entre rendiment i característiques que fan que el desenvolupament de programes en Python sigui a l'hora divertit i fàcil.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch01.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch01s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 1. Introducció </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Perquè no Perl?</td></tr></table></div></body></html>

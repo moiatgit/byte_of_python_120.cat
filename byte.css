@@ -1,0 +1,121 @@
+/*
+ * Filename : byte.css
+ * Details  : CSS document for the book "A Byte of Python"
+ * Website  : www.byteofpython.info
+ * Copyright: Swaroop C H (c) 2004
+ * License  : Creative Commons License. See book for more details.
+ * Note     : Indispensable tools in the creation of this document
+ *            include KColorChooser and XEmacs.
+ */
+
+body {
+  font-size:12pt;
+}
+
+div.header {
+  text-align:center;
+}
+
+a.header-link {
+  text-decoration:none;
+  color:#663300;
+  font-family:sans-serif;
+}
+
+a.header-link:hover {
+  text-decoration:underline;
+}
+
+h1.title {
+  font-size:40pt;
+  text-align:center;
+  background-color:#FFFED3;
+  border-left:1px solid #DBDAB5;
+  border-right:1px solid #DBDAB5;
+  border-top:1px solid #DBDAB5;
+  padding:5px;
+  margin-top:10px;
+}
+
+div.author {
+  font-size:16pt;
+  text-align:center;
+  background-color:#FFFED3;
+  border-left:1px solid #DBDAB5;
+  border-right:1px solid #DBDAB5;
+  border-bottom:1px solid #DBDAB5;
+  padding:5px;
+}
+
+p.releaseinfo {
+  font-weight:bold;
+}
+
+h2 {
+  color:#663300;
+}
+
+h1, h2, h3, h4, h5, h6, div.affiliation {
+  margin:0px;
+  font-family:sans-serif;
+}
+
+pre.programlisting {
+  background-color:#FFFFCC;
+  border:1px solid #D8D8AD;
+  padding:5px;
+  margin-left:3%;
+  margin-right:3%;
+}
+
+pre.screen {
+  background-color:#FFEFEF;
+  border:1px solid #D8CACB;
+  padding:5px;
+  margin-left:3%;
+  margin-right:3%;
+}
+
+div.caution, div.important, div.note {
+  background-color:#E6E6FF;
+  border:1px solid #C7C7DD;
+  padding:5px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+span.py-statement {
+  color:red;
+}
+
+span.py-number {
+  color:#6721A8;
+}
+
+span.py-builtin {
+  color:#A80000;
+}
+
+span.py-string {
+  color:#9B30FF; /* purple1 */
+}
+
+span.py-escape-sequence {
+  color:#AA00AA;
+}
+
+span.py-conditional {
+  color:red;
+}
+
+span.py-loop {
+  color:red;
+}
+
+span.py-comment {
+  color:blue;
+}
+
+span.py-identifier {
+  color:#A26811;
+}

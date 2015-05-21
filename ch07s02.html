@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Paràmetres de les funcions</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch07.html" title="Chapter 7. Funcions" /><link rel="prev" href="ch07.html" title="Chapter 7. Funcions" /><link rel="next" href="ch07s03.html" title="Variables locals" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Paràmetres de les funcions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07.html">Prev</a> </td><th width="60%" align="center">Chapter 7. Funcions</th><td width="20%" align="right"> <a accesskey="n" href="ch07s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="function-parameters"></a>Paràmetres de les funcions</h2></div></div></div><p>
+		
+		Els paràmetres que pren una funció poden ser simplement valors que se li administren perquè la funció pugui <span class="emphasis"><em>fer</em></span> alguna cosa amb ells. Aquests paràmetres són similars a variables, amb la diferència que els valors inicials d'aquests són assignats automàticament quan es crida la funció en comptes de fer-ho explícitament dins de la funció.
+		
+		</p><p>
+		
+		Els paràmetres són especificats, separats per coma, entre els parèntesis de la funció. Quan cridem la funció, passem els valors corresponents de la mateixa manera. Notem la terminologia usada  els noms que s'inclouen en la definició de la funció són coneguts com a <span class="emphasis"><em>paràmetres</em></span> mentre que els valors que es passen quan es crida la funció és diuen <span class="emphasis"><em>arguments</em></span>.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id294219"></a>Ús dels paràmetres d'una funció</h3></div></div></div><div class="example"><a id="id294224"></a><p class="title"><b>Example 7.2. Ús dels paràmetres d'una funció</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: func_param.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">printMax</span>(a, b):
+	<span class="py-statement">if</span> a &gt; b:
+		<span class="py-statement">print</span> a, <span class="py-string">'is maximum'</span>
+	<span class="py-statement">else</span>:
+		<span class="py-statement">print</span> b, <span class="py-string">'is maximum'</span>
+	
+printMax(<span class="py-number">3</span>, <span class="py-number">4</span>) <span class="py-comment"># li passem directament els valors</span>
+
+x = <span class="py-number">5</span>
+y = <span class="py-number">7</span>
+
+printMax(x, y) <span class="py-comment"># li passem variables com a arguments</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294237"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python func_param.py
+5 is maximum
+7 is maximum
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294256"></a>Com funciona</h4></div></div></div><p>
+				
+				Aquí definim una funció anomenada <code class="function">printMax</code> que pren dos paràmetres anomenats <code class="varname">a</code> i <code class="varname">b</code>.
+				La funció obté el nombre major fent servir una estructura <code class="literal">if..else</code> i, finalment, escriu el nombre major.
+				
+				</p><p>
+				
+				El primer ús de la funció <code class="function">printMax</code>, passa directament els valors numèrics (o arguments). En el segon ús, els arguments es passen fent servir variables. La crida <code class="literal">printMax(x, y)</code> fa que el valor de l'argument <code class="varname">x</code> sigui assignat al paràmetre <code class="varname">a</code> i el valor de <code class="varname">y</code> a <code class="varname">b</code>. La funció printMax funciona de la mateixa manera en ambdós casos.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 7. Funcions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Variables locals</td></tr></table></div></body></html>

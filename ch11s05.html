@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>El mètode __init__</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch11.html" title="Chapter 11. Programació orientada a objectes" /><link rel="prev" href="ch11s04.html" title="Mètodes dels objectes" /><link rel="next" href="ch11s06.html" title="Classes i variables d'objecte" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">El mètode __init__</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s04.html">Prev</a> </td><th width="60%" align="center">Chapter 11. Programació orientada a objectes</th><td width="20%" align="right"> <a accesskey="n" href="ch11s06.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="class-init"></a>El mètode __init__</h2></div></div></div><p>
+		
+		Hi ha alguns noms de mètode que tenen significats especials en les classes
+		Python. Aquest és el cas del mètode <code class="methodname">__init__</code>.
+		
+		</p><p>
+		
+		El mètode <code class="methodname">__init__</code> s'executa en el moment en que
+		s'instancia cada objecte d'una classe.
+		El mètode és útil per realitzar qualsevol <span class="emphasis"><em>inicialització</em></span>
+		que calgui. Atenció amb els dos guions baixos que apareixen a ambdós costats
+		del nom.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-class-init"></a>Ús del mètode __init__</h3></div></div></div><div class="example"><a id="id304175"></a><p class="title"><b>Example 11.3. Ús del mètode __init__</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: class_init.py</span>
+
+<span class="py-statement">class</span> <span class="py-identifier">Person</span>:
+	<span class="py-statement">def</span> <span class="py-identifier">__init__</span>(<span class="py-builtin">self</span>, name):
+		<span class="py-builtin">self</span>.name = name
+	<span class="py-statement">def</span> <span class="py-identifier">sayHi</span>(<span class="py-builtin">self</span>):
+		<span class="py-statement">print</span> <span class="py-string">'Hello, my name is'</span>, <span class="py-builtin">self</span>.name
+
+p = Person(<span class="py-string">'Swaroop'</span>)
+p.sayHi()
+
+<span class="py-comment"># Aquest exemple també es pot escriure com Person('Swaroop').sayHi()</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id304187"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python class_init.py
+Hello, my name is Swaroop
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id304207"></a>Com funciona</h4></div></div></div><p>
+				
+				L'exemple defineix el mètode <code class="methodname">__init__</code> que 
+				rep, a banda de l'habitual <code class="varname">self</code>, el paràmetre
+				<code class="varname">name</code>.
+				Com que el camp <code class="varname">name</code> coincideix amb el nom del 
+				paràmetre <code class="varname">name</code>, ens cal distingir-los fent servir 
+				la referència a <code class="varname">self</code>.
+				
+				</p><p>
+				
+				Fixem-nos que no fem una crida explícita al mètode 
+				<code class="methodname">__init__</code>, sinó que passem l'argument quan
+				creem una instància de la classe. Aquesta és la principal particularitat
+				d'aquest mètode.
+				
+				</p><p>
+				
+				Es pot veure l'ús del paràmetre <code class="varname">self.name</code> al mètode
+				<code class="methodname">sayHi</code>.
+				
+				</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C++/Java/C#</h3><p>
+				
+				El mètode <code class="methodname">__init__</code> és l'equivalent al 
+				<span class="emphasis"><em>constructor</em></span> de C++, C# o Java.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Mètodes dels objectes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Classes i variables d'objecte</td></tr></table></div></body></html>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Classes i variables d'objecte</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch11.html" title="Chapter 11. Programació orientada a objectes" /><link rel="prev" href="ch11s05.html" title="El mètode __init__" /><link rel="next" href="ch11s07.html" title="Herència" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Classes i variables d'objecte</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s05.html">Prev</a> </td><th width="60%" align="center">Chapter 11. Programació orientada a objectes</th><td width="20%" align="right"> <a accesskey="n" href="ch11s07.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="class-and-object-vars"></a>Classes i variables d'objecte</h2></div></div></div><p>
+		
+		Ara que hem parlat de la part funcional de les classes i objectes, anem a
+		considerar la part de les dades. En realitat no hi ha res d'especial. Es 
+		tracta de variables normals que s'<span class="emphasis"><em>associen</em></span> als 
+		espais de noms de les classes i objectes. És a dir, els noms d'aquestes 
+		dades només són vàlids dins del context d'aquestes classes i objectes.
+		
+		</p><p>
+		
+		Hi ha dos tipus de <span class="emphasis"><em>camps</em></span>: variables de classe i variables
+		d'objecte (o instància). La diferència està en si és la classe o el objecte
+		qui té la variable.
+		
+		</p><p>
+		
+		Les <span class="emphasis"><em>variables de classe</em></span> són compartides en el sentit que
+		poden ser accedides per a qualsevol objecte (instància) d'aquesta classe.
+		Només hi ha una còpia de les variables de classe i quan qualsevol de les
+		instàncies realitza un canvi en aquestes variables, el canvi es reflecteix
+		també a tota la resta d'instàncies.
+		
+		</p><p>
+		
+		Les <span class="emphasis"><em>variables d'objecte</em></span> pertanyen a cada objecte o 
+		instància individual. Cada objecte té la seva pròpia còpia del camp. És a dir,
+		no estan compartides ni estan relacionades de cap manera amb el camp amb el 
+		mateix nom a una instància diferent de la mateixa classe. Estudiem el següent
+		exemple per a clarificar-nos:
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-class-and-obj-vars"></a>Ús de variables de classe i objecte</h3></div></div></div><div class="example"><a id="id304353"></a><p class="title"><b>Example 11.4. Ús de variables de classe i objecte</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: objvar.py</span>
+
+<span class="py-statement">class</span> <span class="py-identifier">Person</span>:
+	<span class="py-string">'''Representa una persona.'''</span>
+	population = <span class="py-number">0</span>
+
+	<span class="py-statement">def</span> <span class="py-identifier">__init__</span>(<span class="py-builtin">self</span>, name):
+		<span class="py-string">'''Inicialitza les dades de persona.'''</span>
+		<span class="py-builtin">self</span>.name = name
+		<span class="py-statement">print</span> <span class="py-string">'(Initializing %s)'</span> % <span class="py-builtin">self</span>.name
+
+		<span class="py-comment"># Quan la persona es crea, s'afegeix a la població.</span>
+		Person.population += <span class="py-number">1</span>
+	
+	<span class="py-statement">def</span> <span class="py-identifier">__del__</span>(<span class="py-builtin">self</span>):
+		<span class="py-string">'''Elimina la instància'''</span>
+		<span class="py-statement">print</span> <span class="py-string">'%s says bye.'</span> % <span class="py-builtin">self</span>.name
+
+		Person.population -= <span class="py-number">1</span>
+
+		<span class="py-statement">if</span> Person.population == <span class="py-number">0</span>:
+			<span class="py-statement">print</span> <span class="py-string">'I am the last one.'</span>
+		<span class="py-statement">else</span>:
+			<span class="py-statement">print</span> <span class="py-string">'There are still %d people left.'</span> % Person.population
+	
+	<span class="py-statement">def</span> <span class="py-identifier">sayHi</span>(<span class="py-builtin">self</span>):
+		<span class="py-string">'''Saludant.
+		
+		Realment això és el que fa.'''</span>
+		<span class="py-statement">print</span> <span class="py-string">'Hi, my name is %s.'</span> % <span class="py-builtin">self</span>.name
+	
+	<span class="py-statement">def</span> <span class="py-identifier">howMany</span>(<span class="py-builtin">self</span>):
+		<span class="py-string">'''Escriu la població actual.'''</span>
+		<span class="py-statement">if</span> Person.population == <span class="py-number">1</span>:
+			<span class="py-statement">print</span> <span class="py-string">'I am the only person here.'</span>
+		<span class="py-statement">else</span>:
+			<span class="py-statement">print</span> <span class="py-string">'We have %d persons here.'</span> % Person.population
+
+swaroop = Person(<span class="py-string">'Swaroop'</span>)
+swaroop.sayHi()
+swaroop.howMany()
+
+kalam = Person(<span class="py-string">'Abdul Kalam'</span>)
+kalam.sayHi()
+kalam.howMany()
+
+swaroop.sayHi()
+swaroop.howMany()
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id304366"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python objvar.py
+(Initializing Swaroop)
+Hi, my name is Swaroop.
+I am the only person here.
+(Initializing Abdul Kalam)
+Hi, my name is Abdul Kalam.
+We have 2 persons here.
+Hi, my name is Swaroop.
+We have 2 persons here.
+Abdul Kalam says bye.
+There are still 1 people left.
+Swaroop says bye.
+I am the last one.
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id304397"></a>Com funciona</h4></div></div></div><p>
+				
+				És un exemple llarg però ajuda a demostrar la natura de les variables
+				de classe i objecte. 
+				La variable <code class="varname">population</code> pertany a la classe 
+				<code class="classname">Person</code> i, per tant, és una variable dee classe.
+				El camp <code class="varname">name</code> pertany a l'objecte i, per tant, és
+				una variable d'objecte.
+				
+				</p><p>
+				
+				Ens referim a la variable de classe <code class="varname">population</code> 
+				com a <code class="varname">Person.population</code> i no com a 
+				<code class="varname">self.population</code>. 
+				Atenció: una variable d'objecte amb el mateix nom que una variable de 
+				classe amagarà la variable de classe.
+				Per referenciar la variable d'objecte <code class="varname">name</code> 
+				fem servir la notació <code class="varname">self.name</code>.
+				Cal que recordem aquesta simple diferència entre variables de classe
+				i objecte.
+				
+				</p><p>
+				
+				Hem fet servir el mètode <code class="methodname">__init__</code> 
+				per a inicialitzar la instància de <code class="classname">Person</code>
+				amb un nom. Aquest mètode, incrementa la variable 
+				<code class="varname">population</code> en un ja que hem creat una nova instància
+				de Person.
+				Per altra banda, el valor de <code class="varname">self.name</code> és
+				específic de cada instància.
+				
+				</p><p>
+				
+				Recordem que cal fer servir <code class="varname">self</code> per a referir-se
+				a les variables i mètodes del mateix objecte. D'això en diem
+				<span class="emphasis"><em>referència d'atribut</em></span>.
+				
+				</p><p>
+				
+				Al programa veiem també l'ús de <span class="bold"><strong>docstrings</strong></span> 
+				tant per classes com per mètodes.
+				Podem accedir al docstring d'una classe o mètode en temps d'execució usant
+				els mètodes
+				<code class="varname">Person.__doc__</code> i 
+				<code class="varname">Person.sayHi.__doc__</code>
+				
+				</p><p>
+				
+				Un altre mètode especial és <code class="methodname">__del__</code>. Aquest
+				és cridat quan l'objecte mor. És a dir, quan no serà usat mai més i
+				l'espai que ocupa és retornat al sistema per que pugui ser reutilitzat.
+				Al nostre programa simplement decrementem en un el valor de la propietat 
+				<code class="varname">Person.population</code>.
+				
+				</p><p>
+				
+				El mètode <code class="methodname">__del__</code> s'executa <span class="emphasis"><em>quan</em></span> 
+				quan l'objecte sigui eliminat. Si volem fer-ho explícitament, ens
+				caldrà fer servir la sentència <code class="literal">del</code> que ja hem vist
+				anteriorment.
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C++/Java/C#</h3><p>
+					
+					Per Python, tots els membres de les classes (incloent els camps) tenen visibilitat
+					<span class="emphasis"><em>public</em></span> i els mètodes són <span class="emphasis"><em>virtual</em></span>.
+					
+					</p><p>
+					
+					Hi ha una excepció: en cas que fem servir camps amb noms que tinguin
+					com a prefix <span class="emphasis"><em>el doble guió baix</em></span> com a
+					<code class="varname">__privatevar</code>, Python retalla el nom de manera que
+					la variable queda privada.
+					
+					</p><p>
+					
+					Per convenció, qualsevol variable que ha de fer-se servir només dins
+					de la classe, començarà amb guió baix, i la resta dels noms són
+					públics i poden ser usats des d'altres classes/objectes.
+					Amb tot, això és només una convenció. Python no controla l'accés a 
+					una variable que comença amb un guió baix (excepte quan són dos seguits).
+					
+					</p><p>
+					
+					Tinguem també present que el mètode <code class="methodname">__del__</code> 
+					és l'equivalent al concepte de <span class="emphasis"><em>destructor</em></span>.
+					
+					</p></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">El mètode __init__ </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Herència</td></tr></table></div></body></html>

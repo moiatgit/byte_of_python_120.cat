@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Operadors</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch05.html" title="Chapter 5. Operadors i expressions" /><link rel="prev" href="ch05.html" title="Chapter 5. Operadors i expressions" /><link rel="next" href="ch05s03.html" title="Precedència dels operadors" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Operadors</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05.html">Prev</a> </td><th width="60%" align="center">Chapter 5. Operadors i expressions</th><td width="20%" align="right"> <a accesskey="n" href="ch05s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="operators"></a>Operadors</h2></div></div></div><p>
+		
+		Fem una ullada ràpida als operadors i a com funcionen:
+		
+		</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+			Podem avaluar les expressions dels exemples fent servir 
+			interactivament l'interpret de Python. 
+			Per exemple, per a provar l'expressió <code class="literal">2 + 3</code> 
+			escriurem a l'interpret:			
+			
+			</p><pre class="screen">
+			
+&gt;&gt;&gt; 2 + 3
+5
+&gt;&gt;&gt; 3 * 5
+15
+&gt;&gt;&gt;
+			
+			</pre></div><div class="table"><a id="id288425"></a><p class="title"><b>Table 5.1. Ús dels operadors</b></p><table summary="Ús dels operadors" border="1"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Operador</th><th>Nom</th><th>Descripció</th><th>Exemples</th></tr></thead><tbody><tr><td>+</td><td>Més</td><td>
+						
+						Suma dos objectes
+						
+						</td><td>
+						
+						<code class="literal">3 + 5</code> dóna <code class="literal">8</code>.
+						<code class="literal">'a' + 'b'</code> dóna <code class="literal">'ab'</code>.
+						
+						</td></tr><tr><td>-</td><td>Menys</td><td>
+						
+						Amb un operand numèric, el multiplica per -1. Amb dos 
+						operands realitza la resta (o diferència) del primer pel 
+						segon.
+						
+						</td><td>
+						
+						<code class="literal">-5.2</code> dóna un número negatiu.
+						<code class="literal">50 - 24</code> dóna <code class="literal">26</code>.
+						
+						</td></tr><tr><td>*</td><td>Multiplicació o producte</td><td>
+						
+						Dóna el resultat de multiplicar dos nombres o retorna 
+						una cadena repetida un nombre de vegades.
+						
+						</td><td>
+						
+						<code class="literal">2 * 3</code> dóna <code class="literal">6</code>.
+						<code class="literal">'la' * 3</code> dóna <code class="literal">'lalala'</code>.
+						
+						</td></tr><tr><td>**</td><td>Potència</td><td>
+						
+						Retorna la potència del primer operand respecte el segon.
+						
+						</td><td>
+						
+						<code class="literal">3 ** 4</code> dóna <code class="literal">81</code>
+						(és a dir <code class="literal">3 * 3 * 3 * 3</code>)
+						
+						</td></tr><tr><td>/</td><td>Divisió</td><td>
+						
+						Calcula la divisió del primer operand entre el segon.
+						
+						</td><td>
+						
+						<code class="literal">4/3</code> dóna <code class="literal">1</code> 
+						(la divisió d'enters retorna un enter).
+						<code class="literal">4.0/3</code> o <code class="literal">4/3.0</code> 
+						dóna <code class="literal">1.3333333333333333</code>
+						
+						</td></tr><tr><td>//</td><td>Divisió entera</td><td>
+						
+						Calcula el resultat enter de la divisió dels dos operands.
+						
+						</td><td>
+						
+						<code class="literal">4 // 3.0</code> dóna <code class="literal">1.0</code>
+						
+						</td></tr><tr><td>%</td><td>Mòdul</td><td>
+						
+						Calcula la resta de la divisió entera.
+						
+						</td><td>
+						
+						<code class="literal">8%3</code> dóna <code class="literal">2</code>.
+						<code class="literal">-25.5%2.25</code> dóna <code class="literal">1.5</code> .
+						
+						</td></tr><tr><td>&lt;&lt;</td><td>Desplaçament a l'esquerra</td><td>
+						
+						Desplaça els bits del primer operand tantes posicions
+						a l'esquerra com indica el segon operand.
+						Recordem que cada nombre es representa a memòria amb
+						bits o dígits binaris (0 i 1)
+						
+						</td><td>
+						
+						<code class="literal">2 &lt;&lt; 2</code> dóna
+						<code class="literal">8</code>.
+						- <code class="literal">2</code> en binari es representa com
+						<code class="literal">10</code>. 
+						El desplaçament a l'esquerra de dos bits retorna
+						<code class="literal">1000</code> que representa el decimal
+						<code class="literal">8</code>.
+						
+						</td></tr><tr><td>&gt;&gt;</td><td>Desplaçament a la dreta</td><td>
+						
+						Desplaça els bits del primer operand tantes posicions a
+						la dreta com indica el segon operand.
+						
+						</td><td>
+						
+						<code class="literal">11 &gt;&gt; 1</code> dóna
+						<code class="literal">5</code> -
+						<code class="literal">11</code> en binari es representa com
+						<code class="literal">1011</code>. El desplaçament a la dreta
+						d'un bit retorna <code class="literal">101</code> que correspon
+						al decimal <code class="literal">5</code>.
+						
+						</td></tr><tr><td>&amp;</td><td>AND binaria</td><td>
+						
+						Realitza la conjunció lògica (AND) a nivell de bit.
+						
+						</td><td>
+						
+						<code class="literal">5 &amp; 3</code> dóna
+						<code class="literal">1</code>.
+						
+						</td></tr><tr><td>|</td><td>OR binaria</td><td>
+						
+						Realitza la disjunció lògica (OR) a nivell de bit.
+						
+						</td><td>
+						
+						<code class="literal">5 | 3</code> dóna <code class="literal">7</code>
+						
+						</td></tr><tr><td>^</td><td>XOR binaria</td><td>
+						Realitza la disjunció exclusiva (XOR) a nivell de bit.
+						</td><td>						
+						<code class="literal">5 ^ 3</code> dóna <code class="literal">6</code>						
+						</td></tr><tr><td>~</td><td>NOT binària</td><td>
+						
+						La inversió a nivell de bit de  x és -(x + 1)
+						
+						</td><td>
+						
+						<code class="literal">~5</code> dóna <code class="literal">-6</code>.
+						
+						</td></tr><tr><td>&lt;</td><td>Menor que</td><td>
+						
+						Calcula si el primer operand és menor que el segon. 
+						El resultat és <code class="literal">0</code> o 
+						<code class="literal">False</code>, o <code class="literal">1</code> o 
+						<code class="literal">True</code>. Atenció a la inicial en 
+						majúscules d'aquests mots.
+						
+						</td><td>
+						
+						<code class="literal">5 &lt; 3</code> dóna
+						<code class="literal">0</code> (és a dir <code class="literal">False</code>) 
+						i <code class="literal">3 &lt; 5</code> dóna
+						<code class="literal">1</code> (o el que és el mateix 
+						<code class="literal">True</code>).
+						
+						Les comparacions poden ser encadenades lliurement:
+						3 &lt; 5 &lt; 7 dóna <code class="literal">True</code>.
+						
+						</td></tr><tr><td>&gt;</td><td>Major que</td><td>
+						
+						Calcula si el primer operand és més gran que el segon.
+						
+						</td><td>
+						
+						<code class="literal">5 &lt; 3</code> dóna
+						<code class="literal">True</code>. 
+						
+						</td></tr><tr><td>&lt;=</td><td>Menor o igual que</td><td>
+						
+						Calcula si el primer operand és menor o igual que el segon.
+						
+						</td><td>
+						
+						<code class="literal">x = 3; y = 6; x &lt;= y</code>
+						dóna <code class="literal">True</code>.
+						
+						</td></tr><tr><td>&gt;=</td><td>Major o igual que</td><td>
+						
+						Calcula si el primer operand és més gran o igual que el segon.
+						
+						</td><td>
+						
+						x = 4; y = 3; x &gt;= 3 dóna
+						<code class="literal">True</code>.
+						
+						</td></tr><tr><td>==</td><td>Igual que</td><td>
+						
+						Compara si els dos operads són iguals.
+						
+						</td><td>
+						
+						<code class="literal">x = 2; y = 2; x == y</code> dóna
+						<code class="literal">True</code>.
+						
+						<code class="literal">x = 'str'; y = 'stR'; x == y</code> dóna
+						<code class="literal">False</code>.
+						
+						<code class="literal">x = 'str'; y = 'str'; x == y</code> dóna
+						<code class="literal">True</code>.
+						
+						</td></tr><tr><td>!=</td><td>Diferent que</td><td>
+						
+						Compara si els dos operands són diferents.
+						
+						</td><td>
+						
+						<code class="literal">x = 2; y = 3; x != y</code> dóna
+						<code class="literal">True</code>.
+						
+						</td></tr><tr><td>not</td><td>Negació lógica</td><td>
+						
+						Si l'operand és <code class="literal">True</code>, retorna
+						<code class="literal">False</code>. Altrament retorna
+						<code class="literal">True</code>.
+						
+						</td><td>
+						
+						<code class="literal">x = True; not y</code> dóna
+						<code class="literal">False</code>.
+						
+						</td></tr><tr><td>and</td><td>Conjunció lógica</td><td>
+						
+						<code class="literal">x and y</code> retorna <code class="literal">False</code>
+						si x avalua a <code class="literal">False</code>, altrament 
+						retorna l'avaluació de y.
+						
+						</td><td>
+						
+						<code class="literal">x = False; y = True; x and y</code> dóna
+						<code class="literal">False</code> ja que x és False. 
+						En aquest cas Python no avalua y ja que sap que el valor
+						de l'expressió serà fals independentment del valor de y.
+						
+						</td></tr><tr><td>or</td><td>Disjunció lògica</td><td>
+						
+						Si x és <code class="literal">True</code>, retorna True, 
+						altrament torna l'avaluació de y.
+						
+						</td><td>
+						
+						<code class="literal">x = True; y = False; x or y</code> dóna
+						<code class="literal">True</code>. 
+						En aquest cas Python no avalua y ja que sap que el valor
+						de l'expressió serà cert independentment del valor de y.
+					
+						</td></tr></tbody></table></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 5. Operadors i expressions </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Precedència dels operadors</td></tr></table></div></body></html>

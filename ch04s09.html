@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Sagnat o indentació</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch04.html" title="Chapter 4. Conceptes bàsics" /><link rel="prev" href="ch04s08.html" title="Línies lògiques i línies físiques" /><link rel="next" href="ch04s10.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Sagnat o indentació</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s08.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Conceptes bàsics</th><td width="20%" align="right"> <a accesskey="n" href="ch04s10.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="indentation"></a>Sagnat o indentació</h2></div></div></div><p>
+		
+		Els espais en blanc, i més concretament, els que apareixen al 
+		començament de línia, són importants en Python. D'això es diu 
+		<span class="bold"><strong>sagnat</strong></span> o
+		<span class="bold"><strong>indentació</strong></span>. Els espais blancs (espais i
+		tabuladors) que inicien una línia física es fan servir per determinar el
+		nivell d'indentació de la línia lògica, que, a la seva vegada, es fa 
+		servir per a determinar l'agrupació d'instruccions.
+		
+		</p><p>
+		
+		Tot plegat implica que les instruccions que van juntes han d'aparèixer 
+		al mateix nivell d'indentació. Els conjunts d'instruccions que apareixen
+		al mateix nivell d'indentació es coneixen com a 
+		<span class="bold"><strong>bloc</strong></span>. Veurem més endavant exemples que
+		ens mostraran la importància dels blocs.
+		
+		</p><p>
+		
+		Hem de tenir present que la indentació inadequada genera errors. Per exemple:
+		
+		</p><pre class="programlisting">
+		
+i = <span class="py-number">5</span>
+ <span class="py-statement">print</span> <span class="py-string">'i = '</span>, i   <span class="py-comment">#Error! Notem l'espai a l'inici de la línia</span>
+<span class="py-statement">print</span> <span class="py-string">'Repeteixo, el valor és'</span>, i
+		
+		</pre><p>
+		
+		Quan executem aquest programa, obtenim el següent error:
+		
+		</p><pre class="screen">
+		
+  File "whitespace.py", line 4
+    print 'i = ', i   #Error! Notem l'espai a l'inici de la línia
+    ^
+SyntaxError: invalid syntax
+		
+		</pre><p>
+		
+		Fixem-nos en l'espai que apareix a l'inici de la segona línia.
+		Python ens està indicant que la sintaxi del programa no és vàlida, és a 
+		dir, que el programa no està correctament escrit. El que vol dir per a 
+		nosaltres és que no podem iniciar blocs d'instruccions de manera 
+		arbitrària (excepte pel bloc principal que hem estat fent servir tota 
+		l'estona, és clar) Analitzarem més endavant els casos en que podem fer 
+		servir nous blocs (ex. En el capítol de 
+		<a href="ch06.html" title="Chapter 6. Control Flow">control de flux</a>)
+		
+		</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Com indentar</h3><p>
+			
+			<span class="bold"><strong>No</strong></span> s'ha de barrejar espais i 
+			tabuladors per a indentar ja que pot no funcionar correctament
+			sobre diferents plataformes.
+			És molt recomanable fer servir un tabulador o dos o quatre espais 
+			per cada nivell d'indentació. 
+			</p><p>
+			
+			S'ha d'escollir un d'aquests tres estils d'indentació i fer-lo 
+			servir de manera <span class="bold"><strong>consistent</strong></span>. És a 
+			dir, cal fer servir un <span class="emphasis"><em>únic</em></span> estil d'indentació.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s08.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s10.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Línies lògiques i línies físiques </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

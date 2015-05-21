@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La sentència return</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch07.html" title="Chapter 7. Funcions" /><link rel="prev" href="ch07s05.html" title="Arguments per nom" /><link rel="next" href="ch07s07.html" title="DocStrings" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La sentència return</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch07s05.html">Prev</a> </td><th width="60%" align="center">Chapter 7. Funcions</th><td width="20%" align="right"> <a accesskey="n" href="ch07s07.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="return"></a>La sentència return</h2></div></div></div><p>
+		
+		La sentència <code class="literal">return</code> es fa servir per a <span class="emphasis"><em>sortir</em></span> de la funció. És a dir, trencar l'execució de la funció. També podem, opcionalment, <span class="emphasis"><em>retornar un valor</em></span> des de la funció.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id294931"></a>Ús de la sentència return</h3></div></div></div><div class="example"><a id="id294937"></a><p class="title"><b>Example 7.7. Ús de la sentència return</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: func_return.py</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">maximum</span>(x, y):
+	<span class="py-statement">if</span> x &gt; y:
+		<span class="py-statement">return</span> x
+	<span class="py-statement">else</span>:
+		<span class="py-statement">return</span> y
+
+<span class="py-statement">print</span> maximum(<span class="py-number">2</span>, <span class="py-number">3</span>)
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294953"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python func_return.py
+3
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id294967"></a>Com funciona</h4></div></div></div><p>
+				
+				La funció <code class="function">maximum</code> retorna el més gran de tots dos paràmetres, en aquest cas, els nombres passats a la funció. Fa servir una estructura <code class="literal">if..else</code> per a trobar el valor més gran que, tot seguit <span class="emphasis"><em>retorna</em></span>.
+				
+				</p><p>
+				
+				Notem que una instrucció <code class="literal">return</code> sense valor és equivalent a <code class="literal">return None</code>. <code class="literal">None</code> és un tipus especial en Python que representa el concepte de <span class="emphasis"><em>res</em></span>. Per exemple, quan és vol indicar que una variable no té cap valor, li assignem <code class="literal">None</code>.
+				
+				</p><p>
+				
+				Tota funció té implícitament una instrucció <code class="literal">return None</code> al final del bloc d'instruccions, a menys que hàgim inclòs un <code class="literal">return</code> explícitament. Podem comprovar-ho executant <code class="literal">print someFunction()</code> per a alguna funció    <code class="function">someFunction</code> que no disposi d'instrucció <code class="literal">return</code>. Per exemple:
+				
+				</p><pre class="programlisting">
+				
+<span class="py-statement">def</span> <span class="py-identifier">someFunction</span>():
+	<span class="py-statement">pass</span>
+				
+				</pre><p>
+				
+				La instrucció <code class="literal">pass</code> es fa servir a Python per a especificar un bloc buit d'instruccions.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch07s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch07.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch07s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Arguments per nom </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> DocStrings</td></tr></table></div></body></html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Fitxer amb el codi font</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch03.html" title="Chapter 3. Primeres passes" /><link rel="prev" href="ch03s03.html" title="Selecció de l'editor" /><link rel="next" href="ch03s05.html" title="Programes executables" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Fitxer amb el codi font</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><th width="60%" align="center">Chapter 3. Primeres passes</th><td width="20%" align="right"> <a accesskey="n" href="ch03s05.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="source-file"></a>Fitxer amb el codi font</h2></div></div></div><p>
+Tornem ara a la programació. Hi ha una tradició que sempre que aprens un nou llenguatge de programació, el primer programa que escrius és el 'Hola Món!'. És un programa que tot el que fa és escriure 'Hola Món!' quan l'executes. Com va dir en Simon Cozens
+		<sup>[<a id="id284180" href="#ftn.id284180">1</a>]</sup>
+, és la tradicional invocació als deus de la programació per què ens ajudin a aprendre el llenguatge millor :)		
+		</p><p>
+Executem l'editor escollit, introduïm el següent programa, i el desem com <code class="filename">holamon.py</code>		
+		</p><div class="example"><a id="id284201"></a><p class="title"><b>Example 3.2. Ús de fitxers amb codi font</b></p><pre class="programlisting">
+			
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename : holamon.py</span>
+<span class="py-statement">print</span> <span class="py-string">'Hola Món!'</span>
+			
+			</pre><p>
+				(Source file: <a href="code/holamon.py" target="_top">code/holamon.py</a>)
+			</p></div><p>
+Executem aquest programa obrint una consola (terminal Linux o consola DOS) i introduint la comanda 
+<span><strong class="command">python <em class="replaceable"><code>holamon.py</code></em></strong></span>. 
+Des de IDLE podem fer <span class="guimenu">Edit</span> -&gt; <span class="guimenuitem">Run Script</span> o
+<span><strong class="keycap">Ctrl</strong></span>-<span><strong class="keycap">F5</strong></span>. La sortida és la següent:		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id284263"></a>Sortida</h3></div></div></div><pre class="screen">
+			
+$ python holamon.py
+Hola Món!
+			
+			</pre></div><p>
+Si hem obtingut la sortida anterior
+		<sup>[<a id="id284279" href="#ftn.id284279">2</a>]</sup>, enhorabona! ja hem executat el nostre primer programa en Python.		
+		</p><p>
+En cas que hàgim obtingut un error, tornem a introduir el programa 
+<span class="emphasis"><em>exactament</em></span> com s'indica i
+executem-lo un altre cop.
+Tinguem present que Python distingeix entre majúscules i minúscules. Per exemple, 
+<code class="literal">print</code> no és el mateix que <code class="literal">Print</code> 
+(fixem-nos en la <code class="literal">p</code> minúscula en el primer i la <code class="literal">P</code> majúscula en el segon) També, ens hem d'assegurar que no hi ha espais ni tabuladors abans del primer caràcter a cada línia – veurem més endavant la seva importància.
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id284358"></a>Com funciona</h3></div></div></div><p>
+Considerem les primeres dos línies del programa. Són comentaris – qualsevol cosa a la dreta del símbol <code class="literal">#</code> és un <span class="emphasis"><em>comentari</em></span> i la seva utilitat principal és la de permetre notes per qui llegeixi el programa.
+			</p><p>
+Python no fa servir comentaris excepte per casos especials com el de la primera línia del nostre programa. Es diu la línia de situació (<span class="emphasis"><em>shebang line</em></span>) – quan els primers dos caràcters d'un fitxer són <code class="literal">#!</code> seguits per la posició d'un programa,  un sistema Linux/Unix entén que el fitxer ha d'ésser passat com a entrada d'aquest programa quan el fitxer és <span class="emphasis"><em>executat</em></span>. 
+Tot això s'explicarà en detall a la <a href="ch03s05.html" title="Programes executables">següent secció</a>.
+Sempre podem executar el programa en qualsevol plataforma especificant l'intèrpret directament a la línia de comandes (ex. <span><strong class="command">python <em class="replaceable"><code>holamon.py</code></em></strong></span> .)
+			</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+És important que comentem adequadament els nostres programes explicant aquells detalls que calgui ressaltar. Això ajudarà a altres persones a comprendre'ls millor. Pensem que una d'aquestes persones podem ser nosaltres mateixos després de sis mesos d'haver escrit el programa!
+				</p></div><p>
+Els comentaris estan seguits per una <span class="emphasis"><em>sentència</em></span> Python – que simplement escriu el text 
+<code class="literal">'Hola Món!'</code>. 
+<code class="literal">print</code> és en realitat un operador, mentre que <code class="literal">'Hola Món!'</code> és una cadena de caràcters (string) – no us preocupeu, estudiarem aquesta terminologia en detall més endavant.
+			</p></div><div class="footnotes"><br /><hr width="100" align="left" /><div class="footnote"><p><sup>[<a id="ftn.id284180" href="#id284180">1</a>] </sup>
+			un dels principals desenvolupadors del Perl6/parrot i autor del  magnífic llibre 'Beginning Perl'.
+			</p></div><div class="footnote"><p><sup>[<a id="ftn.id284279" href="#id284279">2</a>] </sup>
+			N.D.T: és possible que trobem dificultats per a mostrar correctament els caràcters especials del català. En concret, des de Windows no sol compartir el tipus de codificació entre les aplicacions gràfiques i la consola. Podeu provar d'afegir la línia de codi '<code class="literal"># -*- coding: cp1252 -*-</code>' (sense les cometes) a continuació de la primera línia.  <code class="literal">cp1252</code> és el nom de la codificació. Proveu d'altres com ara <code class="literal">utf-8</code> o <code class="literal">iso-8859-1</code>. Cerqueu per la xarxa per més possibles solucions (lamentablement no tinc ni l'espai ni els coneixements per a donar resposta a tota la casuística). A partir d'ara no faré esment d'aquest problema.
+			</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Selecció de l'editor </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Programes executables</td></tr></table></div></body></html>

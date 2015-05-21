@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>El mòdul sys</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch14.html" title="Chapter 14. La biblioteca estàndard de Python" /><link rel="prev" href="ch14.html" title="Chapter 14. La biblioteca estàndard de Python" /><link rel="next" href="ch14s03.html" title="El mòdul os" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">El mòdul sys</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch14.html">Prev</a> </td><th width="60%" align="center">Chapter 14. La biblioteca estàndard de Python</th><td width="20%" align="right"> <a accesskey="n" href="ch14s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sys-module"></a>El mòdul sys</h2></div></div></div><p>
+		
+		El mòdul <code class="literal">sys</code> conté funcionalitats específiques del
+		sistema. Ja hem vist que la llista <code class="varname">sys.argv</code> conté
+		els arguments de la línia de comandes.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="command-line-arguments"></a>Arguments de la línia de comandes</h3></div></div></div><div class="example"><a id="id308264"></a><p class="title"><b>Example 14.1. Ús de sys.argv</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: cat.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">sys</span>
+
+<span class="py-statement">def</span> <span class="py-identifier">readfile</span>(filename):
+	<span class="py-string">'''Escriu un fitxer per la sortida estàndard.'''</span>
+	f = <span class="py-builtin">file</span>(filename)
+	<span class="py-statement">while</span> <span class="py-builtin">True</span>:
+		line = f.readline()
+		<span class="py-statement">if</span> <span class="py-builtin">len</span>(line) == <span class="py-number">0</span>:
+			<span class="py-statement">break</span>
+		<span class="py-statement">print</span> line, <span class="py-comment"># atenció a la coma</span>
+	f.close()
+
+<span class="py-comment"># El programa comença aquí</span>
+<span class="py-statement">if</span> <span class="py-builtin">len</span>(<span class="py-builtin">sys</span>.argv) &lt; <span class="py-number">2</span>:
+	<span class="py-statement">print</span> <span class="py-string">'No action specified.'</span>
+	<span class="py-builtin">sys</span>.exit()
+
+<span class="py-statement">if</span> <span class="py-builtin">sys</span>.argv[<span class="py-number">1</span>].startswith(<span class="py-string">'--'</span>):
+	option = <span class="py-builtin">sys</span>.argv[<span class="py-number">1</span>][<span class="py-number">2</span>:]
+	<span class="py-comment"># elimina els primers dos caràcters de sys.argv[1]</span>
+	<span class="py-statement">if</span> option == <span class="py-string">'version'</span>:
+		<span class="py-statement">print</span> <span class="py-string">'Version 1.2'</span>
+	<span class="py-statement">elif</span> option == <span class="py-string">'help'</span>:
+		<span class="py-statement">print</span> <span class="py-string">'''\
+This program prints files to the standard output.
+Any number of files can be specified.
+Options include:
+  --version : Prints the version number
+  --help    : Display this help'''</span>
+	<span class="py-statement">else</span>:
+		<span class="py-statement">print</span> <span class="py-string">'Unknown option.'</span>
+	<span class="py-builtin">sys</span>.exit()
+<span class="py-statement">else</span>:
+	<span class="py-statement">for</span> filename <span class="py-statement">in</span> <span class="py-builtin">sys</span>.argv[<span class="py-number">1</span>:]:
+		readfile(filename)
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id308276"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python cat.py
+No action specified.
+
+$ python cat.py --help
+This program prints files to the standard output.
+Any number of files can be specified.
+Options include:
+  --version : Prints the version number
+  --help    : Display this help
+
+$ python cat.py --version
+Version 1.2
+
+$ python cat.py --nonsense
+Unknown option.
+
+$ python cat.py poem.txt
+Programming is fun
+When the work is done
+if you wanna make your work also fun:
+        use Python!
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id308303"></a>Com funciona</h4></div></div></div><p>
+				
+				El programa emula la comanda <span><strong class="command">cat</strong></span> tan coneguda 
+				pels usuaris de Linux/Unix.
+				Simplement cal especificar els noms dels fitxers de text i el 
+				programa mostrarà el seu contingut per la sortida estàndard.
+				
+				</p><p>
+				
+				Quan s'executa un programa Python en mode no interactiu, sempre
+				hi ha un element com a mínim a la llista 
+				<code class="varname">sys.argv</code>. Es tracta del nom del programa en
+				execució i està disponible a <code class="literal">sys.argv[0]</code> 
+				(recordem que Python comença a comptar a partir del 0).
+				La resta dels arguments apareixen a continuació d'aquest.
+				
+				</p><p>
+				
+				Per a fer el programa més amigable, he afegir certes opcions que
+				permeten a l'usuari obtenir més informació respecte al programa.
+				Aquestes opcions poden estar especificades al primer argument.
+				Si ens indiquen l'opció <code class="literal">--version</code>, el programa
+				mostra el número de la versió del programa. En cas de que l'usuari
+				especifiqui l'opció <code class="literal">--help</code>, el programa mostra
+				una petita explicació del seu funcionament. Fem servir la funció
+				<code class="function">sys.exit</code> per a finalitzar l'execució del 
+				programa. Com sempre, podem trobar tots els detalls a 
+				<code class="literal">help(sys.exit)</code>.
+				
+				</p><p>
+				
+				Quan no s'especifica cap opció, i hi ha noms de fitxer a la línia
+				de comandes, el programa simplement escriu totes les línies de 
+				cada fitxer en l'ordre especificat a la línia de comandes.
+				
+				</p><p>
+				
+				Per cert, el nom de la comanda <span><strong class="command">cat</strong></span> és una 
+				abreviació de <span class="emphasis"><em>concatenate</em></span> (concatenació)
+				que és bàsicament el que el programa fa: mostra el contingut
+				d'un fitxer o concatena dos o més fitxers junts a la sortida.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="more-sys"></a>Més de sys</h3></div></div></div><p>
+			
+			La cadena <code class="varname">sys.version</code> ens ofereix informació
+			respecte la versió que tenim instal·lada de Python.
+			La tupla <code class="varname">sys.version_info</code> ens ofereix
+			una manera fàcil de tractar les parts dels nostres programes
+			que són específiques per una determinada versió de Python.
+			
+			</p><pre class="screen">
+			
+[swaroop@localhost code]$ python
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.version
+'2.3.4 (#1, Oct 26 2004, 16:42:40) \n[GCC 3.4.2 20041017 (Red Hat 3.4.2-6.fc3)]'
+&gt;&gt;&gt; sys.version_info
+(2, 3, 4, 'final', 0)
+			
+			</pre><p>
+			
+			Per als programadors experimentats, el mòdul <code class="literal">sys</code>
+			inclou altres elements interessants, com ara 
+			<code class="varname">sys.stdin</code>, <code class="varname">sys.stdout</code> i
+			<code class="varname">sys.stderr</code> que es corresponen amb l'entrada
+			estàndard, la sortida estàndard i la sortida estàndard d'error 
+			respectivament.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch14.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch14.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch14s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 14. La biblioteca estàndard de Python </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> El mòdul os</td></tr></table></div></body></html>

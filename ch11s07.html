@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Herència</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch11.html" title="Chapter 11. Programació orientada a objectes" /><link rel="prev" href="ch11s06.html" title="Classes i variables d'objecte" /><link rel="next" href="ch11s08.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Herència</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s06.html">Prev</a> </td><th width="60%" align="center">Chapter 11. Programació orientada a objectes</th><td width="20%" align="right"> <a accesskey="n" href="ch11s08.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="inheritance"></a>Herència</h2></div></div></div><p>
+		
+		Un dels principals avantatges de la programació orientada a objectes és la
+		<span class="bold"><strong>reutilització</strong></span> de codi. I una de les maneres
+		en que es pot aconseguir és mitjançant el mecanisme d'<span class="emphasis"><em>herència</em></span>. 
+		Una manera clara d'entendre l'herència és veure-la com la implementació
+		de la relació entre tipus i subtipus entre classes.
+		
+		</p><p>
+		
+		Suposem que volem escriure un programa que ha de guardar informació dels
+		professors i alumnes d'una escola.
+		Tant els professors com els alumnes comparteixen característiques en comú
+		com ara el nom, l'edat i l'adreça.
+		Per altra banda, també tenen característiques específiques. Per exemple, els
+		professors tenen un sou i	imparteixen unes classes, mentre que els alumnes 
+		tenen notes.
+		
+		</p><p>
+		
+		Podríem crear dues classes independents per cadascun dels dos tipus. Això 
+		implicaria que afegir una nova característica comú requeriria fer-ho amb
+		totes dues classes. A mida que els problemes es fan més complexos, això 
+		es torna immanejable.
+		
+		</p><p>
+		
+		Es podria fer millor creant una classe comuna anomenada <code class="classname">Persona</code>
+		i fer que després les classes professor i estudiant <span class="emphasis"><em>heretin</em></span>
+		d'aquesta classe. És a dir, les segones passarien a ser subtipus de la primera.
+		Així, només caldria afegir les característiques particulars dels subtipus.
+		
+		</p><p>
+		
+		La classe <code class="classname">Persona</code> en aquest context seria la 
+		<span class="emphasis"><em>classe base</em></span> o també <span class="emphasis"><em>superclasse</em></span>. 
+		Les classes <code class="classname">Professor</code> i <code class="classname">Alumne</code>
+		serien <span class="emphasis"><em>classes derivades</em></span> o <span class="emphasis"><em>subclasses</em></span>.
+		
+		</p><p>
+		
+		Hi ha molts avantatges amb aquesta darrera aproximació. Si canviem o afegim 
+		funcionalitats a la classe <code class="classname">Persona</code>, automàticament
+		aquests canvis es reflecteixen en els seus subtipus. Per exemple, podríem afegir
+		un nou camp per guardar el número d'identificació escolar tant per professors
+		com per alumnes. Només caldria afegir-lo a la classe Persona.
+		Per altra banda, els canvis que fem a un dels subtipus no afecten a la resta
+		dels subtipus.
+		Un altre avantatge és que podem referir-nos als objectes de professors i 
+		d'estudiants com a objectes de persona, cosa que ens pot ser útil en algunes
+		situacions com ara per a comptar el nombre de persones que hi ha a l'escola.
+		Això es coneix com a <span class="bold"><strong>polimorfisme</strong></span>, i es 
+		produeix quan una subclasse pot ser substituïda a qualsevol situació on s'esperi
+		la superclasse. És a dir, l'objecte pot ser tractat com
+		si fos una instància de la superclasse.
+			
+		</p><p>
+		
+		Veiem també que <span class="emphasis"><em>reusem</em></span> el codi de la superclasse, i que 
+		no ens cal repetir-ho a cada subclasse, a diferència del que hagués passat
+		si ho haguéssim resolt amb classes independents.
+		
+		</p><p>
+		
+		Veiem com funciona tot plegat amb un exemple.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-inheritance"></a>Ús de l'herència</h3></div></div></div><div class="example"><a id="id304743"></a><p class="title"><b>Example 11.5. Ús de l'herència</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: inherit.py</span>
+
+<span class="py-statement">class</span> <span class="py-identifier">Persona</span>:
+	<span class="py-string">'''Representa qualsevol membre de l'escola.'''</span>
+	<span class="py-statement">def</span> <span class="py-identifier">__init__</span>(<span class="py-builtin">self</span>, nom, edat):
+		<span class="py-builtin">self</span>.nom = nom
+		<span class="py-builtin">self</span>.edat = edat
+		<span class="py-statement">print</span> <span class="py-string">'(Inicialitzada la Persona: %s)'</span> % <span class="py-builtin">self</span>.nom
+	
+	<span class="py-statement">def</span> <span class="py-identifier">tell</span>(<span class="py-builtin">self</span>):
+		<span class="py-string">'''Mostra els detalls.'''</span>
+		<span class="py-statement">print</span> <span class="py-string">'Nom:"%s" Edat:"%s"'</span> % (<span class="py-builtin">self</span>.nom, <span class="py-builtin">self</span>.edat),
+
+<span class="py-statement">class</span> <span class="py-identifier">Professor</span>(Persona):
+	<span class="py-string">''' Representa un professor.'''</span>
+	<span class="py-statement">def</span> <span class="py-identifier">__init__</span>(<span class="py-builtin">self</span>, nom, edat, sou):
+		Persona.__init__(<span class="py-builtin">self</span>, nom, edat)
+		<span class="py-builtin">self</span>.sou = sou
+		<span class="py-statement">print</span> <span class="py-string">'(Inicialitzat el Professor: %s)'</span> % <span class="py-builtin">self</span>.nom
+
+	<span class="py-statement">def</span> <span class="py-identifier">tell</span>(<span class="py-builtin">self</span>):
+		Persona.tell(<span class="py-builtin">self</span>)
+		<span class="py-statement">print</span> <span class="py-string">'Sou: "%d"'</span> % <span class="py-builtin">self</span>.sou
+
+<span class="py-statement">class</span> <span class="py-identifier">Alumne</span>(Persona):
+	<span class="py-string">'''Representa un alumne.'''</span>
+	<span class="py-statement">def</span> <span class="py-identifier">__init__</span>(<span class="py-builtin">self</span>, nom, edat, notes):
+		Persona.__init__(<span class="py-builtin">self</span>, nom, edat)
+		<span class="py-builtin">self</span>.notes = notes
+		<span class="py-statement">print</span> <span class="py-string">"(Inicialitzat l'Alumne: %s)"</span> % <span class="py-builtin">self</span>.nom
+	
+	<span class="py-statement">def</span> <span class="py-identifier">tell</span>(<span class="py-builtin">self</span>):
+		Persona.tell(<span class="py-builtin">self</span>)
+		<span class="py-statement">print</span> <span class="py-string">'Notes: "%d"'</span> % <span class="py-builtin">self</span>.notes
+
+t = Professor(<span class="py-string">'Mrs. Shrividya'</span>, <span class="py-number">40</span>, <span class="py-number">30000</span>)
+s = Alumne(<span class="py-string">'Swaroop'</span>, <span class="py-number">22</span>, <span class="py-number">75</span>)
+
+<span class="py-comment"># escriu una línia en blanc</span>
+<span class="py-statement">print</span> 
+
+membres = [t, s]
+<span class="py-statement">for</span> membre <span class="py-statement">in</span> membres:
+	membre.tell() <span class="py-comment"># funciona tant per professors com per estudiants</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id304756"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python inherit.py
+Inicialitzada la Persona: Mrs. Shrividya)
+(Inicialitzat el Professor: Mrs. Shrividya)
+(Inicialitzada la Persona: Swaroop)
+(Inicialitzat l'Alumne: Swaroop)
+
+Nom:"Mrs. Shrividya" Edat:"40" Sou: "30000"
+Nom:"Swaroop" Edat:"22" Notes: "75"
+
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id304787"></a>Com funciona</h4></div></div></div><p>
+				
+				Especifiquem els noms de les superclasses amb una tupla a continuació
+				del nom de la classe a la definició d'aquesta.
+				A continuació cridem explícitament el mètode <code class="methodname">__init__</code> 
+				de la superclasse fent servir la variable <code class="varname">self</code>. D'aquesta
+				manera inicitalitzem la part de l'objecte corresponent a la superclasse.
+				És molt important recordar que Python no crida automàticament el constructor
+				de la superclasse. Cal fer-ho explícitament.
+				
+				</p><p>
+				
+				Podem veure també que podem cridar els mètodes de la superclasse
+				prefixant-los amb el nom d'aquesta, i passant-li
+				la variable <code class="varname">self</code> amb la resta dels arguments.
+				
+				</p><p>
+				
+				Podem tractar les instàncies de les classes
+				<code class="classname">Professor</code> i <code class="classname">Alumne</code> com
+				si fossin instàncies de la classe <code class="classname">Persona</code>.
+				Per exemple, quan fem servir el mètode <code class="methodname">tell</code>
+				de la classe <code class="classname">Persona</code>.				
+				
+				</p><p>
+				
+				Finalment observem que el mètode <code class="methodname">tell</code> que es crida
+				és el de les subclasses i no el de la classe <code class="classname">Persona</code>. 
+				Python <span class="emphasis"><em>sempre</em></span> comença a cercar els mètodes a la classe.
+				Si no pot trobar el mètode a la classe, llavors comença a mirar als mètodes
+				pertanyents a les superclasses en l'ordre especificat per la tupla de la 
+				definició de la classe.
+				
+				</p><p>
+				
+				Una nota sobre terminologia - si apareix més d'una classe a la tupla d'herència,
+				es diu que hi ha <span class="emphasis"><em>herència múltiple</em></span>.
+								
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Classes i variables d'objecte </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

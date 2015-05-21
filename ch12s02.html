@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Pickle</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch12.html" title="Chapter 12. Entrada/Sortida" /><link rel="prev" href="ch12.html" title="Chapter 12. Entrada/Sortida" /><link rel="next" href="ch12s03.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Pickle</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch12.html">Prev</a> </td><th width="60%" align="center">Chapter 12. Entrada/Sortida</th><td width="20%" align="right"> <a accesskey="n" href="ch12s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="pickle"></a>Pickle</h2></div></div></div><p>
+		
+		Python ens proporciona un mòdul estàndard anomenat <code class="literal">pickle</code>
+		que ens permet emmagatzemar <span class="bold"><strong>qualsevol</strong></span> 
+		objecte Python en un fitxer i recuperar-ho posteriorment. Es diu que l'objecte
+		es guarda <span class="emphasis"><em>persistentment</em></span>.
+		
+		</p><p>
+		
+		Hi ha un altre mòdul anomenat <code class="literal">cPickle</code>, amb el mateix
+		funcionament de <code class="literal">pickle</code> però escrit en llenguatge C de 
+		manera que funciona més de 100 cops més ràpid.
+		Malgrat podem fer servir qualsevol dels dos mòduls, aquí usarem el 
+		<code class="literal">cPickle</code>. Per simplicitat ens referirem a tots dos mòduls 
+		com <code class="literal">pickle</code>.
+		
+		</p><p>
+		
+		La paraula <code class="literal">pickle</code> dóna una idea de 
+		<span class="emphasis"><em>conserva</em></span> dins de l'idioma anglès. En aquest text 
+		mantindrem el mot original per evitar confusions.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="pickling-and-unpickling"></a>Pickling i Unpickling</h3></div></div></div><div class="example"><a id="id306390"></a><p class="title"><b>Example 12.2. Pickling i Unpickling</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: pickling.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">cPickle</span> as p
+<span class="py-comment">#import pickle as p</span>
+
+shoplistfile = <span class="py-string">'shoplist.data'</span> <span class="py-comment"># el nom del fitxer on guardarem l'objecte</span>
+
+shoplist = [<span class="py-string">'apple'</span>, <span class="py-string">'mango'</span>, <span class="py-string">'carrot'</span>]
+
+<span class="py-comment"># Escrivim al fitxer</span>
+f = <span class="py-builtin">file</span>(shoplistfile, <span class="py-string">'w'</span>)
+p.dump(shoplist, f) <span class="py-comment"># bolquem l'objecte al fitxer</span>
+f.close()
+
+<span class="py-statement">del</span> shoplist <span class="py-comment"># eliminem shoplist</span>
+
+<span class="py-comment"># Tornem a llegir l'objecte emmagatzemat</span>
+f = <span class="py-builtin">file</span>(shoplistfile)
+storedlist = p.load(f)
+<span class="py-statement">print</span> storedlist
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id306402"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python pickling.py
+['apple', 'mango', 'carrot']
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id306424"></a>Com funciona</h4></div></div></div><p>
+				
+				En primer lloc notem l'ús de la sintaxi <code class="literal">import..as</code> 
+				per a canviar el nom del mòdul. És quelcom útil per a fer a referir-nos
+				al mòdul amb un nom més curt, però també, com passa en aquest cas, per
+				a permetre'ns que la resta del codi faci servir indiferentment qualsevol
+				dels dos mòduls (<code class="literal">cPickle</code> o <code class="literal">pickle</code>)
+				simplement canviant el comentari. Així, a la resta del programa 
+				simplement ens referim al mòdul amb <code class="varname">p</code>.
+				
+				</p><p>
+				
+				Per a guardar l'objecte al fitxer, primer obrim el fitxer en mode 
+				escriptura. A continuació escrivim l'objecte amb la funció 
+				<code class="function">dump</code> del mòdul <code class="literal">pickle</code>. 
+				D'aquest procés en diem <span class="emphasis"><em>pickling</em></span>.
+				
+				</p><p>
+				
+				A continuació recuperem l'objecte fent servir la funció 
+				<code class="function">load</code> del mòdul <code class="literal">pickle</code>. D'aquest
+				procés en diem <span class="emphasis"><em>unpickling</em></span>.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch12.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch12.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch12s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 12. Entrada/Sortida </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

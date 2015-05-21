@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Aixecant excepcions</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch13.html" title="Chapter 13. Excepcions" /><link rel="prev" href="ch13s02.html" title="Try..Except" /><link rel="next" href="ch13s04.html" title="Try..Finally" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Aixecant excepcions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch13s02.html">Prev</a> </td><th width="60%" align="center">Chapter 13. Excepcions</th><td width="20%" align="right"> <a accesskey="n" href="ch13s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="raising-exceptions"></a>Aixecant excepcions</h2></div></div></div><p>
+		
+		Podem <span class="emphasis"><em>aixecar</em></span> excepcions fent servir la sentència
+		<code class="literal">raise</code>. Cal especificar el nom de l'error o excepció i
+		la instància de l'excepció que ha de ser <span class="emphasis"><em>llençada</em></span>.
+		Aquests errors o excepcions han de ser derivats directament o indirecta 
+		de la classe <code class="classname">Error</code> o de 
+		<code class="classname">Exception</code> respectivament.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="how-to-raise-exceptions"></a>Com aixecar excepcions</h3></div></div></div><div class="example"><a id="id307334"></a><p class="title"><b>Example 13.2. Com aixecar excepcions</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: raising.py</span>
+
+<span class="py-statement">class</span> <span class="py-identifier">ShortInputException</span>(Exception):
+	<span class="py-string">'''Una classe d'excepció definida per l'usuari.'''</span>
+	<span class="py-statement">def</span> <span class="py-identifier">__init__</span>(<span class="py-builtin">self</span>, length, atleast):
+		Exception.__init__(<span class="py-builtin">self</span>)
+		<span class="py-builtin">self</span>.length = length
+		<span class="py-builtin">self</span>.atleast = atleast
+
+<span class="py-statement">try</span>:
+	s = <span class="py-builtin">raw_input</span>(<span class="py-string">'Enter something --&gt; '</span>)
+	<span class="py-statement">if</span> <span class="py-builtin">len</span>(s) &lt; <span class="py-number">3</span>:
+		raise ShortInputException(<span class="py-builtin">len</span>(s), <span class="py-number">3</span>)
+	<span class="py-comment"># La resta del programa continua com sempre a partir d'aquí</span>
+<span class="py-statement">except</span> EOFError:
+	<span class="py-statement">print</span> <span class="py-string">'\nWhy did you do an EOF on me?'</span>
+<span class="py-statement">except</span> ShortInputException, x:
+	<span class="py-statement">print</span> <span class="py-string">'ShortInputException: The input was of length %d, \
+		was expecting at least %d'</span> % (x.length, x.atleast)
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'No exception was raised.'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id307347"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python raising.py
+Enter something --&gt;
+Why did you do an EOF on me?
+
+$ python raising.py
+Enter something --&gt; ab
+ShortInputException: The input was of length 2, was expecting at least 3
+
+$ python raising.py
+Enter something --&gt; abc
+No exception was raised.
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id307370"></a>Com funciona</h4></div></div></div><p>
+				
+				L'exemple crea una classe d'excepció tot i que podríem haver fet
+				servir qualsevol de les predefinides. La nova classe d'excepció
+				és <code class="classname">ShortInputException</code>. Disposa de dos
+				camps - <code class="varname">length</code> que guarda la longitud de 
+				l'entrada, i <code class="varname">atleast</code> que indica la longitud
+				mínima que esperava el programa.
+				
+				</p><p>
+				
+				A la clàusula <code class="literal">except</code>, mencionem la classe
+				d'error i la variable que emmagatzemarà la correspondent 
+				instància d'error o excepció d'una manera anàloga als arguments 
+				d'una crida a una funció. 
+				Amb la clàusula <code class="literal">except</code> fem servir els camps
+				<code class="varname">length</code> i <code class="varname">atleast</code> per a 
+				mostrar un missatge adequat a l'usuari.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch13s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch13.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch13s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Try..Except </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Try..Finally</td></tr></table></div></body></html>

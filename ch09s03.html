@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Tuples</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch09.html" title="Chapter 9. Estructures de dades" /><link rel="prev" href="ch09s02.html" title="Llistes" /><link rel="next" href="ch09s04.html" title="Diccionari" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Tuples</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09s02.html">Prev</a> </td><th width="60%" align="center">Chapter 9. Estructures de dades</th><td width="20%" align="right"> <a accesskey="n" href="ch09s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="tuple"></a>Tuples</h2></div></div></div><p>
+		
+		Les tuples són com les llistes, excepte que les primeres són <span class="bold"><strong>immutable</strong></span>
+		com els strings. Per tant, les tuples no poden ser modificades.
+		Les tuples es defineixen com les llistes, però fent servir parèntesis. Les tuples es fan servir quan es 
+		requereix que la col·lecció de valors no pugui canviar.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id298612"></a>Ús de les tuples</h3></div></div></div><div class="example"><a id="id298617"></a><p class="title"><b>Example 9.2. Ús de les tuples</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: using_tuple.py</span>
+
+zoo = (<span class="py-string">'wolf'</span>, <span class="py-string">'elephant'</span>, <span class="py-string">'penguin'</span>)
+<span class="py-statement">print</span> <span class="py-string">'Number of animals in the zoo is'</span>, <span class="py-builtin">len</span>(zoo)
+
+new_zoo = (<span class="py-string">'monkey'</span>, <span class="py-string">'dolphin'</span>, zoo)
+<span class="py-statement">print</span> <span class="py-string">'Number of animals in the new zoo is'</span>, <span class="py-builtin">len</span>(new_zoo)
+<span class="py-statement">print</span> <span class="py-string">'All animals in new zoo are'</span>, new_zoo
+<span class="py-statement">print</span> <span class="py-string">'Animals brought from old zoo are'</span>, new_zoo[<span class="py-number">2</span>]
+<span class="py-statement">print</span> <span class="py-string">'Last animal brought from old zoo is'</span>, new_zoo[<span class="py-number">2</span>][<span class="py-number">2</span>]
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id298630"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python using_tuple.py
+Number of animals in the zoo is 3
+Number of animals in the new zoo is 3
+All animals in new zoo are ('monkey', 'dolphin', ('wolf', 'elephant', 'penguin'))
+Animals brought from old zoo are ('wolf', 'elephant', 'penguin')
+Last animal brought from old zoo is penguin
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id298649"></a>Com funciona</h4></div></div></div><p>
+				
+				La variable <code class="varname">zoo</code> fa referència a una tupla d'elements.
+				Hem vist que la funció <code class="function">len</code> ens retorna la longitud de la tupla.
+				Això també és indica que les tuples són també <a href="ch09s05.html" title="Seqüències">seqüències</a>.
+				
+				</p><p>
+				
+				Ara passem els animals a un nou zoo ja que l'antic està tancat. Per tant, la tupla
+				<code class="varname">new_zoo</code> passa a contenir els animals que hi havia a l'antic zoo (agrupats en
+				una tupla) més uns quants de nous. Tornant a la realitat, podem veure que una tupla dins d'una 
+				altra no perd la seva identitat.
+								
+				</p><p>
+				
+				Podem accedir als elements de la tupla especificant la seva posició entre claudàtors (com fèiem amb les llistes) amb el que s'anomena operador d'<span class="emphasis"><em>indexació</em></span>.
+				Accedim al tercer element de <code class="varname">new_zoo</code> especificant <code class="literal">new_zoo[2]</code>
+				i accedim al tercer element d'aquest tercer element (recordem que 
+				és una tupla) amb <code class="literal">new_zoo[2][2]</code>. 
+				Tot plegat ens resultarà molt senzill un cop estiguem còmodes amb la notació.
+				
+				</p><p><b>Tuples amb 0 o 1 elements. </b>
+					
+					Una tupla buida es construeix amb un parell de parentésis sense elements. 
+					Considerem com a exemple <code class="literal">myempty = ()</code>.
+					En canvi, no és tan senzill construir una tupla amb un sol element. 
+					Cal especificar-la fent servir una coma a continuació del element, i un parell de
+					parèntesis envoltant l'objecte. Per exemple, definirem 
+					<code class="literal">singleton = (2 , )</code> per a obtenir una tupla que contingui únicament
+					l'element <code class="literal">2</code>.					
+					
+					</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de Perl</h3><p>
+					
+					Una llista dins una llista no perd la seva identitat. És a dir, les llistes no són
+					aplanades com passa a Perl. El mateix passa amb les tuples, o amb les tuples dins de
+					llistes, o amb llistes dins de tuples, etc. Pel que fa a Python, només són objectes
+					emmagatzemats dins d'objectes.					
+					
+					</p></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="tuple-print"></a>Tuples i la instrucció print</h3></div></div></div><p>
+			
+			Les tuples es fan servir sovint juntament amb la instrucció print. Considerem l'exemple:
+			
+			</p><div class="example"><a id="id298796"></a><p class="title"><b>Example 9.3. Sortida fent servir tuples</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: print_tuple.py</span>
+
+age = <span class="py-number">22</span>
+name = <span class="py-string">'Swaroop'</span>
+
+<span class="py-statement">print</span> <span class="py-string">'%s is %d years old'</span> % (name, age)
+<span class="py-statement">print</span> <span class="py-string">'Why is %s playing with that python?'</span> % name
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id298813"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python print_tuple.py
+Swaroop is 22 years old
+Why is Swaroop playing with that python?
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id298828"></a>Com funciona</h4></div></div></div><p>
+				
+				La instrucció <code class="literal">print</code> pot rebre una especificació en forma
+				de cadena seguida del símbol <code class="literal">%</code> i una tupla d'elements 
+				corresponents a l'especificació. Les especificacions es fan servir per a 
+				donar un cert format a la sortida. Exemples d'especificacions són 
+				<code class="literal">%s</code> per a strings i <code class="literal">%d</code> per a enters.
+				La tupla contindrà els elements corresponents a aquestes especificacions en el
+				mateix ordre en que apareixen al string.
+			
+				</p><p>
+				
+				Observem el primer ús: el primer literal <code class="literal">%s</code> correspon al primer 
+				element de la tupla (la variable <code class="varname">name</code>). De la mateixa manera, el segon element especificat és un enter (<code class="literal">%d</code>) i es correspon amb
+				el segon element de la tupla (<code class="varname">age</code>)
+				
+				</p><p>
+
+				El funcionament és el següent: primer es converteixen tots els elements de la tupla
+				en strings, i a continuació es substitueix el valor de cada string en el lloc corresponent
+				de l'especificació. Al primer <code class="literal">print</code> de l'exemple, per tant, <code class="literal">%s</code> es substitueix
+				pel valor de la variable <code class="varname">name</code>, i <code class="literal">%s</code> pel valor de <code class="varname">age</code>.
+				
+				</p><p>
+				
+				L'ús de la instrucció <code class="literal">print</code> simplifica molt l'escriptura, i 
+				evita moltes manipulacions de strings per a aconseguir el mateix. També ens estalvia
+				les comes que havíem fet servir fins ara.
+				
+				</p><p>
+				
+				Generalment podem simplement fer servir l'especificació <code class="literal">%s</code> i
+				deixar que Python se n'encarregui de la resta. Funciona fins i tot amb números.
+				En tot cas és possible que vulguem definir amb més precisió l'especificació 
+				correcta ja que això afegeix un nivell més de comprovació de la correcció del programa.
+				
+				</p><p>
+				
+				A la segona instrucció <code class="literal">print</code> fem servir una única especificació
+				seguida del símbol <code class="literal">%</code> i completada amb un únic element. Fixem-nos que no hi ha 
+				de parèntesi. Això només funciona quan hi ha un únic element especificat.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch09.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Llistes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Diccionari</td></tr></table></div></body></html>

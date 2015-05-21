@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Classes</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch11.html" title="Chapter 11. Programació orientada a objectes" /><link rel="prev" href="ch11s02.html" title="El paràmetre self" /><link rel="next" href="ch11s04.html" title="Mètodes dels objectes" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Classes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch11s02.html">Prev</a> </td><th width="60%" align="center">Chapter 11. Programació orientada a objectes</th><td width="20%" align="right"> <a accesskey="n" href="ch11s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="classes"></a>Classes</h2></div></div></div><p>
+		
+		La classe més simple possible es mostra al següent exemple:
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="creating-class"></a>Creació d'una classe</h3></div></div></div><div class="example"><a id="id303945"></a><p class="title"><b>Example 11.1. Creació d'una classe</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: simplestclass.py</span>
+
+<span class="py-statement">class</span> <span class="py-identifier">Person</span>:
+	<span class="py-statement">pass</span> <span class="py-comment"># Un bloc buit</span>
+
+p = Person()
+<span class="py-statement">print</span> p
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id303961"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python simplestclass.py
+&lt;__main__.Person instance at 0xf6fcb18c&gt;
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id303975"></a>Com funciona</h4></div></div></div><p>
+				
+				Creem una nova classe amb la paraula clau <code class="literal">class</code>
+				seguida del nom de la classe. A continuació apareix un bloc indentat
+				de sentències que formen el cos de la classe. En aquest cas, tenim
+				un bloc buit que s'indica amb la sentència <code class="literal">pass</code>.
+				
+				</p><p>
+				
+				A continuació creem un objecte o instància d'aquesta classe fent servir
+				el nom de la classe seguit per un parell de parèntesis. Veurem més 
+				detalls sobre <a href="ch11s05.html" title="El mètode __init__">instanciació</a>
+				a la següent secció.
+				Com a verificació, confirmem el tipus de variable simplement escrivint-la.
+				El resultat ens indica que disposem d'una instància de la classe 
+				<code class="classname">Person</code> al mòdul <code class="literal">__main__</code>.
+				
+				</p><p>
+				
+				Fixem-nos que també es mostra l'adreça de memòria on està emmagatzemat 
+				el nostre objecte. Aquesta adreça pot ser diferent a cada execució ja que
+				Python guardarà l'objecte allà on trobi espai.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch11s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch11.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch11s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">El paràmetre self </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Mètodes dels objectes</td></tr></table></div></body></html>

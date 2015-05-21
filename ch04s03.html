@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Strings o cadenes de caràcters</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch04.html" title="Chapter 4. Conceptes bàsics" /><link rel="prev" href="ch04s02.html" title="Números" /><link rel="next" href="ch04s04.html" title="Variables" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Strings o cadenes de caràcters</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Conceptes bàsics</th><td width="20%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="strings"></a>Strings o cadenes de caràcters</h2></div></div></div><p>
+		
+		Una cadena de caràcters o <span class="emphasis"><em>string</em></span> és una seqüència
+		de <span class="emphasis"><em>characters</em></span> que sovint representa una llista
+		de paraules.
+		
+		</p><p>
+		
+		Farem servir servir strings a pràcticament tots els programes que 
+		desenvolupem en Python. Així que parem atenció a la següent part que 
+		explica l'ús dels strings en Python.
+		
+		</p><div class="itemizedlist"><ul type="disc"><li><h5><a id="id285847"></a>Ús de les cometes simples 
+				(<code class="literal">'</code>)</h5><p>
+				
+				Podem especificar strings fent servir cometes simples com ara 
+				<code class="literal">'aquest string amb cometes simples'</code>. 
+				Tots els espais en blanc (és a dir, els espais i tabuladors) 
+				queden preservats tal i com apareixen.
+				
+				</p></li><li><h5><a id="id285874"></a>Ús de les cometes dobles 
+				(<code class="literal">"</code>)</h5><p>
+				
+				Els strings entre cometes dobles funcionen exactament igual que 
+				si estiguessin entre cometes simples. Per 
+				exemple <code class="literal">"aquest string amb cometes dobles"</code>.
+				
+				</p></li><li><h5><a id="id285900"></a>Ús de les cometes triples
+				(<code class="literal">'''</code> or <code class="literal">"""</code>)
+				</h5><p>
+				
+				Podem especificar strings de més d'una línia fent servir triple 
+				cometes. Podem fer servir tant les cometes simples com les 
+				dobles per fer les tres cometes. Per exemple:
+				
+				</p><pre class="programlisting">
+				
+<span class="py-string">'''Aquest és un string multilínia. Aquesta és la primera línia.
+   Mentre que aquesta és la segona.
+   La tercera línia d'aquest exemple comença amb "La tercera línia" i acaba amb 'amb'
+'''</span>
+				
+				</pre></li><li><h5><a id="id285937"></a>Seqüències d'escapament</h5><p>
+				
+				Suposem que volem disposar d'un string que contingui una cometa 
+				simple (<code class="literal">'</code>). Com el podem escriure? Per 
+				exemple, si la cadena és 
+				<code class="literal">L'Autor d'aquest llibre?</code> No podem 
+				escriure-la com <code class="literal">'L'Autor d'aquest llibre'</code> 
+				perquè Python no pot saber on comença i on acaba el string. 
+				Haurem d'indicar-li que els apòstrofs interns no indiquen el 
+				final de la cadena. Això es pot fer fent servir les 
+				<span class="emphasis"><em>seqüències d'escapament</em></span>. Especificarem una 
+				cometa simple amb <code class="literal">\'</code>. Noteu la barra invertida. 
+				Ara podem escriure la cadena com 
+				<code class="literal">'L\'Autor d\'aquest llibre'</code>
+								
+				</p><p>
+
+				Una altra manera d'escriure la mateixa cadena seria, és clar, 
+				<code class="literal">"L'Autor d'aquest llibre"</code>. És a dir, fent 
+				servir les cometes dobles. De la mateixa manera, podem fer 
+				servir seqüències d'escapament per usar les cometes dobles dins 
+				d'un string entre cometes dobles (<code class="literal">\"</code>). Fins i
+				tot podem escriure la barra invertida fent servir 
+				<code class="literal">\\</code>.
+				
+				</p><p>
+				
+				I si volem escriure un string de dues línies? Una manera seria 
+				fent servir triple cometes, com hem vist abans. Però també podem 
+				fer servir la seqüència d'escapament <code class="literal">\n</code> que 
+				indica la nova línia.
+				Per exemple, <code class="literal">'primera línia\nsegona línia'</code>. 
+				Una altra seqüència interessant és <code class="literal">\t</code>. Hi ha 
+				moltes més seqüències d'escapament. Aquestes només són algunes 
+				de les més habituals.
+				
+				</p><p>
+				
+				Per cert, una única barra invertida al final de la línia 
+				indica que el string encara 
+				continua a la següent línia, però no s'afegeix cap salt de línia. 
+				Per exemple,
+				
+				</p><pre class="programlisting">
+				
+<span class="py-string">"Aquesta és la primera frase. \
+I aquesta la segona."</span>
+				
+				
+				</pre><p>
+				
+				equival a <code class="literal">"Aquesta és la primera frase. I aquesta la segona."</code>
+				
+				</p></li><li><h5><a id="id286065"></a>Strings sense processar (raw)</h5><p>
+				
+				Si volem especificar cadenes que no siguin processades (per 
+				exemple, que no s'interpretin les seqüències d'escapament, 
+				podem fer servir els strings sense processar 
+				(<span class="emphasis"><em>raw strings</em></span>) afegint el prefix 
+				<code class="literal">r</code> o <code class="literal">R</code> a la cadena. 
+				Per exemple <code class="literal">r"Indiquem una nova línia amb \n"</code>.
+				
+				</p></li><li><h5><a id="id286102"></a>Strings unicode</h5><p>
+				
+				Unicode és la manera estàndard d'escriure text internacional. 
+				Per exemple, ens pot ser útil per escriure els nostres caràcters
+				especials del català o també Hindi o Àrab. Per a indicar que 
+				un string conté unicode cal afegir el prefix <code class="literal">u</code> 
+				o <code class="literal">U</code>.
+				Per exemple <code class="literal">u"Dóna corda al català."</code>.
+								
+				</p><p>
+				
+				Hem de fer servir strings Unicode quan treballem amb fitxers de 
+				text, especialment quan puguin estar escrits en un idioma 
+				diferent a l'anglès.
+				
+				</p></li><li><h5><a id="id286143"></a>Els strings són immutables</h5><p>
+				
+				Això vol dir que, un cop creat un string, no el podem modificar. 
+				Malgrat que això pot semblar una limitació, en realitat no ho és pas.
+				Veurem el perquè als diferents programes que estudiarem més endavant.
+				
+				</p></li><li><h5><a id="id286159"></a>Concatenació de literals de string</h5><p>
+				
+				Si col·loquem dos strings literals un darrera de l'altre, Python
+				els concatena automàticament. Per exemple 
+				<code class="literal">'Com et ' 'dius?'</code> 
+				és automàticament convertit a <code class="literal">"Com et dius?"</code>.
+				
+				</p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de C/C++</h3><p>
+			
+			Python no ofereix el tipus de dades <code class="classname">char</code>. En 
+			realitat no hi ha cap necessitat i estic segur que no el trobareu a 
+			faltar.
+			
+			</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels programadors de Perl/PHP</h3><p>
+
+			Recordeu que els strings entre cometes simples i dobles són equivalents. 
+			Python no els diferencia en res.
+			
+			</p></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels usuaris d'expressions regulars</h3><p>
+			
+			Feu servir sempre strings sense processar amb les expressions regulars. 
+			Altrament, haureu de fer servir un munt de barres invertides. 
+			Per exemple, <code class="literal">'\\1'</code> equival a <code class="literal">r'\1'</code>.
+			
+			</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Números </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Variables</td></tr></table></div></body></html>

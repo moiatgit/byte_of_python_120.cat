@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 16. I ara què?</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="prev" href="ch15s09.html" title="Resum" /><link rel="next" href="ch16s02.html" title="Explora més" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 16. I ara què?</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15s09.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch16s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="what-next"></a>Chapter 16. I ara què?</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch16.html#graphical-software">Programari gràfic</a></span></dt><dd><dl><dt><span class="section"><a href="ch16.html#id310820">Resum d'eines GUI</a></span></dt></dl></dd><dt><span class="section"><a href="ch16s02.html">Explora més</a></span></dt><dt><span class="section"><a href="ch16s03.html">Resum</a></span></dt></dl></div><p>
+	
+	Si heu entès tot aquest llibre fins aquí i heu practicat escrivint un bon grapat de programes,
+	segurament us sentireu força còmodes amb Python.
+	Probablement heu desenvolupat alguns programes en Python per a practicar les vostres habilitats
+	en el llenguatge. Altrament, a què espereu?
+	Ara la pregunta és 'i ara què?'.
+	
+	</p><p>
+	
+	Us recomano que us enfronteu al següent problema: creació d'una <span class="emphasis"><em>agenda</em></span>
+	que funcioni per línia de comandes. L'agenda haurà de permetre afegir, modificar, eliminar
+	o cercar contactes com ara amics, família i companys, i la seva informació com ara adreça de
+	correu o/i telèfon. Els detalls s'han de guardar per futures consultes.
+	
+	</p><p>
+	
+	És un problema força senzill si pensem en termes de tot el que hem vist fins ara. Però, per si 
+	encara no ho veiem clar, aquí va una pista.
+	
+	</p><p><b>Pista. (No hauries d'estar llegint això!). </b>
+		
+		Crea una classe per a representar la informació d'una persona. Fes servir un diccionari
+		per a emmagatzemar les instàncies de persona amb el seu nom com a clau. Fes servir el mòdul
+		cPickle per emmagatzemar els objectes persistentment al disc dur. Fes servir els mètodes
+		del diccionari per a afegir, eliminar i modificar dades de les persones.
+		
+		</p><p>
+	
+	Un cop hem estat capaços de desenvolupar aquesta aplicació podrem dir que som programadors
+	de Python. De seguida envia'm un missatge d'agraïment per aquest magnific llibre ;) . Aquest
+	pas és opcional però desitjable.
+	
+	</p><p>
+	
+	A continuació es llisten algunes maneres de continuar el nostre camí amb el Python.
+	
+	</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="graphical-software"></a>Programari gràfic</h2></div></div></div><p>
+		
+		Biblioteques gràfiques (<span class="bold"><strong>GUI</strong></span>) que fan servir Python - ens calen
+		per crear els nostres programes amb interfície gràfica. D'aquesta manera podrem 
+		crear el nostre propi IrfanView o un Kuickshow o qualsevol altre programa que 
+		requereixi les biblioteques GUI amb vincles (bindings) des de Python.
+		Aquests vincles ens permeten escriure programes amb Python i fer servir les biblioteques
+		que poden estar escrites en C, C++ o altres llenguatges.
+		
+		</p><p>
+
+		Hi ha un munt d'opcions de GUI amb Python:		
+				
+		</p><div class="itemizedlist"><ul type="disc"><li><p><b>PyQt. </b>
+					
+					És el vincle Python pel joc d'eines (toolkit) Qt. Qt és la base sobre la
+					que s'ha desenvolupat KDE. És extremadament fàcil d'usar i molt potent,
+					especialment per la utilitat Qt Designer i la impressionant documentació.
+					PyQt és lliure/gratuït pel desenvolupament de programari sota llicència
+					GPL sobre Linux/Unix, però cal pagar si el programari a desenvolupar
+					és propietari.
+					Trobarem un bon punt per començar a partir de 
+					<a href="http://www.opendocs.org/pyqt/" target="_top">'GUI Programming with
+					Python: Qt Edition'</a>. 
+					Mireu també la 
+					<a href="http://www.riverbankcomputing.co.uk/pyqt/index.php" target="_top">pàgina oficial</a> de PyQt per més detalls.
+					
+					</p></li><li><p><b>PyGTK. </b>
+					
+					Aquest és el vincle pel joc d'eines GTK+, base de GNOME. GTK+ presenta
+					algunes dificultats en començar a usar-lo, però un cop ens familiaritzem
+					podem crear aplicacions amb GUI amb agilitat.
+					És indispensable l'ús del dissenyador d'interfícies gràfiques Glade.
+					A la documentació encara li queda una mica per millorar. GTK+ funciona
+					força bé en Linux però amb Windows encara no està complet.
+					GTK+ ens permet crear tant programari lliure com propietari.
+					Trobarem més detalls a la seva <a href="http://www.pygtk.org/" target="_top">pàgina 
+					principal</a>.
+					
+					</p></li><li><p><b>wxPython. </b>
+					
+					És el vincle de Python per al joc d'eines wxWidgets. 
+					wxPython costa una mica d'entrar. Amb tot, és molt portable i
+					funciona sobre Linux, Windows, Mac i fins i tot plataformes 
+					incrustades (embedded). Hi ha diferents entorns de desenvolupament
+					(IDEs) disponibles per wxPython que inclouen dissenyadors de GUI 
+					com ara <a href="http://spe.pycs.net/" target="_top">SPE (Stani's Python
+					Editor)</a> 
+					i el 
+					<a href="http://wxglade.sourceforge.net/" target="_top">wxGlade</a> GUI
+					builder. 
+					Permet crear indistintament programari lliure i propietari.
+					Trobem més detalls a la seva <a href="http://www.wxpython.org/" target="_top">pàgina
+					oficial</a>.
+					
+					</p></li><li><p><b>TkInter. </b>
+					
+					És un dels més antics. Els que hàgim fet servir l'aplicació
+					<span class="application">IDLE</span>, ja ens hem trobat un programa
+					TkInter en execució.
+					La documentació de TkInter que es troba a  <a href="http://www.pythonware.com/library/tkinter/introduction/index.htm" target="_top">PythonWare.org</a> és entenedora.
+					TkInter és portable i funciona tant sota Linux/Unix com sota Windows. 
+					TkInter forma part de la distribució estàndard de Python.
+										
+					</p></li><li><p>
+				
+				Trobarem més opcions a la pàgina <a href="http://www.python.org/cgi-bin/moinmoin/GuiProgramming" target="_top">GuiProgramming wiki page at Python.org</a>
+				
+				</p></li></ul></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id310820"></a>Resum d'eines GUI</h3></div></div></div><p>
+			
+			Malauradament no hi ha un estàndard d'eina GUI per Python. Us recomano que
+			escolliu una de les anteriors depenent de les vostres circumstàncies.
+			El primer factor a tenir present és si estem disposats a pagar per a fer 
+			servir una eina GUI.
+			El segon factor és si volem que el programa s'executi sota Linux, Windows o ambdós.
+			Finalment, en cas que treballem amb Linux, el tercer factor és si som usuaris
+			de KDE o de GNOME.			
+			
+			</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Futurs capítols</h3><p>
+				
+				Estic planejant escriure un o dos capítols per aques llibre sobre programació
+				amb GUI. 
+				Probablement escolliré wxPython. Si vols presentar la teva opinió al respecte,
+				pots afegir-te a la llista de correu 
+				<a href="http://lists.ibiblio.org/mailman/listinfo/byte-of-python" target="_top">byte-of-python mailing list</a> on els lectors discuteixen amb mi
+				les millores que podem realitzar al llibre.
+				
+				</p></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15s09.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch16s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Resum </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Explora més</td></tr></table></div></body></html>

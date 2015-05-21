@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Llistes</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch09.html" title="Chapter 9. Estructures de dades" /><link rel="prev" href="ch09.html" title="Chapter 9. Estructures de dades" /><link rel="next" href="ch09s03.html" title="Tuples" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Llistes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09.html">Prev</a> </td><th width="60%" align="center">Chapter 9. Estructures de dades</th><td width="20%" align="right"> <a accesskey="n" href="ch09s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="list"></a>Llistes</h2></div></div></div><p>
+		
+		Una <code class="literal">llista</code> és una estructura de dades que conté una col·lecció ordenada d'elements. És a dir, podem emmagatzemar una <span class="emphasis"><em>seqüència</em></span> d'elements a una llista. Pensem en la llista de la compra on tenim aquells productes que hem de comprar. Python ens guardaria la llista de la compra separant els elements amb comes en comtes línia a línia.
+		
+		</p><p>
+		
+		Per què Python entengui que és una llista, hem d'escriure els elements entre claudàtors. Un cop hem creat una llista, hi podem afegir, eliminar o cercar elements. Com que podem afegir i eliminar elements, en diem que la llista és de tipus <span class="emphasis"><em>variable</em></span> , és a dir, que el seu tipus pot variar.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="list-objects-classes"></a>Una introducció ràpida a objectes i classes</h3></div></div></div><p>
+			
+			Malgrat fins ara hem anat deixant la discussió d'objectes i classes, ens trobem que ens cal una petita explicació per a poder entendre millor les llistes. En tot cas, més endavant tractarem aquests conceptes en detall al <a href="ch11.html" title="Chapter 11. Programació orientada a objectes">capítol</a> corresponent.
+			
+			</p><p>
+			
+			Una llista és un exemple d'ús d'objectes i classes. Quan fem servir una variable 
+			<code class="varname">i</code> i li assignem un valor, diguem un <code class="literal">5</code>
+			, podem pensar que estem creant un  <span class="bold"><strong>objecte</strong></span>
+			(instància) <code class="varname">i</code> de la <span class="bold"><strong>classe</strong></span> (tipus)
+			<code class="classname">int</code> (enter). De fet, podem consultar <code class="literal">help(int)</code> 
+			per a entendre-ho millor.
+			
+			</p><p>
+			
+			Les classes poden tenir <span class="bold"><strong>mètodes</strong></span> , 
+			es a dir, funcions definides per ser usades respecte a la seva classe. 
+			Aquestes funcions es poden fer servir únicament mitjançant objectes de la classe.
+			Per exemple, Python ofereix el mètode <code class="function">append</code> per a la classe 
+			<code class="classname">list</code> , què permet afegir un element al final de la llista.
+			Així, <code class="literal">mylist.append('un element')</code> afegirà aquest string a la llista
+			<code class="varname">mylist</code>. Fixem-nos en l'ús del punt per a accedir als mètodes 
+			d'un objecte.
+			
+			</p><p>
+			
+			Les classes també poden tenir <span class="bold"><strong>camps</strong></span> , què no són una altra cosa que variables definides per ser usades amb la seva classe. Podrem fer servir aquestes variables/noms únicament mitjançant un objecte de la classe. Els camps també s'accedeixen amb el punt. Per exemple, <code class="varname">mylist.field</code> .
+			
+			</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-lists"></a>Ús de les llistes</h3></div></div></div><div class="example"><a id="id298395"></a><p class="title"><b>Example 9.1. Ús de les llistes</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># -*- coding: utf-8 -*-</span>
+<span class="py-comment"># Filename: using_list.py</span>
+
+<span class="py-comment"># Aquesta és la meva llista de la compra</span>
+shoplist = [<span class="py-string">'poma'</span>, <span class="py-string">'mango'</span>, <span class="py-string">'pastanaga'</span>, <span class="py-string">'platan'</span>]
+
+<span class="py-statement">print</span> <span class="py-string">'Haig de comprar'</span>, <span class="py-builtin">len</span>(shoplist), <span class="py-string">'coses.'</span>
+
+<span class="py-statement">print</span> <span class="py-string">'El que haig de comprar és:'</span>, <span class="py-comment"># Atenció a la coma al final de la línia</span>
+<span class="py-statement">for</span> item <span class="py-statement">in</span> shoplist:
+	<span class="py-statement">print</span> item,
+
+<span class="py-statement">print</span> <span class="py-string">'\nTambé hauria de comprar arrós.'</span>
+shoplist.append(<span class="py-string">'arrós'</span>)
+<span class="py-statement">print</span> <span class="py-string">'Ara, la meva llista de la compra és'</span>, shoplist
+
+<span class="py-statement">print</span> <span class="py-string">'Ordeno la llista'</span>
+shoplist.sort()
+<span class="py-statement">print</span> <span class="py-string">'La llista ordenada és'</span>, shoplist
+
+<span class="py-statement">print</span> <span class="py-string">'El primer que compraré és'</span>, shoplist[<span class="py-number">0</span>]
+olditem = shoplist[<span class="py-number">0</span>]
+<span class="py-statement">del</span> shoplist[<span class="py-number">0</span>]
+<span class="py-statement">print</span> <span class="py-string">'ja he comprat'</span>, olditem
+<span class="py-statement">print</span> <span class="py-string">'La meva llista de la compra és ara'</span>, shoplist
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id298407"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python using_list.py
+El que haig de comprar és: poma mango pastanaga platan
+També hauria de comprar arrós.
+Ara, la meva llista de la compra és ['poma', 'mango', 'pastanaga', 'platan', 'arr\xc3\xb3s']
+Ordeno la llista
+La llista ordenada és ['arr\xc3\xb3s', 'mango', 'pastanaga', 'platan', 'poma']
+El primer que compraré és arrós
+ja he comprat arrós
+La meva llista de la compra és ara ['mango', 'pastanaga', 'platan', 'poma']
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id298432"></a>Com funciona</h4></div></div></div><p>
+				
+				La variable <code class="varname">shoplist</code> podria ser la llista de la compra per a algú que va al mercat.
+				En aquest exemple, a <code class="varname">shoplist</code> només emmagatzemem strings amb els noms dels productes 
+				a comprar. Recordem, però, que hi podríem afegir <span class="emphasis"><em>qualsevol classe d'objecte</em></span>,
+				incloen nombres o, fins i tot, altres llistes.
+				</p><p>
+				
+				A l'exemple fem servir el bucle <code class="literal">for..in</code> per a recorrer els elements de la llista.
+				Ja ens hem pogut adonar que una llista és també una seqüència. Més endavant discutirem les 
+				particularitats de les <a href="ch09s05.html" title="Seqüències">seqüències</a>.
+				<a href="ch09s05.html" title="Seqüències">section</a>
+				
+				</p><p>
+				
+
+				Notem que fem servir la <span class="emphasis"><em>coma</em></span> al final de la instrucció <code class="literal">print</code> 
+				per indicar que no escrigui el salt de línia al final. És una manera una mica lletja de fer-ho, però
+				és simple i fa el que ha de fer.
+				
+				</p><p>
+				
+				A continuació, afegim un element fent servir el mètode <code class="methodname">append</code> de l'objecte llista. Llavors mostrem el contingut de la llista per comprovar que el nou element s'ha inserit. Malgrat el nou element apareix com a <code class="literal">'arr\xc3\xb3s'</code> quan escrivim el contingut de la llista, veiem que més endavant la cadena es recupera tal i com esperem.
+				</p><p>
+				
+				Després ordenem els elements de la llista amb el mètode <code class="methodname">sort</code>.
+				Hem de tenir clar que aquest mètode modifica directament la llista en comptes de retornar-nos una llista modificada. En aquest sentit les llistes funcionen diferentment dels strings. En diem que les llistes són <span class="emphasis"><em>mutables</em></span> mentre que els strings són <span class="emphasis"><em>immutables</em></span>.
+				
+				</p><p>
+				Un cop comprat un producte al mercat, el voldrem treure de la llista, cosa que podem fer amb la
+				instrucció <code class="literal">del</code>. A l'exemple indiquem quin element de la llista volem eliminar
+				i <code class="literal">del</code> se n'encarrega. Així <code class="literal">del shoplist[0]</code> indica que es vol
+				eliminar el primer element de la llista (recordem que les llistes comencen pel 0)
+				</p><p>
+				Podem veure tots els mètodes definits per l'objecte llista amb 
+				<code class="literal">help(list)</code>.
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch09.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch09s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 9. Estructures de dades </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Tuples</td></tr></table></div></body></html>

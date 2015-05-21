@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 15. Més de Python</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="prev" href="ch14s04.html" title="Resum" /><link rel="next" href="ch15s02.html" title="Blocs d'una única sentència" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 15. Més de Python</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch14s04.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch15s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="more-python"></a>Chapter 15. Més de Python</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch15.html#special-methods">Mètodes especials</a></span></dt><dt><span class="section"><a href="ch15s02.html">Blocs d'una única sentència</a></span></dt><dt><span class="section"><a href="ch15s03.html">Més sobre llistes</a></span></dt><dd><dl><dt><span class="section"><a href="ch15s03.html#using-list-comprehension">Ús de la selecció dins les llistes</a></span></dt></dl></dd><dt><span class="section"><a href="ch15s04.html">Paràmetres de tipus tupla i diccionari</a></span></dt><dt><span class="section"><a href="ch15s05.html">Lambda</a></span></dt><dd><dl><dt><span class="section"><a href="ch15s05.html#using-lambda-forms">Ús de lambda</a></span></dt></dl></dd><dt><span class="section"><a href="ch15s06.html">Les sentències exec i eval</a></span></dt><dt><span class="section"><a href="ch15s07.html">La sentència assert</a></span></dt><dt><span class="section"><a href="ch15s08.html">La funció repr</a></span></dt><dt><span class="section"><a href="ch15s09.html">Resum</a></span></dt></dl></div><p>
+	
+	Fins ara hem tractat la major part dels elements que farem servir de Python.
+	A aquest capítol estudiarem alguns aspectes que ampliaran el nostre 
+	coneixement del llenguatge.
+	
+	</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="special-methods"></a>Mètodes especials</h2></div></div></div><p>
+		
+		Hi ha alguns mètodes que tenen especial significat a les classes. Hem
+		vist ja, per exemple, els mètodes <code class="methodname">__init__</code> i 
+		<code class="methodname">__del__</code>.
+		
+		</p><p>
+		
+		Generalment es fan servir mètodes especials per a emular certs comportaments.
+		Per exemple, si volem que una classe nostra permeti l'ús de l'operació 
+		d'indexació <code class="literal">x[key]</code> com si fos una llista o 
+		una tupla, simplement hem d'implementar el mètode 
+		<code class="methodname">__getitem__()</code> i ja està!. De fet, aquesta és la
+		manera en que Python implementa la classe <code class="classname">list</code>!
+		
+		</p><p>
+		
+		A continuació es llista alguns d'aquests mètodes especials. Es pot trobar
+		la llista completa al manual de referència de Python.
+		
+		</p><div class="table"><a id="id309307"></a><p class="title"><b>Table 15.1. Alguns mètodes especials</b></p><table summary="Alguns mètodes especials" border="1"><colgroup><col /><col /></colgroup><thead><tr><th>Nom</th><th>Descripció</th></tr></thead><tbody><tr><td>__init__(self, ...)</td><td>
+						
+						Aquest mètode es cridat just abans que la nova instància
+						sigui retornada per a ser usada.
+						
+						</td></tr><tr><td>__del__(self)</td><td>
+						
+						Es cridat just abans de que la instància sigui destruida.
+						
+						</td></tr><tr><td>__str__(self)</td><td>
+						
+						Es crida quan fem servir la sentència 
+						<code class="literal">print</code> amb l'objecte o bé quan es fa
+						servir <code class="classname">str()</code>.
+						
+						</td></tr><tr><td>__lt__(self, other)</td><td>
+						
+						Es crida quan es fa servir l'operador 
+						<span class="emphasis"><em>menor què</em></span> ( &lt; ). 
+						de la mateixa manera tenim mètodes pe la resta d'operadors
+						(+, &gt;, etc.)
+						
+						</td></tr><tr><td>__getitem__(self, key)</td><td>
+						
+						Es crida quan es fa servir l'operació d'indexació 
+						<code class="literal">x[key]</code>.
+						
+						</td></tr><tr><td>__len__(self)</td><td>
+						
+						Es crida quan es fa servir la funció <code class="function">len()</code>
+						sobre l'objecte.
+						
+						</td></tr></tbody></table></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch14s04.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch15s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Resum </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Blocs d'una única sentència</td></tr></table></div></body></html>

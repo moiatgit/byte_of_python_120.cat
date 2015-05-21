@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 13. Excepcions</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="prev" href="ch12s03.html" title="Resum" /><link rel="next" href="ch13s02.html" title="Try..Except" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 13. Excepcions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch12s03.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ch13s02.html">Next</a></td></tr></table><hr /></div><div class="chapter" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="exceptions"></a>Chapter 13. Excepcions</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="ch13.html#errors">Errors</a></span></dt><dt><span class="section"><a href="ch13s02.html">Try..Except</a></span></dt><dd><dl><dt><span class="section"><a href="ch13s02.html#handling-exceptions">Gestió d'excepcions</a></span></dt></dl></dd><dt><span class="section"><a href="ch13s03.html">Aixecant excepcions</a></span></dt><dd><dl><dt><span class="section"><a href="ch13s03.html#how-to-raise-exceptions">Com aixecar excepcions</a></span></dt></dl></dd><dt><span class="section"><a href="ch13s04.html">Try..Finally</a></span></dt><dd><dl><dt><span class="section"><a href="ch13s04.html#using-try-finally">Ús de Finally</a></span></dt></dl></dd><dt><span class="section"><a href="ch13s05.html">Resum</a></span></dt></dl></div><p>
+	
+	Les excepcions apareixen quan es produeix una situació <span class="emphasis"><em>excepcional</em></span> durant
+	l'execució d'un programa.
+	Per exemple, imaginem que intentem llegir un fitxer però aquest no existeix, o bé l'hem esborrat
+	mentre el programa està executant-se.
+	Aquestes situacions es maneguen fent servir <span class="bold"><strong>excepcions</strong></span> (<span class="bold"><strong>exception</strong></span> en anglès).
+	
+	</p><p>
+	
+	Però, què passa si el nostre programa té sentències invàlides? Python tracta aquestes situacions
+	<span class="bold"><strong>aixecant</strong></span> (<span class="bold"><strong>raise</strong></span> en anglès) una excepció 
+	amb la que ens avisa de que hi ha un <span class="bold"><strong>error</strong></span>.
+	
+	</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="errors"></a>Errors</h2></div></div></div><p>
+
+		Considerem un simple <code class="literal">print</code>. Què passaria si el teclegem malament, i 
+		en comptes de <code class="literal">print</code> fem <code class="literal">Print</code>? (Atenció a la P majúscula).
+		En aquest cas, Python <span class="emphasis"><em>aixeca</em></span> un error sintàctic.
+		
+		</p><pre class="screen">
+		
+&gt;&gt;&gt; Print 'Hello World'
+    File "&lt;stdin&gt;", line 1
+      Print 'Hello World'
+                        ^
+SyntaxError: invalid syntax
+
+&gt;&gt;&gt; print 'Hello World'
+Hello World
+		                   
+		</pre><p>
+		
+		Fixem-nos que s'ha aixecat un error sintàctic (<code class="classname">SyntaxError</code>) i que
+		també es mostra la posició on s'ha trobar l'error. Això és el que fa el seu 
+		gestor d'errors (<span class="emphasis"><em>error handler</em></span>)
+		
+		</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch12s03.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch13s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Resum </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Try..Except</td></tr></table></div></body></html>

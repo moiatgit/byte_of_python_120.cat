@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>El nom d'un mòdul</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch08.html" title="Chapter 8. Mòduls" /><link rel="prev" href="ch08s03.html" title="La instrucció from..import" /><link rel="next" href="ch08s05.html" title="Desenvolupant els nostres propis mòduls" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">El nom d'un mòdul</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch08s03.html">Prev</a> </td><th width="60%" align="center">Chapter 8. Mòduls</th><td width="20%" align="right"> <a accesskey="n" href="ch08s05.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="module-name"></a>El nom d'un mòdul</h2></div></div></div><p>
+		
+		Cada mòdul té un nom que pot ser conegut des del propi mòdul a partir de sentències. Això pot ser especialment útil en casos com ara permetre que el bloc principal d'un mòdul no s'executi quan és importat per un altre mòdul. Ho podem aconseguir fent servir l’atribut <code class="varname">__name__</code> del mòdul.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-name"></a>Fent servir el nom del mòdul</h3></div></div></div><div class="example"><a id="id296980"></a><p class="title"><b>Example 8.2. Fent servir el nom del mòdul</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: using_name.py</span>
+
+<span class="py-statement">if</span> __name__ == <span class="py-string">'__main__'</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Aquest mòdul és el programa principal'</span>
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Aquest mòdul està sent importat per un altre mòdul'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id296997"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python using_name.py
+Aquest mòdul és el programa principal
+
+$ python
+&gt;&gt;&gt; import using_name
+Aquest mòdul està sent importat per un altre mòdul
+&gt;&gt;&gt;
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id297012"></a>Com funciona</h4></div></div></div><p>
+				
+				Cada mòdul de Python té definida la variable <code class="varname">__name__</code> i si aquesta coincideix amb <code class="literal">'__main__'</code>, vol dir que el mòdul està sent executat com a programa principal.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch08s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch08.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch08s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">La instrucció from..import </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Desenvolupant els nostres propis mòduls</td></tr></table></div></body></html>

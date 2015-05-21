@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Expressions</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch05.html" title="Chapter 5. Operadors i expressions" /><link rel="prev" href="ch05s03.html" title="Precedència dels operadors" /><link rel="next" href="ch05s05.html" title="Resum" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Expressions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch05s03.html">Prev</a> </td><th width="60%" align="center">Chapter 5. Operadors i expressions</th><td width="20%" align="right"> <a accesskey="n" href="ch05s05.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="expressions"></a>Expressions</h2></div></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="using-expressions"></a>Ús de les expressions</h3></div></div></div><div class="example"><a id="id289799"></a><p class="title"><b>Example 5.1. Ús de les expressions</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: expression.py</span>
+
+length = <span class="py-number">5</span>
+breadth = <span class="py-number">2</span>
+
+area = length * breadth
+<span class="py-statement">print</span> <span class="py-string">'Area is'</span>, area
+<span class="py-statement">print</span> <span class="py-string">'Perimeter is'</span>, <span class="py-number">2</span> * (length + breadth)
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id289815"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python expression.py
+Area is 10
+Perimeter is 14
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id289829"></a>Com funciona</h4></div></div></div><p>
+				
+				El programa emmagatzema la longitud i l'amplada d'un rectangle 
+				en variables amb el corresponent nom. Fem servir aquestes 
+				variables i expressions per calcular l'àrea i el perímetre del
+				rectangle. Emmagatzemem el resultat de l'expressió 
+				<code class="literal">length * breadth</code> a la variable 
+				<code class="varname">area</code> i a continuació mostrem el resultat 
+				amb la sentència <code class="literal">print</code>. En el cas del 
+				perímetre, en comptes de guardar el resultat del càlcul en una 
+				variable intermedia, mostrem directament el resultat de calcular
+				l'expressió <code class="literal">2 * (length + breadth)</code> a la 
+				sentència print.
+				
+				</p><p>
+
+				Fixem-nos com Python mostra el resultat d'una manera llegible. 
+				Malgrat no hem especificat un espai entre la cadena 
+				<code class="literal">'Area is'</code> i la variable 
+				<code class="varname">area</code>, Python l'afegeix per nosaltres, 
+				simplificant-nos la feina de preocupar-nos per aquests detalls.
+								
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch05s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch05.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch05s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Precedència dels operadors </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resum</td></tr></table></div></body></html>

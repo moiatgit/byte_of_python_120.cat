@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Línies lògiques i línies físiques</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch04.html" title="Chapter 4. Conceptes bàsics" /><link rel="prev" href="ch04s07.html" title="Objectes" /><link rel="next" href="ch04s09.html" title="Sagnat o indentació" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Línies lògiques i línies físiques</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch04s07.html">Prev</a> </td><th width="60%" align="center">Chapter 4. Conceptes bàsics</th><td width="20%" align="right"> <a accesskey="n" href="ch04s09.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="logical-and-physical-lines"></a>Línies lògiques i línies físiques</h2></div></div></div><p>
+		
+		Les <span class="emphasis"><em>línies físiques</em></span> són cadascuna de les línies que 
+		veiem quan llegim un programa. Una <span class="emphasis"><em>línia lògica</em></span> és 
+		el que Python veu com a una instrucció o sentència.
+		Python assumeix de manera implícita que cada línia física correspon a 
+		una línia lògica.
+		
+		</p><p>
+		
+		Un exemple de línia lògica és la sentència <code class="literal">print 'Hola Món'</code>. 
+		Quan apareix sola a una única línia (tal i com la veiem en un editor) 
+		aquesta sentència correspon també a una línia física.
+		
+		</p><p>
+		
+		Per fer el codi més llegible, Python fomenta implícitament que les línies
+		continguin una única sentència.
+		
+		</p><p>
+		
+		Si volem especificar més d'una línia lògica a la mateixa línia física, 
+		haurem d'explicitar-ho fent servir un punt i coma (<code class="literal">;</code>)
+		que separi les línies lògiques. Per exemple,
+		
+		</p><pre class="programlisting">
+		
+i = <span class="py-number">5</span>
+<span class="py-statement">print</span> i
+		
+		</pre><p>
+		
+		equival a
+		
+		</p><pre class="programlisting">
+		
+i = <span class="py-number">5</span>;
+<span class="py-statement">print</span> i;
+		
+		</pre><p>
+		
+		i també a 
+		
+		</p><pre class="programlisting">
+		
+i = <span class="py-number">5</span>; <span class="py-statement">print</span> i;
+		
+		</pre><p>
+		
+		o fins i tot a
+		
+		</p><pre class="programlisting">
+		
+i = <span class="py-number">5</span>; <span class="py-statement">print</span> i
+		
+		</pre><p>
+		
+		Amb tot, és <span class="bold"><strong>molt recomanable</strong></span> que ens 
+		acostumem a escriure una única línia lògica a cada línia física, i que 
+		només col·loquem una línia lògica en més d'una línia física quan la 
+		primera sigui massa llarga d'escriure. Es tracta d'evitar el màxim 
+		possible l'ús del punt i coma, de manera que el codi quedi més llegible.
+		De fet, jo mateix <span class="emphasis"><em>mai</em></span> he fet servir (i ni tant sols
+		he vist usar) un punt i coma en un programa Python.
+		
+		</p><p>
+		
+		Un exemple de línia lògica escrita en més d'una línia física pot ser:
+		
+		</p><pre class="programlisting">
+		
+s = <span class="py-string">'Aquesta és una cadena. \
+I això continua la cadena.'</span>
+<span class="py-statement">print</span> s
+		
+		</pre><p>
+		
+		Aquestes línies donen com a sortida:
+		
+		</p><pre class="screen">
+		
+Aquesta és una cadena. I això continua la cadena.
+		
+		</pre><p>
+		
+		De la mateixa manera,
+		
+		</p><pre class="programlisting">
+		
+<span class="py-statement">print</span> \
+i
+		
+		</pre><p>
+		
+		equival a
+		
+		</p><pre class="programlisting">
+		
+<span class="py-statement">print</span> i
+		
+		</pre><p>
+		
+		Aquest tipus de separació en la que hem de fer servir la barra invertida
+		es coneix com a agrupació explícita de línies. Hi ha també una agrupació
+		implícita de línies quan fem servir parèntesis, claus o claudàtors.
+		Veurem aquest concepte en acció quan considerem les llistes.
+		
+		</p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s07.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s09.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Objectes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Sagnat o indentació</td></tr></table></div></body></html>

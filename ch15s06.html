@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Les sentències exec i eval</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch15.html" title="Chapter 15. Més de Python" /><link rel="prev" href="ch15s05.html" title="Lambda" /><link rel="next" href="ch15s07.html" title="La sentència assert" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Les sentències exec i eval</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch15s05.html">Prev</a> </td><th width="60%" align="center">Chapter 15. Més de Python</th><td width="20%" align="right"> <a accesskey="n" href="ch15s07.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="exec-statement"></a>Les sentències exec i eval</h2></div></div></div><p>
+		
+		La sentència <code class="literal">exec</code> es fa servir per executar sentències Python 
+		emmagatzemades a un fitxer o string.
+		Per exemple, podem generar un string amb codi Python en temps d'execució i, a continuació,
+		executar aquest codi fent servir la sentència <code class="literal">exec</code>.
+		Veiem a continuació un exemple senzill.
+		
+		</p><pre class="screen">
+		
+&gt;&gt;&gt; exec 'print "Hello World"'
+Hello World
+		
+		</pre><p>
+		
+		La sentència <code class="literal">eval</code> es fa servir per a avaluar expressions vàlides
+		de Python emmagatzemades a un string. 
+		Considerem el següent exemple.
+		
+		</p><pre class="screen">
+		
+&gt;&gt;&gt; eval('2*3')
+6
+		
+		</pre></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch15s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch15.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch15s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Lambda </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> La sentència assert</td></tr></table></div></body></html>

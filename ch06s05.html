@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La sentència break</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch06.html" title="Chapter 6. Control Flow" /><link rel="prev" href="ch06s04.html" title="El bucle for" /><link rel="next" href="ch06s06.html" title="La sentència continue" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La sentència break</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch06s04.html">Prev</a> </td><th width="60%" align="center">Chapter 6. Control Flow</th><td width="20%" align="right"> <a accesskey="n" href="ch06s06.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="break-statement"></a>La sentència break</h2></div></div></div><p>
+		
+		La sentència <code class="literal">break</code> es fa servir per trencar l'execució d'un bucle. És
+		a dir, podem fer sortir del bucle fins i tot encara que la condició del bucle no sigui 
+		falsa o no s'ha tractat tots els elements de la seqüència.
+		
+		</p><p>
+		
+		Atenció! si trenquem un bucle <code class="literal">for</code> o <code class="literal">while</code>, i
+		existeix un bloc <code class="literal">else</code>, aquest
+		<span class="bold"><strong>no</strong></span> serà executat.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="id292529"></a>Ús de la sentència break</h3></div></div></div><div class="example"><a id="using-break-statement"></a><p class="title"><b>Example 6.4. Ús de la sentència break</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: break.py</span>
+
+<span class="py-statement">while</span> <span class="py-builtin">True</span>:
+	s = <span class="py-builtin">raw_input</span>(<span class="py-string">'Enter something : '</span>)
+	<span class="py-statement">if</span> s == <span class="py-string">'quit'</span>:
+		<span class="py-statement">break</span>
+	<span class="py-statement">print</span> <span class="py-string">'Length of the string is'</span>, <span class="py-builtin">len</span>(s)
+<span class="py-statement">print</span> <span class="py-string">'Done'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292554"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python break.py
+Enter something : Programming is fun
+Length of the string is 18
+Enter something : When the work is done
+Length of the string is 21
+Enter something : if you wanna make your work also fun:
+Length of the string is 37
+Enter something :       use Python!
+Length of the string is 12
+Enter something : quit
+Done
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292566"></a>Com funciona</h4></div></div></div><p>
+				
+				El programa obté repetidament l'entrada de l'usuari i mostra
+				la longitud de cada entrada.
+				En cas, però, que l'entrada de l'usuari sigui <code class="literal">'quit'</code>,
+				el bucle <code class="literal">while</code> és trencat amb la sentència
+				<code class="literal">break</code>, i s'arriba al final del programa.
+				
+				</p><p>
+				
+				La longitud de la cadena d'entrada s'obté amb la funció integrada
+				<code class="function">len</code>.
+				
+				</p><p>
+				
+				Recordem que també podem fer servir la sentència <code class="literal">break</code>
+				amb el bucle <code class="literal">for</code>.
+				
+				</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id292630"></a>G2's Poetic Python</h4></div></div></div><p>
+				
+				He fet servir, com a entrada, un mini poema que he escrit, 
+				anomenat <span class="bold"><strong>G2's Poetic Python</strong></span>:
+				
+				</p><pre class="screen">
+Programming is fun
+When the work is done
+if you wanna make your work also fun:
+	use Python!
+				</pre><p>
+				Una traducció d'aquest poema podria ser:
+				</p><pre class="screen">
+Programar és divertit
+Quan la feina està feta
+si vols que la teva feina sigui també divertida:
+	fes servir Python!
+				</pre></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch06s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch06.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch06s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">El bucle for </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> La sentència continue</td></tr></table></div></body></html>

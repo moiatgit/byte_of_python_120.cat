@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>La solució</title><link rel="stylesheet" href="byte.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.68.1" /><link rel="start" href="index.html" title="A Byte of Python - Una mica de Python" /><link rel="up" href="ch10.html" title="Chapter 10. Resolució de problemes - Escrivint un script en Python" /><link rel="prev" href="ch10.html" title="Chapter 10. Resolució de problemes - Escrivint un script en Python" /><link rel="next" href="ch10s03.html" title="El procés de desenvolupament de programari" /></head><body>
+<div class="header">
+<strong><a href="http://www.byteofpython.info/" class="header-link">A Byte of Python</a></strong>
+</div>
+<div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">La solució</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch10.html">Prev</a> </td><th width="60%" align="center">Chapter 10. Resolució de problemes - Escrivint un script en Python</th><td width="20%" align="right"> <a accesskey="n" href="ch10s03.html">Next</a></td></tr></table><hr /></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="the-solution"></a>La solució</h2></div></div></div><p>
+		
+		Un cop disposem d'un disseny del nostre programa, podem escriure el codi que
+		serà la <span class="bold"><strong>implementació</strong></span> de la nostra solució.
+		
+		</p><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="first-version"></a>Primera versió</h3></div></div></div><div class="example"><a id="id301276"></a><p class="title"><b>Example 10.1. Script de còpies de seguretat - La primera versió</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: backup_ver1.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">os</span>
+<span class="py-statement">import</span> <span class="py-builtin">time</span>
+
+<span class="py-comment"># 1. Els fitxers i els directoris que han de ser guardats, s'especificaran a una llista.</span>
+source = [<span class="py-string">'/home/swaroop/byte'</span>, <span class="py-string">'/home/swaroop/bin'</span>]
+<span class="py-comment"># Des de Windows fer servir source = [r'C:\Documents', r'D:\Work'] o similar</span>
+
+
+<span class="py-comment"># 2. La còpia de seguretat ha de ser guardada en un directori principal de còpies de seguretat.</span>
+target_dir = <span class="py-string">'/mnt/e/backup/'</span> <span class="py-comment"># Canviar aquest pel lloc que fem servir</span>
+
+<span class="py-comment"># 3. Els fitxers es guarden en un fitxer zip. </span>
+<span class="py-comment"># 4. El nom de l'arxiu zip és la data i hora actual.</span>
+target = target_dir + <span class="py-builtin">time</span>.strftime(<span class="py-string">'%Y%m%d%H%M%S'</span>) + <span class="py-string">'.zip'</span>
+
+<span class="py-comment"># 5. Fem servir la comanda zip (Unix/Linux) per a col·locar els fitxers a un arxiu zip</span>
+zip_command = <span class="py-string">"zip -qr '%s' %s"</span> % (target, <span class="py-string">' '</span>.join(source))
+
+<span class="py-comment"># Executem la còpia</span>
+<span class="py-statement">if</span> <span class="py-builtin">os</span>.system(zip_command) == <span class="py-number">0</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Successful backup to'</span>, target
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Backup FAILED'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id301289"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python backup_ver1.py
+Successful backup to /mnt/e/backup/20041208073244.zip
+				
+				</pre><p>
+				
+				Ara passem a la fase de <span class="bold"><strong>prova</strong></span> on 
+				comprovem el correcte funcionament del nostre programa. Si no es comporta
+				com s'esperava, haurem de <span class="bold"><strong>depurar-lo</strong></span>,
+				és a dir, eliminar els errors o <span class="emphasis"><em>bugs</em></span> del programa.
+				
+				</p></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id301341"></a>Com funciona</h4></div></div></div><p>
+				
+				Podem veure com hem convertit pas a pas, el nostre 
+				<span class="emphasis"><em>disseny</em></span> en <span class="emphasis"><em>codi</em></span>.
+				
+				</p><p>
+				
+				Primer importem els mòduls <code class="literal">os</code> i <code class="literal">time</code>.
+				A continuació especifiquem a la llista <code class="varname">source</code> els 
+				fitxers i directoris a copiar. El directori objectiu és on guardarem totes
+				les còpies de seguretat i s'especifica a la variable 
+				<code class="varname">target_dir</code>. 
+				El nom del fitxer zip que crearem és la data i hora actual, que obtenim
+				a partir de la funció <code class="function">time.strftime()</code>. 
+				També especifiquem l'extensió <code class="filename">.zip</code> i què serà
+				col·locat al directori <code class="varname">target_dir</code>.
+				
+				</p><p>
+				
+				La funció <code class="function">time.strftime()</code> pren com a paràmetre el
+				format de la data i hora. L'especificació <code class="literal">%Y</code> 
+				serà substituida per l'any (en dos dígits). <code class="literal">%m</code> prendrà
+				per valor el mes en forma de número entre el <code class="literal">01</code> i
+				el <code class="literal">12</code>. I així amb la resta.
+				La llista completa d'especificacions pot trobar-se al manual de referència
+				de Python ([<span class="citation">Python Reference Manual</span>]) dins la 
+				distribució de Python.
+				Podem observar que és similar, malgrat no igual, a l'especificació de la
+				instrucció <code class="literal">print</code>. Ambdós fan servir 
+				<code class="literal">%</code> seguit per una tupla.
+				
+				</p><p>
+				
+				Creem el nom de fitxer zip fent servir l'operador de concatenació de
+				strings. 
+				A continuació creem el string <code class="varname">zip_command</code> què conté 
+				la comanda que executarem. Es pot comprovar que la comanda funciona, 
+				executant-la a l'intèrpret d'ordres (terminal Linux o DOS).				
+				</p><p>
+				
+				La comanda <span><strong class="command">zip</strong></span> que fem servir té algunes opcions i
+				paràmetres. L'opció <code class="option">-q</code> indica que la comanda ha de 
+				funcionar en mode <span class="bold"><strong>q</strong></span>uiet (silenciós).
+				L'opció <code class="option">-r</code> indica que ha de funcionar de manera
+				<span class="bold"><strong>r</strong></span>ecursiva (és a dir, ha d'incloure 
+				també els fitxers dels subdirectoris).
+				Les dues opcions han estat combinades de manera breu amb 
+				<code class="option">-qr</code>. A continuació s'afegeix el nom de l'arxiu a crear
+				seguit per la llista de fitxers a copiar.
+				Convertim la llista <code class="varname">source</code> en un string amb el mètode
+				<code class="methodname">join</code>.
+				
+				</p><p>
+				
+				Finalment <span class="emphasis"><em>executem</em></span> la comanda fent servir la funció
+				<code class="function">os.system</code> que l'executa com si l'haguèssim introduit
+				a l'interpret d'ordres. Aquesta funció retorna <code class="literal">0</code> quan 
+				l'execució ha tingut èxit, o un un número d'error altrament.
+				
+				</p><p>
+				
+				Depenent de la sortida de la comanda, informem l'usuari de si la còpia
+				de seguretat ha tingut o no èxit. I això és tot: acabem de crear un 
+				script que fa còpies de seguretat dels nostres fitxers importants!
+				
+				</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Nota pels usuaris de Windows</h3><p>
+					
+					Podem assignar a la llista <code class="varname">source</code> i a la variable
+					<code class="varname">target</code> a qualsevol fitxer i directori, però hem 
+					d'anar amb una mica de compte en Windows. El problema és què Windows
+					fa servir la contrabarra (<code class="literal">\</code>) com a caràcter 
+					separador de directoris però Python fa servir aquest caràcter per a
+					representar seqüències d'escapament.
+					
+					</p><p>
+					
+					Així, ens caldrà representar la contrabarra fent servir una seqüència
+					d'escapament o bé fer servir strings crus (no processats). Per exemple,
+					<code class="literal">'C:\\Documents'</code> o <code class="literal">r'C:\Documents'</code>
+					però <span class="bold"><strong>mai</strong></span> farem servir
+					<code class="literal">'C:\Documents'</code> - o estaríem especificant la 
+					seqüència d'escapament desconeguda <code class="literal">\D</code> !
+					
+					</p></div><p>
+				
+				Ara que tenim el nostre programa en funcionament, podem fer-lo servir
+				sempre que vulguem per a fer còpies de seguretat. Es recomana als usuaris
+				de Linux/unix que facin servir 
+				<a href="ch03s05.html" title="Programes executables">el mètode d'execució</a>
+				discutit anteriorment, de manera que es pugui executar el script en
+				qualsevol moment i des de qualsevol lloc. 
+				Aquesta fase es coneix com a fase d'<span class="bold"><strong>operació</strong></span>.
+				
+				</p><p>
+				
+				El programa anterior funciona correctament, però normalment els primers
+				programes no funcionen com s'esperava. Per exemple, poden aparèixer 
+				problemes si no l'hem dissenyat adequadament, o si hem fet algun error a
+				l'hora de teclejar el codi. En aquests casos, ens caldrà tornar enrere a 
+				la fase de disseny o a la d'implementació, i depurar el programa.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="second-version"></a>Segona versió</h3></div></div></div><p>
+			
+			La primera versió del nostre script funciona. Amb tot, podem fer-li alguns canvis
+			de manera que funcioni millor per l'ús diari. D'això se'n diu la fase de 
+			<span class="bold"><strong>manteniment</strong></span> del programari.
+			
+			</p><p>
+			
+			Un dels canvis que podrien ser útils seria un millor mecanisme d'anomenar els fitxers - 
+			fent servir l'hora (<span class="emphasis"><em>time</em></span>) com a nom del fitxer dins un directori
+			amb la data actual (<span class="emphasis"><em>date</em></span>) com a directori dins del directori
+			principal de les còpies de seguretat.
+			Un dels avantatges és que les nostres còpies serien emmagatzemades en forma jeràrquica,
+			el que faria més fàcil la seva gestió. Un altre avantatge estaria en que la longitud dels
+			noms dels fitxers seria molt menor. Encara un altre avantatge és que els directoris 
+			separats ofereixen una manera més ràpida de comprovar que s'ha realitzat una còpia 
+			cada dia donat que un directori només es crearà quan s'hagi fet una còpia de seguretat
+			d'aquell dia.			
+			
+			</p><div class="example"><a id="id301695"></a><p class="title"><b>Example 10.2. Script de còpies de seguretat - La segona versió</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: backup_ver2.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">os</span>
+<span class="py-statement">import</span> <span class="py-builtin">time</span>
+
+<span class="py-comment"># 1. Els fitxers i els directoris que han de ser guardats, s'especificaran a una llista.</span>
+source = [<span class="py-string">'/home/swaroop/byte'</span>, <span class="py-string">'/home/swaroop/bin'</span>]
+<span class="py-comment"># Des de Windows fer servir source = [r'C:\Documents', r'D:\Work'] o similar</span>
+
+<span class="py-comment"># 2. La còpia de seguretat ha de ser guardada en un directori principal de còpies de seguretat.</span>
+target_dir = <span class="py-string">'/mnt/e/backup/'</span> <span class="py-comment"># Canviar aquest pel lloc que fem servir</span>
+
+<span class="py-comment"># 3. Els fitxers es guarden en un fitxer zip.</span>
+<span class="py-comment"># 4. El dia actual és el nom del subdirectori al directori principal</span>
+today = target_dir + <span class="py-builtin">time</span>.strftime(<span class="py-string">'%Y%m%d'</span>)
+<span class="py-comment"># L'hora actual és el nom de l'arxiu zip </span>
+now = <span class="py-builtin">time</span>.strftime(<span class="py-string">'%H%M%S'</span>)
+
+<span class="py-comment"># Crea el subdirectori si encara no existeix </span>
+<span class="py-statement">if</span> <span class="py-statement">not</span> <span class="py-builtin">os</span>.path.exists(today):
+	<span class="py-builtin">os</span>.mkdir(today) <span class="py-comment"># make directory</span>
+	<span class="py-statement">print</span> <span class="py-string">'Successfully created directory'</span>, today
+
+<span class="py-comment"># El nom de l'arxiu zip</span>
+target = today + <span class="py-builtin">os</span>.sep + now + <span class="py-string">'.zip'</span>
+
+<span class="py-comment"># 5. Fem servir la comanda zip (Unix/Linux) per a col·locar els fitxers a un arxiu zip </span>
+zip_command = <span class="py-string">"zip -qr '%s' %s"</span> % (target, <span class="py-string">' '</span>.join(source))
+
+<span class="py-comment"># Executem la còpia</span>
+<span class="py-statement">if</span> <span class="py-builtin">os</span>.system(zip_command) == <span class="py-number">0</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Successful backup to'</span>, target
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Backup FAILED'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id301708"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python backup_ver2.py
+Successfully created directory /mnt/e/backup/20041208
+Successful backup to /mnt/e/backup/20041208/080020.zip
+
+$ python backup_ver2.py
+Successful backup to /mnt/e/backup/20041208/080428.zip
+
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id301072"></a>Com funciona</h4></div></div></div><p>
+				
+				La major part del programa no ha canviat. El canvi principal és que ara
+				comprovem si hi ha un directori amb la data d'avui com a nom dins del directori
+				principal de les còpies de seguretat. Per a això, fem servir la funció 
+				<code class="function">os.exists</code>. Si no existeix, el creem amb la funció
+				<code class="function">os.mkdir</code>.
+				
+				</p><p>
+				
+				Fixem-nos com fem servir la variable <code class="varname">os.sep</code>. Aquesta ens 
+				ofereix el separador de directoris corresponent al sistema operatiu que fem
+				servir. És a dir, tindrà com a valor 
+				<code class="literal">'/'</code> a Linux/Unix, <code class="literal">'\\'</code>
+				a Windows i <code class="literal">':'</code> a Mac OS. 
+				L'ús de 
+				<code class="varname">os.sep</code> en comptes dels caràcters directament, fa que el nostre
+				programa sigui més portable i funcione sobre aquests sistemes.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="third-version"></a>Tercera versió</h3></div></div></div><p>
+			
+			La segona versió va bé per fer algunes còpies de seguretat. Però, quan 
+			n'hi ha moltes, trobo difícil diferenciar els objectius de les
+			diferents còpies de seguretat. Per exemple, podria haver fet alguns
+			canvis importants a un programa o presentació, i voler associar aquests
+			canvis al nom de l'arxiu zip.
+			Això es pot aconseguir fàcilment adjuntant un comentari de l'usuari
+			al nom de l'arxiu zip.
+			
+			</p><div class="example"><a id="id301895"></a><p class="title"><b>Example 10.3. Script de còpies de seguretat - La tercera versió (no funciona!)</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: backup_ver2.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">os</span>
+<span class="py-statement">import</span> <span class="py-builtin">time</span>
+
+<span class="py-comment"># 1. Els fitxers i els directoris que han de ser guardats, s'especificaran a una llista. </span>
+source = [<span class="py-string">'/home/swaroop/byte'</span>, <span class="py-string">'/home/swaroop/bin'</span>]
+<span class="py-comment"># Des de Windows fer servir source = [r'C:\Documents', r'D:\Work'] o similar</span>
+
+<span class="py-comment"># 2. La còpia de seguretat ha de ser guardada en un directori principal de còpies de seguretat.</span>
+target_dir = <span class="py-string">'/mnt/e/backup/'</span> <span class="py-comment"># Remember to change this to what you will be using</span>
+
+<span class="py-comment"># 3. Els fitxers es guarden en un fitxer zip. </span>
+<span class="py-comment"># 4. El dia actual és el nom del subdirectori al directori principal</span>
+today = target_dir + <span class="py-builtin">time</span>.strftime(<span class="py-string">'%Y%m%d'</span>)
+<span class="py-comment"># L'hora actual és el nom de l'arxiu zip </span>
+now = <span class="py-builtin">time</span>.strftime(<span class="py-string">'%H%M%S'</span>)
+
+<span class="py-comment"># Obté el comentari de l'usuari per a crear el nom del fitxer</span>
+comment = <span class="py-builtin">raw_input</span>(<span class="py-string">'Enter a comment --&gt; '</span>)
+<span class="py-statement">if</span> <span class="py-builtin">len</span>(comment) == <span class="py-number">0</span>: <span class="py-comment"># comprova que hagi estat introduït un comentari</span>
+	target = today + <span class="py-builtin">os</span>.sep + now + <span class="py-string">'.zip'</span>
+<span class="py-statement">else</span>:
+	target = today + <span class="py-builtin">os</span>.sep + now + <span class="py-string">'_'</span> +
+		comment.replace(<span class="py-string">' '</span>, <span class="py-string">'_'</span>) + <span class="py-string">'.zip'</span>
+
+<span class="py-comment"># Crea el subdirectori si encara no existeix</span>
+<span class="py-statement">if</span> <span class="py-statement">not</span> <span class="py-builtin">os</span>.path.exists(today):
+	<span class="py-builtin">os</span>.mkdir(today) <span class="py-comment"># make directory</span>
+	<span class="py-statement">print</span> <span class="py-string">'Successfully created directory'</span>, today
+
+<span class="py-comment"># 5. Fem servir la comanda zip (Unix/Linux) per a col·locar els fitxers a un arxiu zip</span>
+zip_command = <span class="py-string">"zip -qr '%s' %s"</span> % (target, <span class="py-string">' '</span>.join(source))
+
+<span class="py-comment"># Executem la còpia</span>
+<span class="py-statement">if</span> <span class="py-builtin">os</span>.system(zip_command) == <span class="py-number">0</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Successful backup to'</span>, target
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Backup FAILED'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id301909"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python backup_ver3.py
+File "backup_ver3.py", line 25
+target = today + os.sep + now + '_' +
+					^
+SyntaxError: invalid syntax
+					
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id301950"></a>Com (no) funciona</h4></div></div></div><p>
+				
+				<span class="bold"><strong>Aquest programa no funciona!</strong></span>.
+				Python ens diu que hi ha un error sintàctic que vol dir que
+				el programa no satisfà l'estructura que Python espera trobar.
+				Si observem el missatge d'error que ens dóna, també ens informa
+				on s'ha detectat l'error. Així comencem a 
+				<span class="emphasis"><em>depurar</em></span> el programa des d'aquesta línia.
+				
+				</p><p>
+				
+				Fixant-nos amb atenció, trobem que la línia lògica s'ha dividit
+				en dues línies físiques, però no havíem dit enlloc que aquestes
+				dues línies haguessin d'estar juntes. Bàsicament, Python ha trobat 
+				l'operador d'addició (<code class="literal">+</code>) sense cap operand a
+				aquesta línia lògica, i per tant, no sap com continuar.
+				Recordem que podem indicar que una línia lògica continua a la següent
+				línia física amb la contrabarra al final de la primera línia física.
+				Corregim l'error del nostre programa.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="fourth-version"></a>Quarta versió</h3></div></div></div><div class="example"><a id="id302004"></a><p class="title"><b>Example 10.4. Script de còpies de seguretat - La quarta versió</b></p><pre class="programlisting">
+				
+<span class="py-comment">#!/usr/bin/python</span>
+<span class="py-comment"># Filename: backup_ver2.py</span>
+
+<span class="py-statement">import</span> <span class="py-builtin">os</span>, <span class="py-builtin">time</span>
+
+<span class="py-comment"># 1. Els fitxers i els directoris que han de ser guardats, s'especificaran a una llista.</span>
+source = [<span class="py-string">'/home/swaroop/byte'</span>, <span class="py-string">'/home/swaroop/bin'</span>]
+<span class="py-comment"># Des de Windows fer servir source = [r'C:\Documents', r'D:\Work'] o similar</span>
+
+<span class="py-comment"># 2. La còpia de seguretat ha de ser guardada en un directori principal de còpies de seguretat.</span>
+target_dir = <span class="py-string">'/mnt/e/backup/'</span> <span class="py-comment"># Remember to change this to what you will be using</span>
+
+<span class="py-comment"># 3. Els fitxers es guarden en un fitxer zip. </span>
+<span class="py-comment"># 4. El dia actual és el nom del subdirectori al directori principal</span>
+today = target_dir + <span class="py-builtin">time</span>.strftime(<span class="py-string">'%Y%m%d'</span>)
+<span class="py-comment"># L'hora actual és el nom de l'arxiu zip</span>
+now = <span class="py-builtin">time</span>.strftime(<span class="py-string">'%H%M%S'</span>)
+
+<span class="py-comment"># Obté el comentari de l'usuari per a crear el nom del fitxer</span>
+comment = <span class="py-builtin">raw_input</span>(<span class="py-string">'Enter a comment --&gt; '</span>)
+<span class="py-statement">if</span> <span class="py-builtin">len</span>(comment) == <span class="py-number">0</span>: <span class="py-comment"># comprova que hagi estat introduït un comentari</span>
+	target = today + <span class="py-builtin">os</span>.sep + now + <span class="py-string">'.zip'</span>
+<span class="py-statement">else</span>:
+	target = today + <span class="py-builtin">os</span>.sep + now + <span class="py-string">'_'</span> + \
+		comment.replace(<span class="py-string">' '</span>, <span class="py-string">'_'</span>) + <span class="py-string">'.zip'</span>
+ 	<span class="py-comment"># Notice the backslash!</span>
+
+<span class="py-comment"># Crea el subdirectori si encara no existeix </span>
+<span class="py-statement">if</span> <span class="py-statement">not</span> <span class="py-builtin">os</span>.path.exists(today):
+	<span class="py-builtin">os</span>.mkdir(today) <span class="py-comment"># make directory</span>
+	<span class="py-statement">print</span> <span class="py-string">'Successfully created directory'</span>, today
+
+<span class="py-comment"># 5. Fem servir la comanda zip (Unix/Linux) per a col·locar els fitxers a un arxiu zip</span>
+zip_command = <span class="py-string">"zip -qr '%s' %s"</span> % (target, <span class="py-string">' '</span>.join(source))
+
+<span class="py-comment"># Executem la còpia</span>
+<span class="py-statement">if</span> <span class="py-builtin">os</span>.system(zip_command) == <span class="py-number">0</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Successful backup to'</span>, target
+<span class="py-statement">else</span>:
+	<span class="py-statement">print</span> <span class="py-string">'Backup FAILED'</span>
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id302017"></a>Sortida</h4></div></div></div><pre class="screen">
+				
+$ python backup_ver4.py
+Enter a comment --&gt; added new examples
+Successful backup to /mnt/e/backup/20041208/082156_added_new_examples.zip
+
+$ python backup_ver4.py
+Enter a comment --&gt;
+Successful backup to /mnt/e/backup/20041208/082316.zip
+				
+				</pre></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="id302055"></a>Com funciona</h4></div></div></div><p>
+				
+				Aquest programa funciona. Analitzem les millores que l'hem incorporat 
+				respecte a la versió 3.
+				Obtenim el comentari de l'usuari amb la funció <code class="function">raw_input</code>
+				i a continuació comprovem si l'usuari realment ha introduït alguna cosa, 
+				comprovant la longitud de l'entrada amb la funció <code class="function">len</code>.
+				Cas que l'usuari simplement hagi pres la tecla <span><strong class="keycap">enter</strong></span> 
+				(potser simplement es tracta d'una còpia de seguretat rutinària que 
+				no correspon a cap canvi especial), llavors procedim com ho fèiem abans.				
+				
+				</p><p>
+				
+				En canvi, si s'ha introduït un comentari, afegim aquest al nom de l'arxiu
+				zip tot just abans de l'extensió <code class="filename">.zip</code>. 
+				Notem que canviem els espais per guions baixos per a simplificar la 
+				manipulació d'aquests noms.
+				
+				</p></div></div><div class="section" lang="en" xml:lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="more-refinements"></a>Més millores</h3></div></div></div><p>
+			
+			La quarta versió és un script que funciona satisfactòriament per a la majoria
+			d'usuaris. Però sempre hi ha lloc per a fer millores. Per exemple, podem incloure
+			l'opció <code class="option">-v</code> per fer que el programa generi més informació durant
+			el seu funcionament.
+
+			</p><p>
+			
+			Una altra millora pot ser permetre recollir fitxers i directoris des de la
+			línia de comandes. Aquests es poden obtenir de la llista <code class="varname">sys.argv</code>,
+			i després passar-los a la nostra llista <code class="varname">source</code> mitjançant el mètode
+			<code class="methodname">extend</code> que ens proporciona la classe <code class="classname">list</code>.
+					
+			</p><p>
+			
+			Una millora que m'agrada és l'ús de la comanda <span><strong class="command">tar</strong></span> en comptes
+			de <span><strong class="command">zip</strong></span>. Quan fem servir <span><strong class="command">tar</strong></span> juntament amb 
+			<span><strong class="command">gzip</strong></span>, el procés sol ser més ràpid i l'arxiu resultant molt menor.
+			L'aplicació <span class="application">WinZip</span> és capaç de manegar els fitxers 
+			<code class="filename">.tar.gz</code> des de Windows.
+			La comanda <span><strong class="command">tar</strong></span> es troba disponible per defecte a la majoria
+			de les instal·lacions Linux/Unix. Els usuaris de Windows poden descarregar-la
+			des de <a href="http://gnuwin32.sourceforge.net/packages/tar.htm" target="_top">
+			http://gnuwin32.sourceforge.net/packages/tar.htm</a>.
+			
+			</p><p>
+			
+			La línia de comanda serà ara:
+			
+			</p><pre class="programlisting">
+			
+tar = <span class="py-string">'tar -cvzf %s %s -X /home/swaroop/excludes.txt'</span> % (target, <span class="py-string">' '</span>.join(srcdir))
+			
+			</pre><p>
+			
+			Les opcions s'expliquen a continuació.
+			
+			</p><div class="itemizedlist"><ul type="disc"><li><p>
+					
+					<code class="option">-c</code> indica <span class="bold"><strong>c</strong></span>reació 
+					d'un arxiu.
+					
+					</p></li><li><p>
+					
+					<code class="option">-v</code> indica <span class="bold"><strong>v</strong></span>erbose,
+					és a dir, fer que el programa generi més informació.
+					
+					</p></li><li><p>
+					
+					<code class="option">-z</code> indica que es faci servir el filtre g<span class="bold"><strong>z</strong></span>ip.
+					
+					</p></li><li><p>
+					
+					<code class="option">-f</code> indica <span class="bold"><strong>f</strong></span>orçar
+					la creació de l'arxiu. És a dir, en cas que existeixi un fitxer amb el mateix
+					nom, serà substituït pel nou.
+					
+					</p></li><li><p>
+					
+					<code class="option">-X</code> indica un fitxer que conté una llista de fitxers
+					que han de ser e<span class="bold"><strong>x</strong></span>closos de la còpia.
+					Per exemple, podem especificar <code class="literal">*~</code> en aquest fitxer
+					de manera que no s'inclogui a la còpia cap fitxer que finalitzi 
+					amb <code class="literal">~</code>.
+					
+					</p></li></ul></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+				
+				La manera preferida de crear aquesta classe d'arxius seria fent
+				servir els mòduls <code class="literal">zipfile</code> o <code class="literal">tarfile</code>.
+				Aquests mòduls formen part de la biblioteca estàndard de Python i estan
+				disponibles per ser utilitzats. L'ús d'aquestes biblioteques ens permet
+				evitar les crides a <code class="function">os.system</code>, cosa generalment recomanable
+				per l'alt risc a cometre errors costosos.
+				
+				</p><p>
+				
+				Hem fet servir <code class="function">os.system</code> per a crear les còpies de 
+				seguretat només amb un propòsit pedagògic, fent que l'exemple fos
+				prou senzill d'entendre a l'hora que prou real per a ser útil.
+				
+				</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch10.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch10.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch10s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 10. Resolució de problemes - Escrivint un script en Python </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> El procés de desenvolupament de programari</td></tr></table></div></body></html>
